@@ -1,0 +1,40 @@
+@import '../../utils/utilsStyles/rem.scss';
+
+.accordion {
+    position: relative;
+    cursor: pointer;
+}
+
+.accordionBody {
+    position: absolute;
+    transform: translate(-12.5%, 10%);
+    width: 100%;
+}
+
+.item {
+    p {
+        background: inear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-transform: lowercase;
+    }
+
+    background-color: rgba(43, 40, 37, 1);
+    padding: rem(12) rem(16);
+    cursor: pointer;
+
+    &:hover {
+        background: linear-gradient(95.25deg, #C09E6C -5.68%, #FFEBCC 41.36%, #BF936B 104.69%);
+
+        p {
+            background: #000;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+    }
+}
+
+
+
+@import './media.scss';

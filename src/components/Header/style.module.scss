@@ -1,0 +1,151 @@
+@import '../../utils/utilsStyles/rem.scss';
+
+.header {
+    background-color: rgba(18, 17, 15, 1);
+    min-height: rem(132);
+    height: 100%;
+    padding-top: rem(16);
+    padding-bottom: rem(6);
+}
+
+.sectionMenu {
+    display: flex;
+    color: rgba(190, 174, 151, 1);
+
+    a {
+        color: rgba(190, 174, 151, 1);
+    }
+
+    margin-bottom: rem(16);
+}
+
+.city {
+    flex: 1 1 auto;
+    display: flex;
+
+    img {
+        margin-right: rem(10);
+    }
+}
+
+.listMenu {
+    display: flex;
+    column-gap: rem(105);
+}
+
+.menu {
+    margin-right: 8%;
+}
+
+.numberPhone {
+    display: flex;
+
+    img {
+        width: 20px;
+        height: 20px;
+        margin-right: rem(10);
+    }
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.select {
+    padding: rem(12) rem(20);
+    background-color: rgba(184, 164, 142, 0.4);
+    border: 1px solid rgba(214, 184, 141, 1);
+    border-radius: 4px;
+
+    p {
+        line-height: rem(19.5);
+        text-transform: uppercase;
+        background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+    }
+
+}
+
+.logo {
+    margin-right: rem(16);
+}
+
+.burgerAccordion {
+    width: 24px;
+    height: 20px;
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1.5px;
+        border-radius: 2px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+    }
+
+    span {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 1.5px;
+        border-radius: 2px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1.5px;
+        border-radius: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+    }
+
+    margin-right: rem(20);
+}
+
+.bodyInput {
+    position: relative;
+    margin-right: rem(28);
+    input {
+        padding: rem(14) rem(20);
+        flex: 1 1 auto;
+        background-color: rgba(18, 17, 15, 1);
+        border: 1px solid rgba(81, 73, 65, 1);
+        color: #fff;
+        width: 100%;
+    }
+}
+
+.user{
+    cursor: pointer;
+    margin-right: rem(20);
+}
+
+.basket{
+    cursor: pointer;
+}
+
+.seach{
+    flex: 1 1 auto;
+}
+
+.iconSeach{
+    position: absolute;
+    top: 25%;
+    right: 12px;
+}

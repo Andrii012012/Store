@@ -1,0 +1,7 @@
+
+$size: 16;
+
+@function rem($a) {
+  $result: #{$a / $size}rem;
+   @return $result;
+}

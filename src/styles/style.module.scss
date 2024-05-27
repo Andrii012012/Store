@@ -1,0 +1,65 @@
+@import './Null.scss';
+@import '../utils/utilsStyles/rem.scss';
+
+// PLUG FONTS
+
+@font-face {
+    font-family: 'Montserrat';
+    display: swap;
+    src: url('../assets/fonts/Montserrat-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+//OTHER STYLES...
+
+body{
+    font-family: 'Montserrat';
+}
+
+.container {
+    max-width: rem(1240);
+    padding: 0 rem(20);
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import './media.scss';
