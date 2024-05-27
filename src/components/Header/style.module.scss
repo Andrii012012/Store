@@ -1,4 +1,5 @@
 @import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
 
 .header {
     background-color: rgba(18, 17, 15, 1);
@@ -58,13 +59,11 @@
     background-color: rgba(184, 164, 142, 0.4);
     border: 1px solid rgba(214, 184, 141, 1);
     border-radius: 4px;
-
+    @extend %mainColor;
     p {
         line-height: rem(19.5);
         text-transform: uppercase;
-        background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+       
         font-weight: 600;
     }
 
@@ -78,7 +77,6 @@
     width: 24px;
     height: 20px;
     position: relative;
-
     &::before {
         content: '';
         display: block;

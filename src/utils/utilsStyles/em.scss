@@ -1,0 +1,6 @@
+
+
+@function em($a, $b) {
+  $result: #{$a / $b}em;
+   @return $result;
+}

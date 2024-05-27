@@ -1,0 +1,27 @@
+
+.swiper-wrapper{
+    position: relative;
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 5;
+    display: flex;
+}
+
+.swiper-pagination-bullet{
+    width: 10px;
+    height: 10px ;
+    border: 1px solid;   
+    margin-right: 10px;
+    border: 1px solid #C09E6C;
+    border-radius: 50%;
+}
+
+.swiper-pagination-bullet-active{
+    width: 14px;
+    height: 14px;
+    background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
+}

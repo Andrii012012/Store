@@ -1,0 +1,12 @@
+@import './rem.scss';
+@import './em.scss';
+
+@mixin mixinBtn($topBottom, $rightLeft) {
+  padding: rem($topBottom) rem($rightLeft);
+  border: 1px solid rgba(214, 184, 141, 1);
+  background: rgba(43, 40, 37, 1);
+  text-transform: uppercase;
+  line-height: em(19.5, 16);
+  font-weight: 700;
+  text-align: center;
+}

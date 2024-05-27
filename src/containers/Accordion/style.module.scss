@@ -1,8 +1,10 @@
 @import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
 
 .accordion {
     position: relative;
     cursor: pointer;
+    z-index: 5;
 }
 
 .accordionBody {
@@ -13,9 +15,7 @@
 
 .item {
     p {
-        background: inear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        @extend %mainColor;
         text-transform: lowercase;
     }
 

@@ -1,5 +1,6 @@
 @import './Null.scss';
 @import '../utils/utilsStyles/rem.scss';
+@import '../utils/utilsStyles/em.scss';
 
 // PLUG FONTS
 
@@ -25,8 +26,12 @@ body{
 }
 
 
-
-
+.titleSmall {
+    font-size: rem(24);
+    font-weight: 400;
+    line-height: em(29, 26.49);
+    text-align: left;
+} 
 
 
 
