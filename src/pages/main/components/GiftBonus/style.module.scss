@@ -1,0 +1,41 @@
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/em.scss';
+@import '../../../../utils/utilsStyles/mixinBtn.scss';
+@import '../../../../utils/utilsStyles/mainColor.scss';
+
+.GiftBonus{
+    width: 100%;
+    height: 100%;
+    color: rgba(225, 211, 189, 1);
+    position: relative;
+}
+
+.backgroundMain{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container{
+    padding: rem(50) 0 rem(60) 0;
+    position: relative;
+    z-index: 1;
+}
+
+.title{
+    margin-bottom: rem(35);
+}
+
+.text{
+    margin-bottom: rem(35);
+    line-height: em(16.5, 16);
+}
+
+.btn{
+    @include mixinBtn(12, 31);
+     span{
+        @extend %mainColor;
+     }
+}

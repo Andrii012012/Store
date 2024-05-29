@@ -1,0 +1,126 @@
+@import "../../../../utils/utilsStyles/rem.scss";
+@import "../../../../utils/utilsStyles/mainColor.scss";
+@import "../../../../utils/utilsStyles/em.scss";
+
+.category {
+  background-color: rgba(33, 30, 28, 1);
+  padding-top: rem(50);
+  padding-bottom: rem(50);
+}
+
+.title {
+  @extend %mainColor;
+  margin-bottom: rem(30);
+}
+
+.filter {
+  display: flex;
+  color: #fff;
+  align-items: flex-start;
+}
+
+.select {
+  background-color: rgba(54, 51, 46, 1);
+  max-width: rem(305);
+  width: 100%;
+  margin-right: rem(20);
+
+  &:last-child {
+    margin-right: 0;
+    padding: rem(15) rem(20);
+
+    ul {
+      left: 0%;
+      top: 100%;
+    }
+  }
+
+  p {
+    @extend %mainColor;
+  }
+
+  &:first-child {
+    background-color: transparent;
+
+    ul {
+      position: relative;
+      width: 100%;
+
+      li {
+        background-color: transparent;
+        padding: rem(10);
+
+        &:hover {
+          background: transparent;
+
+          p {
+            background: linear-gradient(
+              95.25deg,
+              #c09e6c -5.68%,
+              #ffebcc 41.36%,
+              #bf936b 104.69%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+      }
+    }
+
+    > div {
+      border: 1px solid rgba(214, 184, 141, 1);
+      padding: rem(13.5) rem(20);
+      max-width: rem(285);
+      width: 100%;
+      border-radius: 4px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background-color: rgba(54, 51, 46, 1);
+      margin-bottom: rem(20);
+
+      &::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: url("../../../../assets/imgs/Category/icon-category.svg");
+        position: absolute;
+        top: 0;
+        right: 20px;
+      }
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.selectItemFilter > div {
+  font-size: rem(18);
+  line-height: em(22, 18);
+  img {
+    order: 2;
+  }
+
+  div {
+    order: 1;
+    flex: 1 1 auto;
+  }
+}
+
+.selectItemFilter {
+  > div {
+    margin-bottom: rem(10);
+    &::after {
+      content: "";
+      display: block;
+      width: 17px;
+      height: 12px;
+      background: url("../../../../assets/imgs/Category/arrow.svg") no-repeat;
+      order: 2;
+      margin-right: rem(17);
+    }
+  }
+}

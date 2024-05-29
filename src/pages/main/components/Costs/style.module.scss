@@ -1,0 +1,14 @@
+@import '../../../../utils/utilsStyles/rem.scss';
+
+.rangeSlide{
+    margin-bottom: rem(20);
+}
+
+.bodyChoosedPrices{
+    display: flex;
+     span:first-child{
+        flex: 1 1 auto;
+        display: block;
+        margin-right: rem(5);
+     }
+}

@@ -33,8 +33,23 @@ body{
     text-align: left;
 } 
 
+.bodyInput {
+    position: relative;
+    input {
+        padding: rem(14) rem(20);
+        flex: 1 1 auto;
+        background-color: rgba(18, 17, 15, 1);
+        border: 1px solid rgba(81, 73, 65, 1);
+        color: #fff;
+        width: 100%;
+    }
+}
 
-
+.iconSeach{
+    position: absolute;
+    top: 25%;
+    right: 12px;
+}
 
 
 

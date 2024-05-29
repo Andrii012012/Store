@@ -37,9 +37,9 @@ export default function Header(): JSX.Element {
                     </div>
                 </Accordion>
                 <form className={styles.seach} action="#" >
-                    <div className={styles.bodyInput}>
+                    <div className={`${gStyles.bodyInput} ${styles.bodyInput}`}>
                         <input type='text' placeholder='Найти парфюм..' />
-                        <img className={styles.iconSeach} src={seach} alt="" />
+                        <img className={gStyles.iconSeach} src={seach} alt="" />
                     </div>
                 </form>
                 <img className={styles.user} src={user} alt="" />

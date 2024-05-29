@@ -1,56 +1,56 @@
 import { ReactNode, useEffect, useRef } from 'react';
+
 import styles from './style.module.scss';
 
 
 interface IProps {
     selectClass: string;
     text: string;
-    selectItem: string[];
+    selectItem: string[] | JSX.Element[];
     children?: ReactNode;
+    defaultMode?: boolean;
 }
 
-let isFirst = true;
-
 export default function Accordion(props: IProps) {
-    let { selectClass, text, selectItem, children } = props;
+    let { selectClass, text, selectItem, children, defaultMode = true } = props;
 
     let toggle = true;
 
-    const saveHeightSelect = useRef<number | null>(null);
+    const select = useRef<HTMLDivElement | null>(null);
     const refBodySelect = useRef<HTMLUListElement | null>(null);
 
     useEffect(() => {
         if (refBodySelect.current) {
-            if (isFirst) {
-                saveHeightSelect.current = Number(refBodySelect.current?.getBoundingClientRect().height);
-                isFirst = false;
-            }
             refBodySelect.current.style.maxHeight = '0px';
             refBodySelect.current.style.overflow = 'hidden';
         }
-    }, []);
+    }, [refBodySelect.current]);
 
     function handleOpenSelect() {
-        if (refBodySelect.current) {
-            if (toggle) {
-                refBodySelect.current.style.maxHeight = `${saveHeightSelect.current}px`;
-                toggle = false;
-            } else {
-                refBodySelect.current.style.maxHeight = `0px`;
-                toggle = true;
-            }
+        if (refBodySelect.current && select.current) {
+                if (toggle) {
+                    refBodySelect.current.style.maxHeight = `initial`;
+                    select.current.classList.add('select-active');
+                    toggle = false;
+                } else {
+                    refBodySelect.current.style.maxHeight = `0px`;
+                    select.current.classList.remove('select-active');
+                    toggle = true;
+                }
         }
     }
 
     function handleCloseSelect() {
-        if (refBodySelect.current) {
+        if (refBodySelect.current && select.current && defaultMode) {
             refBodySelect.current.style.maxHeight = '0px';
+            select.current.classList.remove('select-active');
             toggle = true;
         }
     }
 
+
     return (
-        <div className={`${selectClass} ${styles.accordion}`}>
+        <div ref={select} className={`${selectClass} ${styles.accordion}`}>
             <div onClick={handleOpenSelect} style={{ display: 'flex' }}>
                 {children}
                 <div className={styles.accordionHeader}>
@@ -58,9 +58,11 @@ export default function Accordion(props: IProps) {
                 </div>
             </div>
             <ul ref={refBodySelect} className={styles.accordionBody}>
-                {selectItem.map((item: string, _) => (
-                    <li onClick={handleCloseSelect} key={item} className={`${styles.item}`}><p>{item}</p></li>
-                ))}
+                {selectItem.map((item: string | JSX.Element, index) => {
+                    return (
+                        <li onClick={handleCloseSelect} key={index} className={`${styles.item}`}><p>{item}</p></li>
+                    )
+                })}
             </ul>
         </div>
     );
