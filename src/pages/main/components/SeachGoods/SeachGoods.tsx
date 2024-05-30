@@ -5,6 +5,7 @@ import gStyles from '../../../../styles/style.module.scss';
 import seach from '../../../../assets/imgs/global/search.svg';
 import { useRef } from "react";
 import useScrollbar from "../../../../hooks/useScrollbar";
+import { useAppDispatch } from "../../../../hooks/useAppDispatch";
 
 interface IProps {
     text: string;
@@ -17,7 +18,18 @@ export default function SeachGoods(props: IProps): JSX.Element {
 
     const refScroll = useRef<HTMLDivElement | null>(null);
 
-        useScrollbar(refScroll);
+    const dispatch = useAppDispatch();
+
+    useScrollbar(refScroll);
+
+
+    function handleChooseFilter(name: string) {
+        switch (name) {
+            case 'По рейтингу': {
+                break;
+            }
+        }
+    }
 
     const array = [{
         name: 'Acqua di parma',
@@ -41,7 +53,7 @@ export default function SeachGoods(props: IProps): JSX.Element {
 
     return (
         <section className={styles.seach}>
-            <Accordion text={text} selectClass={`${`${styles.section}`} ${selectClass}`} selectItem={selectItem} />
+            <Accordion handleChoose={handleChooseFilter} text={text} selectClass={`${`${styles.section}`} ${selectClass}`} selectItem={selectItem} />
             <form action="#">
                 <div className={styles.body}>
                     <div className={gStyles.bodyInput}>
@@ -49,7 +61,7 @@ export default function SeachGoods(props: IProps): JSX.Element {
                         <img className={gStyles.iconSeach} src={seach} alt="" />
                     </div>
                     <ul className={`${styles.list} list-goods`}>
-                        <div style={{height: '266px'}} className={styles.bodyScroll} ref={refScroll}>
+                        <div style={{ height: '266px' }} className={styles.bodyScroll} ref={refScroll}>
                             <li className={styles.item}>ВСЕ</li>
                             {array.map((item, _) => (
                                 <li key={item.name} className={styles.item} >{item.name} {item.grand}</li>

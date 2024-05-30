@@ -10,7 +10,7 @@ const reducers: IReducer = {
   goods: goods,
 };
 
-const store = configureStore({
+export const store = configureStore({
   reducer: reducers,
 });
 

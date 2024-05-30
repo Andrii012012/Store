@@ -9,10 +9,11 @@ interface IProps {
     selectItem: string[] | JSX.Element[];
     children?: ReactNode;
     defaultMode?: boolean;
+    handleChoose: (name: string) => void;
 }
 
 const Accordion = memo((props: IProps): JSX.Element => {
-    let { selectClass, text, selectItem, children, defaultMode = true } = props;
+    let { selectClass, text, selectItem, children, defaultMode = true, handleChoose } = props;
 
     let toggle = true;
 
@@ -40,8 +41,9 @@ const Accordion = memo((props: IProps): JSX.Element => {
         }
     }
 
-    function handleCloseSelect() {
-        if (refBodySelect.current && select.current && defaultMode) {
+    function handleCloseSelect(e: React.MouseEvent<HTMLLIElement>) {
+        if (refBodySelect.current && select.current && defaultMode && e.target instanceof HTMLLIElement) {
+            handleChoose(e.target.children[0].innerHTML);
             refBodySelect.current.style.maxHeight = '0px';
             select.current.classList.remove('select-active');
             toggle = true;
@@ -60,7 +62,7 @@ const Accordion = memo((props: IProps): JSX.Element => {
             <ul ref={refBodySelect} className={styles.accordionBody}>
                 {selectItem.map((item: string | JSX.Element, index) => {
                     return (
-                        <li key={index} onClick={handleCloseSelect} className={`${styles.item}`}><p>{item}</p></li>
+                        <li key={index} onClick={(e) => handleCloseSelect(e)} className={`${styles.item}`}><p>{item}</p></li>
                     )
                 })}
             </ul>

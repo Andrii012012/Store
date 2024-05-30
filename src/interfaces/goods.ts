@@ -6,4 +6,7 @@ export interface IGoods {
   gender: "men" | "women" | "unisex";
   notes: string;
   brand: string;
+  img: string;
+  popular: number;
+  rating: 1 | 2 | 3 | 4 | 5;
 }

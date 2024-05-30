@@ -8,8 +8,21 @@ import Accordion from '../../containers/Accordion/Accordion';
 import user from '../../assets/imgs/Header/user.svg';
 import basket from '../../assets/imgs/Header/basket.svg';
 import seach from '../../assets/imgs/Header/search.svg';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 
 export default function Header(): JSX.Element {
+
+    const dispatch = useAppDispatch();
+
+    function handleChooseFilter(name: string) {
+        switch (name) {
+            case 'По рейтингу': {
+                break;
+            }
+        }
+    }
+
+
     return <header className={styles.header}>
         <div className={gStyles.container}>
             <div className={styles.sectionMenu}>
@@ -31,7 +44,7 @@ export default function Header(): JSX.Element {
             </div>
             <div className={styles.info}>
                 <a className={styles.logo} href='#'><img src={logo} alt="" /></a>
-                <Accordion text='каталог' selectClass={styles.select} selectItem={['Мужские', 'Женские', 'Унисекс']}>
+                <Accordion handleChoose={handleChooseFilter} text='каталог' selectClass={styles.select} selectItem={['Мужские', 'Женские', 'Унисекс']}>
                     <div className={styles.burgerAccordion}>
                         <span></span>
                     </div>

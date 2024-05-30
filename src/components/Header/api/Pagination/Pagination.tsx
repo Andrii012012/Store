@@ -6,10 +6,11 @@ interface IProps {
     isArrows?: boolean;
     countPage: number;
     className?: string;
+    onChange: (page: number) => void;
 }
 
 export default function Pagination(props: IProps): JSX.Element {
-    let { isArrows = true, array, countPage, className } = props;
+    let { isArrows = true, array, countPage, className, onChange } = props;
 
     const refBtnNext = useRef<HTMLButtonElement | null>(null);
 
@@ -75,11 +76,13 @@ export default function Pagination(props: IProps): JSX.Element {
     function hangleIncrement() {
         setSavePrevPages((prevState): any => prevState[0] < resultPagination ? [...prevState, ++prevState[0]] : prevState);
         handleDesabled<HTMLButtonElement>(refBtnNext, resultPagination - 1, '>=');
+        if (savePrevPages[0] < resultPagination) onChange(savePrevPages[0] * countPage);
     }
 
     function hangleDecrement() {
         setSavePrevPages((prevState): any => prevState[0] > 1 ? [...prevState, --prevState[0]] : [...prevState]);
         handleDesabled<HTMLButtonElement>(refBtnPrev, 1, '<=');
+        if (savePrevPages[0] > 1) onChange(savePrevPages[0] * countPage);
     }
 
     useEffect(() => {
@@ -98,6 +101,7 @@ export default function Pagination(props: IProps): JSX.Element {
             const value: number = Number(e.target.innerHTML);
             const resultValue: number = value * countPage;
             setSavePrevPages([value]);
+            onChange(resultValue);
         }
     }
 
