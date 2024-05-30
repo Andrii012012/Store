@@ -1,0 +1,105 @@
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/em.scss';
+
+.item {
+    padding: rem(10) rem(18);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(190, 174, 151, 1);
+    font-size: rem(14);
+    line-height: em(14, 17);
+    border-radius: rem(4);
+
+    &:hover {
+        color: rgba(54, 51, 46, 1);
+        background-color: rgba(183, 160, 139, 1);
+    }
+}
+
+.activePagination {
+    background-color: rgba(183, 160, 139, 1);
+    color: rgba(54, 51, 46, 1);
+}
+
+.wrapper {
+    display: flex;
+}
+
+.list {
+    display: flex;
+}
+
+.btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(192, 158, 108, 1);
+    background-color: transparent;
+    border-radius: rem(6);
+    position: relative;
+}
+
+.disabled {
+    background-color: rgba(51, 46, 39, 1);
+    border: 1px solid rgba(51, 46, 39, 1);
+}
+
+.btnPrev.disabled {
+    &::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 12.8px;
+        background: url('../../../../assets/imgs/global/arrow.svg') no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+    }
+}
+
+.btnNext.disabled {
+    &::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 12.8px;
+        background: url('../../../../assets/imgs/global/arrow.svg') no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-180deg);
+        z-index: 20;
+    }
+}
+
+.btnNext {
+    &::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 12.8px;
+        background: url('../../../../assets/imgs/global/arrow-color.svg') no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+    }
+}
+
+.btnPrev {
+    &::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 12.8px;
+        background: url('../../../../assets/imgs/global/arrow-color.svg') no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-180deg);
+        z-index: 20;
+    }
+}

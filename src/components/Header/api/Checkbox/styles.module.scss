@@ -1,0 +1,28 @@
+
+@import '../../../../utils/utilsStyles/rem.scss';
+
+.chackbox{
+    width: rem(24);
+    height: rem(24);
+    border-radius: rem(6);
+    border: 1px solid #BF936B;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bodyCheckbox{
+    display: flex;
+    align-items: center;
+}
+
+.icon{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%);
+    pointer-events: none;
+}
+
+

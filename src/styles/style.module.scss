@@ -1,37 +1,36 @@
-@import './Null.scss';
-@import '../utils/utilsStyles/rem.scss';
-@import '../utils/utilsStyles/em.scss';
+@import "./Null.scss";
+@import "../utils/utilsStyles/rem.scss";
+@import "../utils/utilsStyles/em.scss";
 
 // PLUG FONTS
 
 @font-face {
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
     display: swap;
-    src: url('../assets/fonts/Montserrat-Regular.ttf');
+    src: url("../assets/fonts/Montserrat-Regular.ttf");
     font-style: normal;
     font-weight: 400;
 }
 
 //OTHER STYLES...
 
-body{
-    font-family: 'Montserrat';
+body {
+    font-family: "Montserrat";
 }
 
 .container {
-    max-width: rem(1240);
-    padding: 0 rem(20);
+    max-width: rem(1280);
+    padding: 0 rem(10);
     margin: 0 auto;
     width: 100%;
 }
-
 
 .titleSmall {
     font-size: rem(24);
     font-weight: 400;
     line-height: em(29, 26.49);
     text-align: left;
-} 
+}
 
 .bodyInput {
     position: relative;
@@ -45,41 +44,25 @@ body{
     }
 }
 
-.iconSeach{
+.iconSeach {
     position: absolute;
     top: 25%;
     right: 12px;
 }
 
+.text {
+    // font-family: Open Sans;
+    font-size: rem(16);
+    font-weight: 400;
+    line-height: em(22.4, 16);
+    text-align: left;
+}
 
+.textInfo {
+    font-size: rem(18);
+    font-weight: 400;
+    line-height: em(25.2, 18);
+    text-align: left;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@import './media.scss';
+@import "./media.scss";

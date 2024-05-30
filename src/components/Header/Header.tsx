@@ -2,7 +2,7 @@ import styles from './style.module.scss';
 import { NavLink } from 'react-router-dom';
 import imgPhone from '../../assets/imgs/Header/phone-call.svg';
 import imgCity from '../../assets/imgs/Header/message.svg';
-import logo from '../../assets/imgs/Header/logo.svg';
+import logo from '../../assets/imgs/global/logo.svg';
 import gStyles from '../../styles/style.module.scss';
 import Accordion from '../../containers/Accordion/Accordion';
 import user from '../../assets/imgs/Header/user.svg';

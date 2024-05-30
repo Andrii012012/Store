@@ -52,7 +52,7 @@ export default function SeachGoods(props: IProps): JSX.Element {
                         <div style={{height: '266px'}} className={styles.bodyScroll} ref={refScroll}>
                             <li className={styles.item}>ВСЕ</li>
                             {array.map((item, _) => (
-                                <li className={styles.item} key={item.name}>{item.name} {item.grand}</li>
+                                <li key={item.name} className={styles.item} >{item.name} {item.grand}</li>
                             ))}
                         </div>
                     </ul>

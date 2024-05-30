@@ -31,7 +31,7 @@ export default function Offer(): JSX.Element {
                 <h2 className={`${gStyle.titleSmall} ${style.title}`}>Популярные ароматы</h2>
                 <ul className={style.list}>
                     {offer.map((item, _) => (
-                        <li className={style.item}>
+                        <li key={item.title} className={style.item}>
                             <img className={style.background} src={item.background} alt="" />
                             <div className={style.content}>
                                 <h3 className={`${style.titleCard} ${gStyle.titleSmall}`}>{item.title}</h3>

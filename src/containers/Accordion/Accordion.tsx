@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef, memo } from 'react';
 
 import styles from './style.module.scss';
 
@@ -11,7 +11,7 @@ interface IProps {
     defaultMode?: boolean;
 }
 
-export default function Accordion(props: IProps) {
+const Accordion = memo((props: IProps): JSX.Element => {
     let { selectClass, text, selectItem, children, defaultMode = true } = props;
 
     let toggle = true;
@@ -28,15 +28,15 @@ export default function Accordion(props: IProps) {
 
     function handleOpenSelect() {
         if (refBodySelect.current && select.current) {
-                if (toggle) {
-                    refBodySelect.current.style.maxHeight = `initial`;
-                    select.current.classList.add('select-active');
-                    toggle = false;
-                } else {
-                    refBodySelect.current.style.maxHeight = `0px`;
-                    select.current.classList.remove('select-active');
-                    toggle = true;
-                }
+            if (toggle) {
+                refBodySelect.current.style.maxHeight = `initial`;
+                select.current.classList.add('select-active');
+                toggle = false;
+            } else {
+                refBodySelect.current.style.maxHeight = `0px`;
+                select.current.classList.remove('select-active');
+                toggle = true;
+            }
         }
     }
 
@@ -60,11 +60,12 @@ export default function Accordion(props: IProps) {
             <ul ref={refBodySelect} className={styles.accordionBody}>
                 {selectItem.map((item: string | JSX.Element, index) => {
                     return (
-                        <li onClick={handleCloseSelect} key={index} className={`${styles.item}`}><p>{item}</p></li>
+                        <li key={index} onClick={handleCloseSelect} className={`${styles.item}`}><p>{item}</p></li>
                     )
                 })}
             </ul>
         </div>
     );
+});
 
-}
+export default Accordion;

@@ -4,13 +4,13 @@ import InfoFeed from "./components/InfoFeed/InfoFeed";
 import Offer from "./components/Offer/Offer";
 
 
-export default function Main (): JSX.Element {
+export default function Main(): JSX.Element {
    return (
-     <main>
-        <InfoFeed/>
-        <Offer />
-        <GiftBonus/>
-        <Category/>
-     </main>    
+      <main>
+         <InfoFeed />
+         <Offer />
+         <GiftBonus />
+         <Category/>
+      </main>
    );
 }

@@ -1,0 +1,11 @@
+@import '../../../../utils/utilsStyles/rem.scss';
+
+.checkbox{
+    > div {
+        margin-right: rem(10);
+    }
+    margin-bottom: rem(10);
+     &:last-child{
+        margin-bottom: 0;
+     }
+}
