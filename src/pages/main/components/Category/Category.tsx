@@ -8,7 +8,7 @@ import ChooseGender from '../ChooseGender/ChooseGender';
 import Goods from '../Goods/Goods';
 import { useState, memo } from 'react';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
-import { inRating } from '../../../../features/goods/slice';
+import { inAscending, inDescending, inLast, inPopular, inRating } from '../../../../features/goods/slice';
 
 export const Category = memo((): JSX.Element => {
 
@@ -25,8 +25,24 @@ export const Category = memo((): JSX.Element => {
     function handleChooseFilter(name: string) {
         console.log(name);
         switch (name) {
+            case 'По популярности': {
+                dispatch(inPopular());
+                break;
+            }
             case 'По рейтингу': {
                 dispatch(inRating());
+                break;
+            }
+            case 'Сортировка от последнего': {
+                dispatch(inLast());
+                break;
+            }
+            case 'Цена по убыванию': {
+                dispatch(inDescending());
+                break;
+            }
+            case 'Цена по возрастанию': {
+                dispatch(inAscending());
                 break;
             }
         }
@@ -43,7 +59,6 @@ export const Category = memo((): JSX.Element => {
             defaultMode={false} selectItem={[<SeachGoods text='Все' selectItem={['1']} />]}></Accordion>,
         <button className={styles.btnReset}><span>Сбросить</span></button>
     ];
-
 
     return (
         <section className={styles.category}>

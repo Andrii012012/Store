@@ -3,9 +3,11 @@ import styles from './style.module.scss';
 import './style.scss';
 import gStyles from '../../../../styles/style.module.scss';
 import seach from '../../../../assets/imgs/global/search.svg';
-import { useRef } from "react";
+import { useEffect, useRef, useState, memo } from "react";
 import useScrollbar from "../../../../hooks/useScrollbar";
 import { useAppDispatch } from "../../../../hooks/useAppDispatch";
+import { useAppSelector } from "../../../../hooks/useAppSelector";
+import { goodsFilterCategory } from "../../../../features/goods/slice";
 
 interface IProps {
     text: string;
@@ -13,15 +15,19 @@ interface IProps {
     selectItem: string[];
 }
 
-export default function SeachGoods(props: IProps): JSX.Element {
+const SeachGoods = memo((props: IProps): JSX.Element => {
     let { text, selectClass = '', selectItem } = props;
 
+    const [seach, setSeach] = useState<string>('');
+
+
     const refScroll = useRef<HTMLDivElement | null>(null);
+
+    const goodsCategory = useAppSelector(state => state.goods.goodsCategory);
 
     const dispatch = useAppDispatch();
 
     useScrollbar(refScroll);
-
 
     function handleChooseFilter(name: string) {
         switch (name) {
@@ -31,25 +37,10 @@ export default function SeachGoods(props: IProps): JSX.Element {
         }
     }
 
-    const array = [{
-        name: 'Acqua di parma',
-        grand: 2,
-    }, {
-        name: 'Ajmal',
-        grand: 7,
-    }, {
-        name: 'Alexandre. J',
-        grand: 5,
-    }, {
-        name: 'Amouage',
-        grand: 4,
-    }, {
-        name: 'Anna Sui',
-        grand: 3,
-    }, {
-        name: 'Antonio Banderas ',
-        grand: 1,
-    }];
+    function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
+        setSeach(e.target.value);
+        dispatch(goodsFilterCategory(seach));
+    }
 
     return (
         <section className={styles.seach}>
@@ -57,19 +48,27 @@ export default function SeachGoods(props: IProps): JSX.Element {
             <form action="#">
                 <div className={styles.body}>
                     <div className={gStyles.bodyInput}>
-                        <input className={styles.input} type="text" placeholder='Найти парфюм' />
+                        <input className={styles.input} type="text" onChange={(e) => handleChangeInput(e)} value={seach} placeholder='Найти парфюм' />
                         <img className={gStyles.iconSeach} src={seach} alt="" />
                     </div>
                     <ul className={`${styles.list} list-goods`}>
-                        <div style={{ height: '266px' }} className={styles.bodyScroll} ref={refScroll}>
+                        <div style={{ maxHeight: '266px', display: 'flex', flexDirection: 'column' }} className={styles.bodyScroll} ref={refScroll}>
                             <li className={styles.item}>ВСЕ</li>
-                            {array.map((item, _) => (
-                                <li key={item.name} className={styles.item} >{item.name} {item.grand}</li>
-                            ))}
+                            {goodsCategory.map((item: any, index) => {
+                                let grand;
+                                let category;
+                                for (let key in item) {
+                                    grand = item[key];
+                                    category = key;
+                                }
+                                return <li key={category} className={styles.item}>{category} ({Array.isArray(grand) && grand.length})</li>
+                            })}
                         </div>
                     </ul>
                 </div>
             </form>
         </section>
     );
-}
+});
+
+export default SeachGoods;

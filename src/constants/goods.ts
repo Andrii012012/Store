@@ -1,7 +1,5 @@
-import { IGoods } from "../interfaces/goods";
+import { IGoods, IGoodsCategory } from "../interfaces/goods";
 import img from "../assets/imgs/Goods/image-goods1.png";
-
-const arrayGoods: IGoods[] = [];
 
 const brand: string[] = [
   "Akigalawood",
@@ -31,7 +29,14 @@ const popular: number[] = [
   102, 86, 492, 23,
 ];
 
-const rating: (1 | 2 | 3 | 4 | 5)[] = [1,2,3,4,5];
+const rating: (1 | 2 | 3 | 4 | 5)[] = [1, 2, 3, 4, 5];
+
+const arrayGoodsCategory: IGoodsCategory[] = [];
+const arrayGoods: IGoods[] = [];
+
+for (let i = 0; i < brand.length; i++) {
+  arrayGoodsCategory.push({ [brand[i]]: [] });
+}
 
 function createGoods(): void {
   for (let i = 0; i < 2000; i++) {
@@ -40,7 +45,7 @@ function createGoods(): void {
     let pricesN = Math.round(Math.random() * 23);
     let genderN = Math.round(Math.random() * 2);
     let popularN = Math.round(Math.random() * 18);
-    let ratingN = Math.round(Math.random() * 5);
+    let ratingN = Math.round(Math.random() * 4);
 
     const choosedBrand = brand[brandN];
     const choosedNotes = notes[notesN];
@@ -48,6 +53,23 @@ function createGoods(): void {
     const choosedGender = gender[genderN];
     const countPopular = popular[popularN];
     const countRating = rating[ratingN];
+
+    arrayGoodsCategory.forEach((item: any, index: number) => {
+      if (item[choosedBrand]) {
+        arrayGoodsCategory[index][choosedBrand].push({
+          id: String(i),
+          brand: choosedBrand,
+          notes: choosedNotes,
+          price: choosedPrices,
+          description: "The devil is a loser by Mushfig",
+          volume: [10, 30, 50, 100],
+          gender: choosedGender,
+          img,
+          popular: countPopular,
+          rating: countRating,
+        });
+      }
+    });
 
     arrayGoods.push({
       id: String(i),
@@ -64,6 +86,8 @@ function createGoods(): void {
   }
 }
 
+console.log(arrayGoodsCategory);
+
 createGoods();
 
-export default arrayGoods;
+export { arrayGoods, arrayGoodsCategory };

@@ -10,3 +10,7 @@ export interface IGoods {
   popular: number;
   rating: 1 | 2 | 3 | 4 | 5;
 }
+
+export interface IGoodsCategory {
+   [key: string]: IGoods[];
+}
