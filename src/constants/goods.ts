@@ -86,8 +86,6 @@ function createGoods(): void {
   }
 }
 
-console.log(arrayGoodsCategory);
-
 createGoods();
 
 export { arrayGoods, arrayGoodsCategory };

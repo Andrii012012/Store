@@ -3,6 +3,8 @@ import gStyles from '../../../../styles/style.module.scss';
 import Pagination from '../../../../components/Header/api/Pagination/Pagination';
 import { ReactNode, useRef, useState } from 'react';
 import { useAppSelector } from '../../../../hooks/useAppSelector';
+import { FilterProducts } from '../../../../features/goods/createSelect';
+import { IGoods } from '../../../../interfaces/goods';
 
 export default function Goods(): JSX.Element {
 
@@ -10,7 +12,9 @@ export default function Goods(): JSX.Element {
 
     const [countShowGoods, setCountShowGoods] = useState<number>(12);
 
-    const goods = useAppSelector((state) => state.goods.goods);
+    const goods = useAppSelector(FilterProducts);
+
+     console.log(goods);
 
     const jsxElements: ReactNode[] = [];
 
@@ -24,7 +28,7 @@ export default function Goods(): JSX.Element {
         }
     }
 
-    goods.forEach((item, index) => {
+    goods.forEach((item: IGoods, index: number) => {
         if (index > savePrevCountPage.current && index < countShowGoods) {
             const element = <>
                 <li key={item.img} className={styles.item}>

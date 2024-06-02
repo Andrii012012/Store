@@ -1,6 +1,6 @@
-import './style.scss';
 import styles from './styles.module.scss';
 import chackMark from '../../../../assets/imgs/ChooseGender/check-mark.svg';
+import { useRef } from 'react';
 
 interface IProps {
     text?: string;
@@ -13,9 +13,10 @@ interface IProps {
 export default function Checkbox(props: IProps): JSX.Element {
     let { text, className, onChange, value, icon } = props;
 
-    function hangleChange(e: React.MouseEvent<HTMLDivElement>) {
-        if (e.target instanceof HTMLDivElement) {
-            e.target.classList.toggle('active-checkbox');
+    const refCheckbox = useRef<HTMLDivElement | null>(null);
+
+    function hangleChange() {
+        if (refCheckbox.current) {
             onChange(!value, text || '');
         }
     }
@@ -23,7 +24,7 @@ export default function Checkbox(props: IProps): JSX.Element {
     if (text) {
         return (
             <div className={`${styles.bodyCheckbox} ${className}`}>
-                <div className={styles.chackbox} onClick={(e) => hangleChange(e)}>
+                <div className={styles.chackbox} ref={refCheckbox} style={{ background: value ? 'linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%)' : '' }} onClick={hangleChange}>
                     {value && <img className={icon ? icon : styles.icon} src={chackMark} />}
                 </div>
                 <p className={styles.text}>{text}</p>
@@ -31,7 +32,7 @@ export default function Checkbox(props: IProps): JSX.Element {
         );
     } else {
         return (
-            <div className={`${styles.chackbox} ${className}`} onClick={(e) => hangleChange(e)}>
+            <div ref={refCheckbox} style={{ background: value ? 'linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%)' : '' }} className={`${styles.chackbox} ${className}`} onClick={hangleChange}>
                 {value && <img className={icon ? icon : styles.icon} src={chackMark} />}
             </div>
         );

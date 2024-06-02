@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from './style.module.scss';
 import RangeSlider from "../../../../components/Header/api/RangeSlider/RangeSlider";
-
+import { debounce } from "lodash";
+import { useAppSelector } from "../../../../hooks/useAppSelector";
+import { useAppDispatch } from "../../../../hooks/useAppDispatch";
+import { choosePrice } from "../../../../features/goods/slice";
 
 export default function Costs(): JSX.Element {
-    const [range, setRange] = useState<number[]>([500, 8000]);
+
+    const price = useAppSelector((state) => state.goods.filterGoods.price);
+
+    const dispatch = useAppDispatch();
+
+    const [range, setRange] = useState<number[]>(price);
+
+    const handleChange = useCallback(
+        debounce((array: number[] = [500, 8000]) => {
+            dispatch(choosePrice(array));
+        }, 1000),
+        []);
+
+    useEffect(() => {
+        setRange(price);
+    }, [price]);
+
     return (
         <section className={styles.costs}>
             <div className={styles.wrapper}>
@@ -13,11 +32,11 @@ export default function Costs(): JSX.Element {
                         min={0}
                         max={10000}
                         step={1}
-                        onChange={setRange}
+                        onChange={handleChange}
                         value={range}
                     />
                 </div>
-                <div  className={styles.bodyChoosedPrices}>
+                <div className={styles.bodyChoosedPrices}>
                     <span>От {range[0] + '$'}</span>
                     <span>До {range[1] + '$'}</span>
                 </div>

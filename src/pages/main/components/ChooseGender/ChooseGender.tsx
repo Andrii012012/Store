@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Checkbox from '../../../../components/Header/api/Checkbox/Checkbox';
 import styles from './styles.module.scss';
+import { useAppDispatch } from '../../../../hooks/useAppDispatch';
+import { chooseGender } from '../../../../features/goods/slice';
+import { useAppSelector } from '../../../../hooks/useAppSelector';
 
 type TCheckbox = {
     women: boolean;
@@ -10,21 +13,57 @@ type TCheckbox = {
 
 export default function ChooseGender(): JSX.Element {
 
+    const gender = useAppSelector((state) => state.goods.filterGoods.gender);
+
     const [checkbox, setCheckBox] = useState<TCheckbox>({
-        women: false,
-        men: false,
-        unisex: false,
+        women: gender.women === 'women' ? true : false,
+        men: gender.men === 'men' ? true : false,
+        unisex: gender.unisex === 'unisex' ? true : false,
     });
+
+    useEffect(() => {
+        setCheckBox((prevState: TCheckbox): TCheckbox => {
+            const newState = { ...prevState };
+            newState.women = gender.women === 'women' ? true : false;
+            newState.men = gender.men === 'men' ? true : false;
+            newState.unisex = gender.unisex === 'unisex' ? true : false;
+            return newState;
+        })
+    }, [gender]);
+
+    const dispatch = useAppDispatch();
 
     function handleChange(value: boolean, text: string) {
         setCheckBox((prevState: TCheckbox): TCheckbox => {
-            const newOptions = {...prevState};
+            const newOptions = { ...prevState };
+            const allGender = { ...gender };
             if (text === 'Мужские') {
                 newOptions.men = value;
+                allGender.men = 'men';
+                if (value) {
+                    dispatch(chooseGender(allGender));
+                } else {
+                    allGender.men = '';
+                    dispatch(chooseGender(allGender));
+                }
             } else if (text === 'Женские') {
                 newOptions.women = value;
+                allGender.women = 'women';
+                if (value) {
+                    dispatch(chooseGender(allGender));
+                } else {
+                    allGender.women = '';
+                    dispatch(chooseGender(allGender));
+                }
             } else if (text === 'Унисекс') {
                 newOptions.unisex = value;
+                allGender.unisex = 'unisex';
+                if (value) {
+                    dispatch(chooseGender(allGender));
+                } else {
+                    allGender.unisex = '';
+                    dispatch(chooseGender(allGender));
+                }
             }
             return newOptions;
         });

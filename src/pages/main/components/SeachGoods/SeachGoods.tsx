@@ -2,12 +2,13 @@ import Accordion from "../../../../containers/Accordion/Accordion";
 import styles from './style.module.scss';
 import './style.scss';
 import gStyles from '../../../../styles/style.module.scss';
-import seach from '../../../../assets/imgs/global/search.svg';
-import { useEffect, useRef, useState, memo } from "react";
+import { useRef, useState, memo } from "react";
 import useScrollbar from "../../../../hooks/useScrollbar";
 import { useAppDispatch } from "../../../../hooks/useAppDispatch";
 import { useAppSelector } from "../../../../hooks/useAppSelector";
-import { goodsFilterCategory } from "../../../../features/goods/slice";
+import { chooseBrand, chooseNotes, seachFilter } from "../../../../features/goods/slice";
+import { filterSeach } from "../../../../features/goods/createSelect";
+import { IGoodsCategory } from "../../../../interfaces/goods";
 
 interface IProps {
     text: string;
@@ -20,12 +21,13 @@ const SeachGoods = memo((props: IProps): JSX.Element => {
 
     const [seach, setSeach] = useState<string>('');
 
+    const refScroll = useRef<any | null>(null);
 
-    const refScroll = useRef<HTMLDivElement | null>(null);
-
-    const goodsCategory = useAppSelector(state => state.goods.goodsCategory);
+    const goods = useAppSelector(filterSeach);
 
     const dispatch = useAppDispatch();
+
+    useAppSelector(filterSeach);
 
     useScrollbar(refScroll);
 
@@ -37,9 +39,23 @@ const SeachGoods = memo((props: IProps): JSX.Element => {
         }
     }
 
+    function isSection(value: string) {
+        if (text === 'Бренд') {
+            dispatch(chooseBrand(value));
+        } else {
+            dispatch(chooseNotes(value));
+        }
+    }
+
     function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
         setSeach(e.target.value);
-        dispatch(goodsFilterCategory(seach));
+        dispatch(seachFilter({ type: 'filterSeach', name: seach }));
+    }
+
+    function handleChoose(e: React.MouseEvent<HTMLLIElement>) {
+        if (e.target instanceof HTMLLIElement) {
+            isSection(e.target.children[0].innerHTML)
+        }
     }
 
     return (
@@ -53,16 +69,18 @@ const SeachGoods = memo((props: IProps): JSX.Element => {
                     </div>
                     <ul className={`${styles.list} list-goods`}>
                         <div style={{ maxHeight: '266px', display: 'flex', flexDirection: 'column' }} className={styles.bodyScroll} ref={refScroll}>
-                            <li className={styles.item}>ВСЕ</li>
-                            {goodsCategory.map((item: any, index) => {
-                                let grand;
-                                let category;
-                                for (let key in item) {
-                                    grand = item[key];
-                                    category = key;
-                                }
-                                return <li key={category} className={styles.item}>{category} ({Array.isArray(grand) && grand.length})</li>
-                            })}
+                            <div style={{ display: 'contents' }}>
+                                <li className={styles.item}>ВСЕ</li>
+                                {goods.map((item: IGoodsCategory) => {
+                                    let grand;
+                                    let category;
+                                    for (let key in item) {
+                                        grand = item[key];
+                                        category = key;
+                                    }
+                                    return <li onClick={(e) => handleChoose(e)} key={category} className={styles.item}><span>{category}</span> <span>({Array.isArray(grand) && grand.length})</span></li>
+                                })}
+                            </div>
                         </div>
                     </ul>
                 </div>

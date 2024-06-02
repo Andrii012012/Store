@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './style.module.scss';
+import { useAppSelector } from '../../../../hooks/useAppSelector';
 
 interface IProps {
     array: any;
@@ -11,6 +12,8 @@ interface IProps {
 
 export default function Pagination(props: IProps): JSX.Element {
     let { isArrows = true, array, countPage, className, onChange } = props;
+
+    const goods = useAppSelector((state) => state.goods);
 
     const refBtnNext = useRef<HTMLButtonElement | null>(null);
 
@@ -89,7 +92,7 @@ export default function Pagination(props: IProps): JSX.Element {
         handleFillingPagination();
         handleDesabled<HTMLButtonElement>(refBtnPrev, 1, '<=');
         handleDesabled<HTMLButtonElement>(refBtnNext, resultPagination, '>=');
-    }, [savePrevPages]);
+    }, [savePrevPages, goods]);
 
     function hangleClick(e: React.MouseEvent<HTMLLIElement>) {
         if (e.target && e.target instanceof HTMLLIElement) {

@@ -1,18 +1,22 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import styles from './style.module.scss';
+import { useAppSelector } from '../../../../hooks/useAppSelector';
 
 interface IProps {
     clasess?: string;
     isShowTooltip?: boolean;
     max: number;
     min: number;
-    onChange: React.Dispatch<React.SetStateAction<number[]>>;
+    // onChange: React.Dispatch<React.SetStateAction<number[]>>;
+    onChange: any
     step: number;
     value: number[];
 }
 
-export default function RangeSlider(props: IProps): JSX.Element {
+export default function RangeSlider(props: IProps): JSX.Element | any {
     let { clasess, isShowTooltip = true, max, min, onChange, step, value } = props;
+
+    const statePrice = useAppSelector((state) => state.goods.filterGoods.price);
 
     let zIndexMin = '10';
     let zIndexMax = '20';
@@ -75,7 +79,15 @@ export default function RangeSlider(props: IProps): JSX.Element {
             refMaxTooptip.current.style.right = maxRight;
             refMaxTooptip.current.style.width = `${(51 - numberMaxRight)}%`;
         }
-    }, [max, min, maxValue, minValue]);
+    }, [max, min, maxValue, minValue, statePrice]);
+
+
+    useEffect(() => {
+        setMaxValue(statePrice[1]);
+        setMaxTooltip(statePrice[1]);
+        setMinValue(statePrice[0]);
+        setMinTooltip(statePrice[0]);
+    }, [statePrice]);
 
     return (
         <div className={`${styles.rangeSlider} ${clasess}`}>
@@ -106,10 +118,10 @@ export default function RangeSlider(props: IProps): JSX.Element {
                     {isShowTooltip && (
                         <>
                             <div className={styles.wrapperTooltip} ref={refMinTooptip}>
-                               
+
                             </div>
                             <div className={styles.wrapperTooltip} ref={refMaxTooptip}>
-                               
+
                             </div>
                         </>
                     )}
@@ -118,3 +130,9 @@ export default function RangeSlider(props: IProps): JSX.Element {
         </div>
     );
 }
+
+
+
+
+
+

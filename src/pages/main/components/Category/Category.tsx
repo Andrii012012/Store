@@ -8,7 +8,8 @@ import ChooseGender from '../ChooseGender/ChooseGender';
 import Goods from '../Goods/Goods';
 import { useState, memo } from 'react';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
-import { inAscending, inDescending, inLast, inPopular, inRating } from '../../../../features/goods/slice';
+import { clearSettings, filterChange } from '../../../../features/goods/slice';
+
 
 export const Category = memo((): JSX.Element => {
 
@@ -16,36 +17,33 @@ export const Category = memo((): JSX.Element => {
 
     const dispatch = useAppDispatch();
 
-    function handleChange(e: React.MouseEvent) {
-        if (e.target && e.target === document.querySelector('.category-select > div')) {
-            setUpdata(!updata);
-        }
-    }
-
     function handleChooseFilter(name: string) {
-        console.log(name);
         switch (name) {
             case 'По популярности': {
-                dispatch(inPopular());
+                dispatch(filterChange('inPopular'));
                 break;
             }
             case 'По рейтингу': {
-                dispatch(inRating());
+                dispatch(filterChange("inRating"));
                 break;
             }
             case 'Сортировка от последнего': {
-                dispatch(inLast());
+                dispatch(filterChange("inLast"));
                 break;
             }
             case 'Цена по убыванию': {
-                dispatch(inDescending());
+                dispatch(filterChange("inDescending"));
                 break;
             }
             case 'Цена по возрастанию': {
-                dispatch(inAscending());
+                dispatch(filterChange("inAscending"));
                 break;
             }
         }
+    }
+
+    function handleSet(value: boolean) {
+        setUpdata(!value);
     }
 
     const itemFilter: JSX.Element[] = [
@@ -57,7 +55,7 @@ export const Category = memo((): JSX.Element => {
             defaultMode={false} selectItem={[<ChooseGender />]}></Accordion>,
         <Accordion handleChoose={handleChooseFilter} text='Ноты' selectClass={`${styles.selectItemFilter}`}
             defaultMode={false} selectItem={[<SeachGoods text='Все' selectItem={['1']} />]}></Accordion>,
-        <button className={styles.btnReset}><span>Сбросить</span></button>
+        <button onClick={() => dispatch(clearSettings())} className={styles.btnReset}><span>Сбросить</span></button>
     ];
 
     return (
@@ -66,8 +64,8 @@ export const Category = memo((): JSX.Element => {
                 <h2 className={`${gStyles.titleSmall} ${styles.title}`}>Каталог</h2>
                 <div className={styles.wrapper}>
                     <div className={styles.bodyFilter}>
-                        <div onClick={(e) => handleChange(e)}>
-                            <Accordion handleChoose={handleChooseFilter} text='Фильтры' selectClass={`${styles.select} ${styles.selectFilter} category-select`} defaultMode={false} selectItem={itemFilter} />
+                        <div>
+                            <Accordion handleSet={handleSet} handleChoose={handleChooseFilter} text='Фильтры' selectClass={`${styles.select} ${styles.selectFilter} category-select`} defaultMode={false} selectItem={itemFilter} />
                         </div>
                         <div className={styles.filter} style={{ display: updata ? 'flex' : 'contents' }}>
                             <Accordion handleChoose={handleChooseFilter} text='По популярности' selectClass={`${styles.select} ${styles.selectPopular}`} selectItem={['По популярности', 'По рейтингу', 'Сортировка от последнего', 'Цена по убыванию', 'Цена по возрастанию']} />

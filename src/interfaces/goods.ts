@@ -12,5 +12,5 @@ export interface IGoods {
 }
 
 export interface IGoodsCategory {
-   [key: string]: IGoods[];
+  [key: string]: IGoods[];
 }

@@ -10,10 +10,11 @@ interface IProps {
     children?: ReactNode;
     defaultMode?: boolean;
     handleChoose: (name: string) => void;
+    handleSet?: (value: boolean) => void;
 }
 
 const Accordion = memo((props: IProps): JSX.Element => {
-    let { selectClass, text, selectItem, children, defaultMode = true, handleChoose } = props;
+    let { selectClass, text, selectItem, children, defaultMode = true, handleChoose, handleSet } = props;
 
     let toggle = true;
 
@@ -21,7 +22,7 @@ const Accordion = memo((props: IProps): JSX.Element => {
     const refBodySelect = useRef<HTMLUListElement | null>(null);
 
     useEffect(() => {
-        if (refBodySelect.current) {
+        if (refBodySelect.current && refBodySelect.current.style.maxHeight !== 'initial') {
             refBodySelect.current.style.maxHeight = '0px';
             refBodySelect.current.style.overflow = 'hidden';
         }
@@ -30,20 +31,26 @@ const Accordion = memo((props: IProps): JSX.Element => {
     function handleOpenSelect() {
         if (refBodySelect.current && select.current) {
             if (toggle) {
+                toggle = false;
+                handleSet && handleSet(toggle);
                 refBodySelect.current.style.maxHeight = `initial`;
                 select.current.classList.add('select-active');
-                toggle = false;
             } else {
+                toggle = true;
+                handleSet && handleSet(toggle);
                 refBodySelect.current.style.maxHeight = `0px`;
                 select.current.classList.remove('select-active');
-                toggle = true;
             }
         }
     }
 
     function handleCloseSelect(e: React.MouseEvent<HTMLLIElement>) {
-        if (refBodySelect.current && select.current && defaultMode && e.target instanceof HTMLLIElement) {
-            handleChoose(e.target.children[0].innerHTML);
+        if (refBodySelect.current && select.current && defaultMode && e.target instanceof HTMLElement) {
+            if (e.target.children[0]) {
+                handleChoose(e.target.children[0].innerHTML);
+            } else {
+                handleChoose(e.target.innerHTML);
+            }
             refBodySelect.current.style.maxHeight = '0px';
             select.current.classList.remove('select-active');
             toggle = true;
@@ -53,7 +60,7 @@ const Accordion = memo((props: IProps): JSX.Element => {
 
     return (
         <div ref={select} className={`${selectClass} ${styles.accordion}`}>
-            <div onClick={handleOpenSelect} style={{ display: 'flex' }}>
+            <div onClick={() => handleOpenSelect()} style={{ display: 'flex', width: '100%', minHeight: '100%' }}>
                 {children}
                 <div className={styles.accordionHeader}>
                     <p className={styles.text}>{text}</p>

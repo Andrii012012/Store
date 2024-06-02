@@ -12,16 +12,21 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 
 export default function Header(): JSX.Element {
 
-    const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch(); 
+     
 
     function handleChooseFilter(name: string) {
         switch (name) {
-            case 'По рейтингу': {
+            case 'Мужские': {
+                // dispatch(chooseGender('men'));
+                break;
+            } case 'Женские': {
+                break;
+            } case 'Унисекс': {
                 break;
             }
         }
     }
-
 
     return <header className={styles.header}>
         <div className={gStyles.container}>
