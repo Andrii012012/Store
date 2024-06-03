@@ -1,5 +1,5 @@
-@import '../../../../utils/utilsStyles/rem.scss';
-@import '../../../../utils/utilsStyles/em.scss';
+@import '../../../utils/utilsStyles/rem.scss';
+@import '../../../utils/utilsStyles/em.scss';
 
 .item {
     padding: rem(10) rem(18);
@@ -50,7 +50,7 @@
         display: block;
         width: 10px;
         height: 12.8px;
-        background: url('../../../../assets/imgs/global/arrow.svg') no-repeat;
+        background: url('../../../assets/imgs/global/arrow.svg') no-repeat;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -65,7 +65,7 @@
         display: block;
         width: 10px;
         height: 12.8px;
-        background: url('../../../../assets/imgs/global/arrow.svg') no-repeat;
+        background: url('../../../assets/imgs/global/arrow.svg') no-repeat;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -80,7 +80,7 @@
         display: block;
         width: 10px;
         height: 12.8px;
-        background: url('../../../../assets/imgs/global/arrow-color.svg') no-repeat;
+        background: url('../../../assets/imgs/global/arrow-color.svg') no-repeat;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -95,7 +95,7 @@
         display: block;
         width: 10px;
         height: 12.8px;
-        background: url('../../../../assets/imgs/global/arrow-color.svg') no-repeat;
+        background: url('../../../assets/imgs/global/arrow-color.svg') no-repeat;
         position: absolute;
         top: 50%;
         left: 50%;

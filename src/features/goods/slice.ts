@@ -30,7 +30,7 @@ interface IInitialState {
       | "all";
   };
   filterSeachGoods: {
-    gender: TGender;
+    gender: "women" | "men" | "unisex" | "all";
     nameGoods: string;
   };
 }
@@ -58,11 +58,7 @@ const initialState: IInitialState = {
     filter: "all",
   },
   filterSeachGoods: {
-    gender: {
-      women: "women",
-      men: "men",
-      unisex: "unisex",
-    },
+    gender: "all",
     nameGoods: "",
   },
 };
@@ -109,6 +105,18 @@ const slice = createSlice({
     ) => {
       state.filterGoods.gender = action.payload;
     },
+    filterSeachGoodsSetGender: (
+      state: IInitialState,
+      action: PayloadAction<"women" | "men" | "unisex" | "all">
+    ) => {
+      state.filterSeachGoods.gender = action.payload;
+    },
+    filterSeachGoodsSetNameGoods: (
+      state: IInitialState,
+      action: PayloadAction<string>
+    ) => {
+      state.filterSeachGoods.nameGoods = action.payload;
+    },
     clearSettings: (state: IInitialState) => {
       state.filterGoods.gender = {
         men: "men",
@@ -133,5 +141,7 @@ export const {
   chooseGender,
   chooseNotes,
   clearSettings,
+  filterSeachGoodsSetGender,
+  filterSeachGoodsSetNameGoods,
 } = slice.actions;
 export type { IInitialState };

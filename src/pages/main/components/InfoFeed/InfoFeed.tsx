@@ -45,7 +45,7 @@ const slides: TSlides[] = [
 
 export default function InfoFeed() {
     return (
-        <section>
+        <section className={styles.infoFeed}>
             <Swiper
                 modules={[Pagination]}
                 pagination={true}

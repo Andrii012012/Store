@@ -1,34 +1,48 @@
 import styles from './style.module.scss';
+import './style.scss';
 import { NavLink } from 'react-router-dom';
 import imgPhone from '../../assets/imgs/Header/phone-call.svg';
 import imgCity from '../../assets/imgs/Header/message.svg';
 import logo from '../../assets/imgs/global/logo.svg';
 import gStyles from '../../styles/style.module.scss';
-import Accordion from '../../containers/Accordion/Accordion';
 import user from '../../assets/imgs/Header/user.svg';
 import basket from '../../assets/imgs/Header/basket.svg';
-import seach from '../../assets/imgs/Header/search.svg';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useEffect, useRef } from 'react';
+import Seach from './components/Seach/Seach';
+import Catalog from './components/Catalog/Catalog';
 
 export default function Header(): JSX.Element {
 
-    const dispatch = useAppDispatch(); 
-     
+    const refHeader = useRef<HTMLDivElement | null>(null);
 
-    function handleChooseFilter(name: string) {
-        switch (name) {
-            case 'Мужские': {
-                // dispatch(chooseGender('men'));
-                break;
-            } case 'Женские': {
-                break;
-            } case 'Унисекс': {
-                break;
+    const burger = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            if (refHeader.current && window.pageYOffset > 0) {
+                refHeader.current.classList.add(styles.headerScroll);
+            } else if (window.pageYOffset === 0 && refHeader.current) {
+                refHeader.current.classList.remove(styles.headerScroll);
             }
+        })
+        return () => window.removeEventListener('scroll', () => { })
+    }, []);
+
+    function hangleOpen() {
+        if (burger.current && refHeader.current) {
+            burger.current.classList.toggle(styles.activeBurger);
+            refHeader.current.classList.toggle(styles.activeHeader);
         }
     }
 
-    return <header className={styles.header}>
+    function hangleCloseBurger() {
+        if (refHeader.current && burger.current) {
+            burger.current.classList.remove(styles.activeBurger);
+            refHeader.current.classList.remove(styles.activeHeader);
+        }
+    }
+
+    return <header ref={refHeader} className={styles.header}>
         <div className={gStyles.container}>
             <div className={styles.sectionMenu}>
                 <div className={styles.city}>
@@ -37,9 +51,9 @@ export default function Header(): JSX.Element {
                 </div>
                 <nav className={styles.menu}>
                     <ul className={styles.listMenu}>
-                        <li className={styles.item}><NavLink to='#'>Бонусы</NavLink></li>
-                        <li className={styles.item}><NavLink to='#'>Документация</NavLink></li>
-                        <li className={styles.item}><NavLink to='#'>О нас</NavLink></li>
+                        <li onClick={hangleCloseBurger} className={styles.item}><NavLink to='#'>Бонусы</NavLink></li>
+                        <li onClick={hangleCloseBurger} className={styles.item}><NavLink to='#'>Документация</NavLink></li>
+                        <li onClick={hangleCloseBurger} className={styles.item}><NavLink to='#'>О нас</NavLink></li>
                     </ul>
                 </nav>
                 <div className={styles.numberPhone}>
@@ -48,18 +62,14 @@ export default function Header(): JSX.Element {
                 </div>
             </div>
             <div className={styles.info}>
-                <a className={styles.logo} href='#'><img src={logo} alt="" /></a>
-                <Accordion handleChoose={handleChooseFilter} text='каталог' selectClass={styles.select} selectItem={['Мужские', 'Женские', 'Унисекс']}>
-                    <div className={styles.burgerAccordion}>
+                <div ref={burger} onClick={hangleOpen} className={styles.burger}>
+                    <div className={styles.burgerWrapper}>
                         <span></span>
                     </div>
-                </Accordion>
-                <form className={styles.seach} action="#" >
-                    <div className={`${gStyles.bodyInput} ${styles.bodyInput}`}>
-                        <input type='text' placeholder='Найти парфюм..' />
-                        <img className={gStyles.iconSeach} src={seach} alt="" />
-                    </div>
-                </form>
+                </div>
+                <a className={styles.logo} href='#'><img src={logo} alt="" /></a>
+                <Catalog />
+                <Seach refHeader={refHeader} />
                 <img className={styles.user} src={user} alt="" />
                 <div className={styles.basket}>
                     <img src={basket} alt="" />

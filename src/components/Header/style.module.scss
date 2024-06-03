@@ -1,20 +1,76 @@
+@use 'sass:map';
 @import '../../utils/utilsStyles/rem.scss';
 @import '../../utils/utilsStyles/mainColor.scss';
+@import '../../utils/utilsStyles/colors.scss';
+
+%burger {
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1.5px;
+        border-radius: 2px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: map.get($colors, 'gradientMain');
+    }
+
+    span {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 1.5px;
+        border-radius: 2px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        background: map.get($colors, 'gradientMain');
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1.5px;
+        border-radius: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: map.get($colors, 'gradientMain');
+    }
+}
 
 .header {
-    background-color: rgba(18, 17, 15, 1);
+    background: map.get($colors, 'almostBlack');
     min-height: rem(132);
-    height: 100%;
     padding-top: rem(16);
     padding-bottom: rem(6);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+
+    &::before {
+        content: '';
+        display: block;
+        width: rem(305);
+        height: rem(405);
+        background-color: map.get($colors, 'jet');
+        position: absolute;
+        top: 0;
+        left: -100%;
+        transition: 0.6s linear;
+    }
 }
 
 .sectionMenu {
     display: flex;
-    color: rgba(190, 174, 151, 1);
+    color: map.get($colors, 'vanilla');
 
     a {
-        color: rgba(190, 174, 151, 1);
+        color: map.get($colors, 'vanilla');
     }
 
     margin-bottom: rem(16);
@@ -27,11 +83,30 @@
     img {
         margin-right: rem(10);
     }
+
+    &:hover {
+        p {
+            @extend %mainColor;
+            font-weight: 700;
+        }
+    }
 }
 
 .listMenu {
     display: flex;
     column-gap: rem(105);
+
+    li {
+        text-align: center;
+
+        &:hover {
+            a {
+                @extend %mainColor;
+                display: block;
+                font-weight: 700;
+            }
+        }
+    }
 }
 
 .menu {
@@ -46,6 +121,13 @@
         height: 20px;
         margin-right: rem(10);
     }
+
+    &:hover {
+        p {
+            @extend %mainColor;
+            font-weight: 700;
+        }
+    }
 }
 
 .info {
@@ -54,13 +136,29 @@
     width: 100%;
 }
 
+
+.logo {
+    margin-right: rem(16);
+}
+
+.user {
+    cursor: pointer;
+    margin-right: rem(20);
+}
+
+.basket {
+    cursor: pointer;
+}
+
+// CATALOG........
+
 .select {
     padding: rem(12) rem(20);
-    background-color: rgba(184, 164, 142, 0.4);
-    border: 1px solid rgba(214, 184, 141, 1);
+    background-color: map.get($colors, 'darkCoffe');
+    border: 1px solid map.get($colors, 'tan');
     border-radius: 4px;
-    @extend %mainColor;
     p {
+        @extend %mainColor;
         line-height: rem(19.5);
         text-transform: uppercase;
        
@@ -69,66 +167,100 @@
 
 }
 
-.logo {
-    margin-right: rem(16);
-}
-
 .burgerAccordion {
     width: 24px;
     height: 20px;
     position: relative;
-    &::before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 1.5px;
-        border-radius: 2px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
-    }
 
-    span {
-        content: '';
-        display: block;
-        width: 14px;
-        height: 1.5px;
-        border-radius: 2px;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
-    }
-
-    &::after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 1.5px;
-        border-radius: 2px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
-    }
 
     margin-right: rem(20);
+    @extend %burger; 
 }
 
-.user{
-    cursor: pointer;
-    margin-right: rem(20);
-}
+// SEACH..........
 
-.basket{
-    cursor: pointer;
-}
-
-.seach{
+.seach {
     flex: 1 1 auto;
 }
 
-.bodyInput{
+.bodyInput {
     margin-right: rem(25);
+    background-color: map.get($colors, 'almostBlack');
 }
+
+.listGoods {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0px 0px 10px 0px rgba(160, 149, 133, 0.2);
+
+    li {
+        cursor: pointer;
+        padding: rem(12) rem(30);
+
+        p {
+            @extend %mainColor;
+        }
+
+        margin-bottom: rem(10);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            background: map.get($colors, 'gradientMain');
+
+            p {
+                color: map.get($colors, 'jet');
+                -webkit-background-clip: initial;
+                -webkit-text-fill-color: initial;
+            }
+        }
+    }
+}
+
+.iconSeach{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+
+//BURGER......
+
+.burger {
+    width: 40px;
+    height: 40px;
+    border: 1px solid map.get($colors, 'tan');
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .burgerWrapper {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        @extend %burger;
+    }
+
+    display: none;
+}
+
+//MOVING HEADER.....
+
+.headerScroll {
+    .sectionMenu {
+        display: none;
+    }
+
+    background-color: transparent;
+    backdrop-filter: blur(12px);
+    min-height: 60px;
+}
+
+@import './media.scss';

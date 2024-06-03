@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import chackMark from '../../../../assets/imgs/ChooseGender/check-mark.svg';
+import chackMark from '../../../assets/imgs/ChooseGender/check-mark.svg';
 import { useRef } from 'react';
 
 interface IProps {

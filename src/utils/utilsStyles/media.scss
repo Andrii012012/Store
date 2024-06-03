@@ -1,0 +1,8 @@
+@import './em.scss';
+
+$breakpoints: (
+    'desktop': em(1000, 16),
+    'teblet': em(768, 16),
+    'tebletExtra': em(480, 16),
+    'phone': em(390, 16),
+);

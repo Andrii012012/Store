@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './style.module.scss';
-import { useAppSelector } from '../../../../hooks/useAppSelector';
+import { useAppSelector } from '../../../hooks/useAppSelector';
 
 interface IProps {
     array: any;
@@ -19,19 +19,19 @@ export default function Pagination(props: IProps): JSX.Element {
 
     const refBtnPrev = useRef<HTMLButtonElement | null>(null);
 
-    const [savePrevPages, setSavePrevPages] = useState<number[]>([0]);
+    const [savePrevPages, setSavePrevPages] = useState<number>(1);
 
     const [countPagination, setCountPagination] = useState<(number | string)[]>([]);
 
     const length: number = array.length;
 
-    const resultPagination: number = Math.round(length / countPage) + 1;
+    const resultPagination: number = Math.round(length / countPage);
 
     function handleDesabled<T>(ref: React.MutableRefObject<T | null>, condition: string | number | boolean,
         conditionSymbol: string) {
         switch (conditionSymbol) {
             case '>=': {
-                if (savePrevPages[0] >= Number(condition) && ref.current instanceof HTMLElement) {
+                if (savePrevPages >= Number(condition) && ref.current instanceof HTMLElement) {
                     ref.current.classList.add(styles.disabled);
                 } else {
                     if (ref.current instanceof HTMLElement) ref.current.classList.remove(styles.disabled);
@@ -39,7 +39,7 @@ export default function Pagination(props: IProps): JSX.Element {
                 break;
             }
             case '<=': {
-                if (savePrevPages[0] <= Number(condition) && ref.current instanceof HTMLElement) {
+                if (savePrevPages <= Number(condition) && ref.current instanceof HTMLElement) {
                     ref.current.classList.add(styles.disabled);
                 } else {
                     if (ref.current instanceof HTMLElement) ref.current.classList.remove(styles.disabled);
@@ -53,7 +53,7 @@ export default function Pagination(props: IProps): JSX.Element {
         const arrayCountPagination: (number | string)[] = [];
 
         for (let i = 1; i < resultPagination; i++) {
-            if (savePrevPages[0] <= i && i < resultPagination - 2 && arrayCountPagination.length < 4) {
+            if (savePrevPages <= i && i < resultPagination - 2 && arrayCountPagination.length < 4) {
                 arrayCountPagination.push(i);
             }
         }
@@ -69,7 +69,7 @@ export default function Pagination(props: IProps): JSX.Element {
             arrayCountPagination.push(resultPagination - 2, resultPagination - 1, resultPagination);
         }
 
-        if (savePrevPages[0] >= resultPagination - 3) {
+        if (savePrevPages >= resultPagination - 3) {
             arrayCountPagination.splice(1, 1);
         }
 
@@ -77,15 +77,15 @@ export default function Pagination(props: IProps): JSX.Element {
     }
 
     function hangleIncrement() {
-        setSavePrevPages((prevState): any => prevState[0] < resultPagination ? [...prevState, ++prevState[0]] : prevState);
-        handleDesabled<HTMLButtonElement>(refBtnNext, resultPagination - 1, '>=');
-        if (savePrevPages[0] < resultPagination) onChange(savePrevPages[0] * countPage);
+        setSavePrevPages((prevState): number => prevState < resultPagination ? ++prevState : prevState);
+        handleDesabled<HTMLButtonElement>(refBtnNext, resultPagination, '>=');
+        if (savePrevPages < resultPagination) onChange((savePrevPages + 1) * countPage);
     }
 
     function hangleDecrement() {
-        setSavePrevPages((prevState): any => prevState[0] > 1 ? [...prevState, --prevState[0]] : [...prevState]);
+        setSavePrevPages((prevState): number => prevState > 1 ? --prevState : prevState);
         handleDesabled<HTMLButtonElement>(refBtnPrev, 1, '<=');
-        if (savePrevPages[0] > 1) onChange(savePrevPages[0] * countPage);
+        if (savePrevPages > 1) onChange((savePrevPages - 1) * countPage);
     }
 
     useEffect(() => {
@@ -103,7 +103,7 @@ export default function Pagination(props: IProps): JSX.Element {
             e.target.classList.add(styles.activePagination);
             const value: number = Number(e.target.innerHTML);
             const resultValue: number = value * countPage;
-            setSavePrevPages([value]);
+            setSavePrevPages(value);
             onChange(resultValue);
         }
     }
@@ -117,7 +117,7 @@ export default function Pagination(props: IProps): JSX.Element {
                         {countPagination.map((item, _) => {
                             if (item !== '...') {
                                 return <li onClick={(e) => hangleClick(e)} key={item}
-                                    className={`${styles.item} ${item === savePrevPages[0] ? styles.activePagination : ''}`}>{item}</li>
+                                    className={`${styles.item} ${item === savePrevPages ? styles.activePagination : ''}`}>{item}</li>
                             } else {
                                 return <li className={styles.item}>{item}</li>
                             }

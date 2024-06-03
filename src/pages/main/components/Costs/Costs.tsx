@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from './style.module.scss';
-import RangeSlider from "../../../../components/Header/api/RangeSlider/RangeSlider";
+import RangeSlider from "../../../../components/api/RangeSlider/RangeSlider";
 import { debounce } from "lodash";
 import { useAppSelector } from "../../../../hooks/useAppSelector";
 import { useAppDispatch } from "../../../../hooks/useAppDispatch";

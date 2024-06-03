@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 import gStyles from '../../../../styles/style.module.scss';
-import Pagination from '../../../../components/Header/api/Pagination/Pagination';
+import Pagination from '../../../../components/api/Pagination/Pagination';
 import { ReactNode, useRef, useState } from 'react';
 import { useAppSelector } from '../../../../hooks/useAppSelector';
 import { FilterProducts } from '../../../../features/goods/createSelect';
@@ -14,18 +14,19 @@ export default function Goods(): JSX.Element {
 
     const goods = useAppSelector(FilterProducts);
 
-     console.log(goods);
-
     const jsxElements: ReactNode[] = [];
 
     function hangleChangePage(page: number) {
+        
         if (savePrevCountPage.current !== (page - 12)) {
             savePrevCountPage.current = (page - 12);
             setCountShowGoods(page);
-        } else {
+        } 
+        else {
             savePrevCountPage.current = countShowGoods;
             setCountShowGoods(page);
         }
+
     }
 
     goods.forEach((item: IGoods, index: number) => {
@@ -34,7 +35,7 @@ export default function Goods(): JSX.Element {
                 <li key={item.img} className={styles.item}>
                     <div className={styles.bodyInfoGoods}>
                         <img className={styles.imgGoods} src={item.img} alt='iconGoods' />
-                        <p className={`${styles.text} ${gStyles.text}`}>{item.description}</p>
+                        <p className={`${styles.text} ${gStyles.text}`}>{item.name}</p>
                         <div className={styles.valume}>
                             <p className={`${gStyles.text} ${styles.textValume}`}>Объем мл.</p>
                             <ul className={styles.listValume}>

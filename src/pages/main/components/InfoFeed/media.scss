@@ -1,0 +1,10 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+@import '../../../../utils/utilsStyles/media.scss';
+
+@media (max-width: 39.5em){
+  .infoFeed{
+    padding-top: rem(102);
+  }
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Checkbox from '../../../../components/Header/api/Checkbox/Checkbox';
+import Checkbox from '../../../../components/api/Checkbox/Checkbox';
 import styles from './styles.module.scss';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import { chooseGender } from '../../../../features/goods/slice';

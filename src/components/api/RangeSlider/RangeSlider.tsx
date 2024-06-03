@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import styles from './style.module.scss';
-import { useAppSelector } from '../../../../hooks/useAppSelector';
+import { useAppSelector } from '../../../hooks/useAppSelector';
 
 interface IProps {
     clasess?: string;

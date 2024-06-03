@@ -1,5 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { IGoods } from "../../interfaces/goods";
+import { stat } from "fs";
 
 export const filterSeach = createSelector(
   [(state) => state.goods, (state) => state.goods],
@@ -38,7 +39,8 @@ export const FilterProducts = createSelector(
           gender.unisex === item.gender) &&
         (brand === "all" || item.brand === brand) &&
         (notes === "all" || item.notes === notes) &&
-        (item.price >= price[0] && item.price <= price[1])
+        item.price >= price[0] &&
+        item.price <= price[1]
       ) {
         return item;
       }
@@ -72,6 +74,25 @@ export const FilterProducts = createSelector(
         break;
       }
     }
+    return newGoods;
+  }
+);
+
+export const filterSeachGoods = createSelector(
+  [(state) => state.goods, (state) => state.goods],
+  (state) => {
+    const newGoods: string[] = [];
+    state.goods.filter((item: IGoods) => {
+      if (
+        item.name
+          .toLocaleLowerCase()
+          .includes(state.filterSeachGoods.nameGoods.toLocaleLowerCase()) &&
+        (state.filterSeachGoods.gender === "all" ||
+          state.filterSeachGoods.gender === item.gender)
+      ) {
+        newGoods.push(item.name);
+      }
+    });
     return newGoods;
   }
 );
