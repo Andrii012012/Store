@@ -1,0 +1,43 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'desktop')) {
+    .container {
+        padding: rem(50) rem(50) rem(59) rem(30);
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .title {
+        margin-bottom: rem(20);
+    }
+
+    .text {
+        margin-bottom: rem(20);
+    }
+
+    .container {
+        padding: rem(50) rem(50) rem(89) rem(50);
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .container {
+        padding: rem(50) rem(20) rem(59) rem(20);
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .container {
+        padding: rem(50) rem(10) rem(59) rem(10);
+        position: relative;
+        z-index: 1;
+    }
+}

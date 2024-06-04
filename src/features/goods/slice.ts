@@ -3,10 +3,33 @@ import { IGoods, IGoodsCategory } from "../../interfaces/goods";
 import { arrayGoods, arrayGoodsCategory } from "../../constants/goods";
 
 type TGender = {
-  women: "women" | "";
-  men: "men" | "";
-  unisex: "unisex" | "";
+  women: "women" | "" | "Женские";
+  men: "men" | "" | "Мужские";
+  unisex: "unisex" | "" | "Унисекс";
 };
+
+type TFilterPopular =
+  | "inRating"
+  | "inPopular"
+  | "inLast"
+  | "inDescending"
+  | "inAscending"
+  | "all"
+  | "По популярности"
+  | "По рейтингу"
+  | "Сортировка от последнего"
+  | "Цена по убыванию"
+  | "Цена по возрастанию";
+
+type TGenderList =
+  | "women"
+  | "men"
+  | "unisex"
+  | "all"
+  | "Мужские"
+  | "Женские"
+  | "Унисекс";
+
 interface IInitialState {
   goodsCategory: IGoodsCategory[];
   goods: IGoods[];
@@ -30,7 +53,7 @@ interface IInitialState {
       | "all";
   };
   filterSeachGoods: {
-    gender: "women" | "men" | "unisex" | "all";
+    gender: TGenderList;
     nameGoods: string;
   };
 }
@@ -69,16 +92,30 @@ const slice = createSlice({
   reducers: {
     filterChange: (
       state: IInitialState,
-      action: PayloadAction<
-        | "inRating"
-        | "inPopular"
-        | "inLast"
-        | "inDescending"
-        | "inAscending"
-        | "all"
-      >
+      action: PayloadAction<TFilterPopular>
     ) => {
-      state.filterGoods.filter = action.payload;
+      switch (action.payload) {
+        case "По популярности": {
+          state.filterGoods.filter = "inPopular";
+          break;
+        }
+        case "По рейтингу": {
+          state.filterGoods.filter = "inRating";
+          break;
+        }
+        case "Сортировка от последнего": {
+          state.filterGoods.filter = "inLast";
+          break;
+        }
+        case "Цена по убыванию": {
+          state.filterGoods.filter = "inDescending";
+          break;
+        }
+        case "Цена по возрастанию": {
+          state.filterGoods.filter = "inAscending";
+          break;
+        }
+      }
     },
 
     seachFilter: (state: IInitialState, action: PayloadAction<TFilter>) => {
@@ -97,13 +134,31 @@ const slice = createSlice({
     },
     chooseGender: (
       state: IInitialState,
-      action: PayloadAction<{
-        women: "women" | "";
-        men: "men" | "";
-        unisex: "unisex" | "";
-      }>
+      action: PayloadAction<{ gender: TGenderList; value: boolean }>
     ) => {
-      state.filterGoods.gender = action.payload;
+      let { gender, value } = action.payload;
+      if (gender === "Мужские") {
+        state.filterGoods.gender.men = "men";
+        if (value) {
+          state.filterGoods.gender.men = "men";
+        } else {
+          state.filterGoods.gender.men = "";
+        }
+      } else if (gender === "Женские") {
+        state.filterGoods.gender.women = "women";
+        if (value) {
+          state.filterGoods.gender.women = "women";
+        } else {
+          state.filterGoods.gender.women = "";
+        }
+      } else if (gender === "Унисекс") {
+        state.filterGoods.gender.unisex = "unisex";
+        if (value) {
+          state.filterGoods.gender.unisex = "unisex";
+        } else {
+          state.filterGoods.gender.unisex = "";
+        }
+      }
     },
     filterSeachGoodsSetGender: (
       state: IInitialState,
@@ -144,4 +199,4 @@ export const {
   filterSeachGoodsSetGender,
   filterSeachGoodsSetNameGoods,
 } = slice.actions;
-export type { IInitialState };
+export type { IInitialState, TFilterPopular };

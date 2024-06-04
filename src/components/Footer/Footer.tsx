@@ -8,7 +8,7 @@ export default function Footer(): JSX.Element {
         <footer className={styles.footer}>
             <div className={gStyles.container}>
                 <Link className={styles.logo} to='/'><img src={logo} alt='logo' /></Link>
-                <div className={`${styles.info} ${gStyles.textInf}`}>
+                <div className={`${styles.info} ${gStyles.textInfo}`}>
                     <ul className={styles.list}>
                         <li>
                             <div className={`${styles.block} ${styles.IconAddress}`}> </div>

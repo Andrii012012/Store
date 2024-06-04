@@ -1,0 +1,136 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .filter {
+        display: contents !important;
+    }
+
+    .bodyFilter {
+        column-gap: 10px;
+    }
+
+    .selectFilter {
+        position: relative;
+
+        >ul {
+            position: absolute;
+            background: map.get($colors, 'darkExtra');
+        }
+    }
+
+    .select>div {
+        max-width: rem(305);
+        width: 100%;
+        min-width: 100%;
+        z-index: 5;
+        min-height: auto;
+    }
+
+    .select {
+        max-width: rem(339);
+        height: 100%;
+    }
+
+    .selectPopular {
+        justify-self: flex-end;
+        max-width: rem(339);
+        min-width: 100%;
+    }
+
+    .category-select.select-active {
+        padding: rem(10);
+        width: 100%;
+    }
+
+    .wrapperFilter {
+        max-width: rem(359);
+        min-width: 100%;
+    }
+
+    .bodyFilter {
+        grid-template-columns: 0.5fr 0.5fr;
+        grid-template-rows: 52px;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .select {
+        position: initial;
+
+        >div {
+            font-size: rem(14);
+            margin-bottom: 0;
+        }
+
+        >ul {
+            top: rem(43) !important;
+        }
+    }
+
+    .selectItemFilter {
+        >div {
+            font-size: rem(16);
+        }
+    }
+
+    .btnReset {
+        span {
+            font-size: rem(16);
+        }
+    }
+
+    .category-select.select-active {
+        padding: 0;
+    }
+
+    .bodyFilter {
+        position: relative;
+    }
+
+    .selectPopular {
+        >ul {
+            li p {
+                font-size: rem(14);
+            }
+        }
+    }
+
+    .category-select.select-active {
+        >ul {
+            padding-top: rem(10);
+        }
+    }
+
+    .select-category.select-active {
+        &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            min-height: 100vh;
+            background-color: rgb(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 5;
+        }
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .select>div {
+        z-index: 10;
+        padding: rem(16.5) rem(20);
+    }
+
+    .selectPopular>div {
+        padding: rem(16.5) rem(6);
+
+        &::after {
+            content: "";
+            right: 6px;
+        }
+    }
+}

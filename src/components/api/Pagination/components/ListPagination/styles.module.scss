@@ -1,0 +1,24 @@
+@use 'sass:map';
+@import '../../../../../utils/utilsStyles/colors.scss';
+@import '../../../../../utils/utilsStyles/rem.scss';
+
+.item {
+    padding: rem(10) rem(18);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: map.get($colors, 'vanilla');
+    font-size: rem(14);
+    line-height: em(14, 17);
+    border-radius: rem(4);
+
+    &:hover {
+        color: map.get($colors, 'jet');
+        background-color: map.get($colors, 'taupeExtra');
+    }
+}
+
+.activePagination {
+    background-color: map.get($colors, 'taupeExtra');
+    color: map.get($colors, 'jet');
+}

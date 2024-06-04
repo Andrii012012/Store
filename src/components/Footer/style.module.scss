@@ -1,155 +1,172 @@
-@import '../../utils/utilsStyles/rem.scss';
+@use "sass:map";
+@import "../../utils/utilsStyles/rem.scss";
+@import "../../utils/utilsStyles/colors.scss";
 
 %stylesIcon {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .footer {
-    background-color: rgba(18, 17, 15, 1);
-    padding: rem(30) 0;
-    min-height: 440px;
-    color: rgba(190, 174, 151, 1);
+  background-color: map.get($colors, "dark");
+  padding: rem(30) 0;
+  min-height: 440px;
+  color: map.get($colors, "vanilla");
 
-    strong {
-        font-weight: 400;
-    }
+  strong {
+    font-weight: 400;
+  }
 }
 
 .logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: rem(30);
+  display: flex;
+  justify-content: center;
+  margin-bottom: rem(30);
 }
 
 .info {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: rem(60);
 }
 
 .list {
-    li {
-        margin-bottom: rem(20);
-        display: flex;
-        align-items: center;
-        max-width: rem(475);
-        position: relative;
-    }
-
-    margin-bottom: rem(60);
+  li {
+    margin-bottom: rem(20);
+    display: flex;
+    align-items: center;
+    max-width: rem(475);
+    position: relative;
+  }
 }
 
 .rights {
-    margin-bottom: rem(20);
-    font-size: rem(14);
-    text-align: center;
+  margin-bottom: rem(20);
+  font-size: rem(14);
+  text-align: center;
 }
 
 .politics {
-    font-size: rem(14);
-    text-align: center;
+  font-size: rem(14);
+  text-align: center;
 }
 
 .block {
-    display: block;
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    background-color: rgba(55, 51, 47, 1);
-    border-radius: 50%;
-    margin-right: rem(20);
-    position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background-color: map.get($colors, "jet");
+  border-radius: 50%;
+  margin-right: rem(20);
+  position: relative;
 
-    &:hover {
-        background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
-    }
-
+  &:hover {
+    background: map.get($colors, "gradientMain");
+  }
 }
 
 .IconAddress {
+  &::after {
+    @extend %stylesIcon;
+    width: 18px;
+    height: 24px;
+    background: url("../../assets/imgs/global/defaultIcons/current.svg")
+      no-repeat;
+  }
+
+  &:hover {
     &::after {
-        @extend %stylesIcon;
-        width: 18px;
-        height: 24px;
-        background: url('../../assets/imgs/global/defaultIcons/current.svg') no-repeat;
+      background: url("../../assets/imgs/global/colorsIcons/current.svg")
+        no-repeat;
     }
-    &:hover{
-        &::after {
-            background: url('../../assets/imgs/global/colorsIcons/current.svg') no-repeat;
-        }
-    }
+  }
 }
 
 .iconTime {
+  &::after {
+    @extend %stylesIcon;
+    width: 18px;
+    height: 24px;
+    background: url("../../assets/imgs/global/defaultIcons/time.svg") no-repeat;
+  }
+
+  &:hover {
     &::after {
-        @extend %stylesIcon;
-        width: 18px;
-        height: 24px;
-        background: url('../../assets/imgs/global/defaultIcons/time.svg') no-repeat;
+      background: url("../../assets/imgs/global/colorsIcons/time.svg") no-repeat;
     }
-    &:hover{
-        &::after {
-            background: url('../../assets/imgs/global/colorsIcons/time.svg') no-repeat;
-        }
-    }
+  }
 }
 
 .iconViber {
+  &::after {
+    @extend %stylesIcon;
+    width: 21px;
+    height: 21px;
+    background: url("../../assets/imgs/global/defaultIcons/viber.svg") no-repeat;
+  }
+
+  &:hover {
     &::after {
-        @extend %stylesIcon;
-        width: 21px;
-        height: 21px;
-        background: url('../../assets/imgs/global/defaultIcons/viber.svg') no-repeat;
+      background: url("../../assets/imgs/global/colorsIcons/viber.svg")
+        no-repeat;
     }
-    &:hover{
-        &::after {
-            background: url('../../assets/imgs/global/colorsIcons/viber.svg') no-repeat;
-        }
-    }
+  }
 }
 
 .iconTelegram {
+  &::after {
+    @extend %stylesIcon;
+    width: 21px;
+    height: 21px;
+    background: url("../../assets/imgs/global/defaultIcons/telegram.svg")
+      no-repeat;
+  }
+
+  &:hover {
     &::after {
-        @extend %stylesIcon;
-        width: 21px;
-        height: 21px;
-        background: url('../../assets/imgs/global/defaultIcons/telegram.svg') no-repeat;
+      background: url("../../assets/imgs/global/colorsIcons/telegram.svg")
+        no-repeat;
     }
-    &:hover{
-        &::after {
-            background: url('../../assets/imgs/global/colorsIcons/telegram.svg') no-repeat;
-        }
-    }
+  }
 }
 
 .iconEmail {
+  &::after {
+    @extend %stylesIcon;
+    width: 21px;
+    height: 21px;
+    background: url("../../assets/imgs/global/defaultIcons/email.svg") no-repeat;
+  }
+
+  &:hover {
     &::after {
-        @extend %stylesIcon;
-        width: 21px;
-        height: 21px;
-        background: url('../../assets/imgs/global/defaultIcons/email.svg') no-repeat;
+      background: url("../../assets/imgs/global/colorsIcons/email.svg")
+        no-repeat;
     }
-    &:hover{
-        &::after {
-            background: url('../../assets/imgs/global/colorsIcons/email.svg') no-repeat;
-        }
-    }
+  }
 }
 
 .iconOffice {
+  &::after {
+    @extend %stylesIcon;
+    width: 24px;
+    height: 24px;
+    background: url("../../assets/imgs/global/defaultIcons/office.svg")
+      no-repeat;
+  }
+
+  &:hover {
     &::after {
-        @extend %stylesIcon;
-        width: 24px;
-        height: 24px;
-        background: url('../../assets/imgs/global/defaultIcons/office.svg') no-repeat;
+      background: url("../../assets/imgs/global/colorsIcons/office.svg")
+        no-repeat;
     }
-    &:hover{
-        &::after {
-            background: url('../../assets/imgs/global/colorsIcons/office.svg') no-repeat;
-        }
-    }
+  }
 }
+
+@import './media.scss';

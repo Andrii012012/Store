@@ -3,8 +3,9 @@ import gStyle from '../../../../styles/style.module.scss';
 import backgroundImg1 from '../../../../assets/imgs/Offer/background-img-1.png';
 import backgroundImg2 from '../../../../assets/imgs/Offer/background-img-2.png';
 import backgroundImg3 from '../../../../assets/imgs/Offer/background-img-3.png';
+import { TOffer } from './interface/interface';
+import ListOffer from './components/ListOffer/ListOffer';
 
-type TOffer = Record<'background' | 'title' | 'text', string>;
 
 const offer: TOffer[] = [
     {
@@ -30,16 +31,7 @@ export default function Offer(): JSX.Element {
             <div className={gStyle.container}>
                 <h2 className={`${gStyle.titleSmall} ${style.title}`}>Популярные ароматы</h2>
                 <ul className={style.list}>
-                    {offer.map((item, _) => (
-                        <li key={item.title} className={style.item}>
-                            <img className={style.background} src={item.background} alt="" />
-                            <div className={style.content}>
-                                <h3 className={`${style.titleCard} ${gStyle.titleSmall}`}>{item.title}</h3>
-                                <p className={style.text}>{item.text}</p>
-                                <button className={style.btn}><span>В корзину</span></button>
-                            </div>
-                        </li>
-                    ))}
+                    <ListOffer list={offer}/>
                 </ul>
                 <p className={`${gStyle.titleSmall} ${style.bonus}`}>Бонусы от покупок</p>
             </div>

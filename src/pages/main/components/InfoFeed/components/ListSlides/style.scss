@@ -1,0 +1,38 @@
+@use 'sass:map';
+@import '../../../../../../utils/utilsStyles/colors.scss';
+@import '../../../../../../utils/utilsStyles/rem.scss';
+@import '../../../../../../utils/utilsStyles/media.scss';
+
+.swiper-wrapper {
+    position: relative;
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 5;
+    display: flex;
+    transform: translate(-50%, 0);
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border: 1px solid;
+    margin-right: 10px;
+    border: 1px solid map.get($colors, 'blanchedAlmond');
+    border-radius: 50%;
+}
+
+.swiper-pagination-bullet-active {
+    width: 14px;
+    height: 14px;
+    background: map.get($colors, 'gradientMain');
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')){
+    .swiper-pagination {
+        bottom: rem(10);
+    }
+}

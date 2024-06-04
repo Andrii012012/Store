@@ -12,13 +12,14 @@
 }
 
 .section {
-    > div {
+    >div {
         padding: rem(15) rem(30);
         background-color: rgba(43, 40, 37, 1);
         border: 1px solid rgba(214, 184, 141, 1);
         border-radius: 4px;
         display: flex;
         align-items: center;
+
         &::after {
             content: "";
             display: block;
@@ -27,10 +28,11 @@
             background: url("../../../../assets/imgs/Category/arrow.svg") no-repeat;
             order: 2;
             margin: rem(5) rem(17) 0 0;
-          }
-       >div {
-         flex: 1 1 auto;
-       }
+        }
+
+        >div {
+            flex: 1 1 auto;
+        }
     }
 
     ul {
@@ -55,21 +57,6 @@
     padding: rem(0) rem(9);
 }
 
-.item {
-    color: rgba(190, 174, 151, 1);
-    -webkit-text-fill-color: initial;
-    font-size: rem(14);
-    line-height: em(19.4, 14);
-    text-transform: uppercase;
-    padding: rem(4) rem(12);
-    margin-bottom: rem(12);
-    border-radius: rem(4);
-
-    &:hover {
-        background: linear-gradient(92.38deg, #c09e6c -1.94%, #ffebcc 40.99%, #bf936b 98.79%);
-    }
-}
-
 .list li {
     &:hover {
         background: linear-gradient(92.38deg, #c09e6c -1.94%, #ffebcc 40.99%, #bf936b 98.79%) !important;
@@ -81,8 +68,10 @@
     padding-right: rem(25);
 }
 
-input{
+input {
     background: linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+@import './media.scss';

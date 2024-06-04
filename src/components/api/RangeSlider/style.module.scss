@@ -1,7 +1,9 @@
+@use 'sass:map';
 @import '../../../utils/utilsStyles/rem.scss';
+@import '../../../utils/utilsStyles/colors.scss';
 
 .rangeSlider {
-  position: relative;
+    position: relative;
 }
 
 .rangeWrapper {
@@ -14,7 +16,7 @@
 .rangeTrack {
     height: 100%;
     top: 0;
-    background-color: rgba(14, 13, 12, 1);
+    background-color: map.get($colors, 'dark');
     width: 100%;
     border-radius: rem(4);
     overflow: hidden;
@@ -37,7 +39,7 @@
     height: 18px;
     width: 18px;
     border-radius: 50%;
-    background: linear-gradient(105.38deg, #C09E6C -52.03%, #FFEBCC 32.11%, #BF936B 145.38%);
+    background: map.get($colors, 'gradientExtraMain');
     pointer-events: auto;
     appearance: none;
     -moz-appearance: none;
@@ -48,7 +50,7 @@
     height: 18px;
     width: 18px;
     border-radius: 50%;
-    background: linear-gradient(105.38deg, #C09E6C -52.03%, #FFEBCC 32.11%, #BF936B 145.38%);
+    background: map.get($colors, 'gradientExtraMain');
     pointer-events: auto;
     appearance: none;
     -moz-appearance: none;
@@ -58,14 +60,14 @@
 .wrapperTooltip {
     position: absolute;
     pointer-events: none;
-    background: linear-gradient(105.38deg, #C09E6C -52.03%, #FFEBCC 32.11%, #BF936B 145.38%);
+    background: map.get($colors, 'gradientExtraMain');
     height: 100%;
     z-index: 0;
     border-radius: rem(4);
 }
 
 
-.tooltipMin{
+.tooltipMin {
     z-index: 10;
 }
 

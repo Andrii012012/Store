@@ -1,0 +1,12 @@
+@import '../../../../../../utils/utilsStyles/media.scss';
+@import '../../../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .listValume {
+        justify-content: center;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './style.module.scss';
 import { useAppSelector } from '../../../hooks/useAppSelector';
+import ListPagination from './components/ListPagination/ListPagination';
 
 interface IProps {
     array: any;
@@ -15,6 +16,12 @@ export default function Pagination(props: IProps): JSX.Element {
 
     const goods = useAppSelector((state) => state.goods);
 
+
+    const refSaveIsMobile = useRef<boolean>(window.matchMedia('(max-width: 480px)').matches ? true : false);
+
+    const refSaveShowNumberPagination = useRef<number>(window.matchMedia('(max-width: 480px)').matches ? 1 : 4);
+
+
     const refBtnNext = useRef<HTMLButtonElement | null>(null);
 
     const refBtnPrev = useRef<HTMLButtonElement | null>(null);
@@ -22,6 +29,7 @@ export default function Pagination(props: IProps): JSX.Element {
     const [savePrevPages, setSavePrevPages] = useState<number>(1);
 
     const [countPagination, setCountPagination] = useState<(number | string)[]>([]);
+
 
     const length: number = array.length;
 
@@ -49,11 +57,11 @@ export default function Pagination(props: IProps): JSX.Element {
         }
     }
 
-    function handleFillingPagination() {
+    function handleFillingPagination(isMobile: boolean, count: number) {
         const arrayCountPagination: (number | string)[] = [];
 
         for (let i = 1; i < resultPagination; i++) {
-            if (savePrevPages <= i && i < resultPagination - 2 && arrayCountPagination.length < 4) {
+            if (savePrevPages <= i && i < resultPagination - 2 && arrayCountPagination.length < count) {
                 arrayCountPagination.push(i);
             }
         }
@@ -66,7 +74,9 @@ export default function Pagination(props: IProps): JSX.Element {
             arrayCountPagination.unshift(1);
             arrayCountPagination.splice(5, 1);
             arrayCountPagination.push('...');
-            arrayCountPagination.push(resultPagination - 2, resultPagination - 1, resultPagination);
+            !isMobile
+                ? arrayCountPagination.push(resultPagination - 2, resultPagination - 1, resultPagination)
+                : arrayCountPagination.push(resultPagination);
         }
 
         if (savePrevPages >= resultPagination - 3) {
@@ -88,25 +98,35 @@ export default function Pagination(props: IProps): JSX.Element {
         if (savePrevPages > 1) onChange((savePrevPages - 1) * countPage);
     }
 
+
     useEffect(() => {
-        handleFillingPagination();
+        handleFillingPagination(refSaveIsMobile.current, refSaveShowNumberPagination.current);
         handleDesabled<HTMLButtonElement>(refBtnPrev, 1, '<=');
         handleDesabled<HTMLButtonElement>(refBtnNext, resultPagination, '>=');
     }, [savePrevPages, goods]);
 
-    function hangleClick(e: React.MouseEvent<HTMLLIElement>) {
-        if (e.target && e.target instanceof HTMLLIElement) {
+    useEffect(() => {
 
-            document.querySelectorAll(`.${styles.activePagination}`)
-                .forEach((item) => item.classList.remove(styles.activePagination));
-
-            e.target.classList.add(styles.activePagination);
-            const value: number = Number(e.target.innerHTML);
-            const resultValue: number = value * countPage;
-            setSavePrevPages(value);
-            onChange(resultValue);
+        function hangleChange() {
+            if (window.matchMedia('(max-width: 480px)').matches && !refSaveIsMobile.current) {
+                refSaveShowNumberPagination.current = 1;
+                handleFillingPagination(refSaveIsMobile.current, refSaveShowNumberPagination.current);
+                refSaveIsMobile.current = true;
+            } else if (window.matchMedia('(min-width: 481px)').matches && refSaveIsMobile.current) {
+                refSaveShowNumberPagination.current = 4;
+                handleFillingPagination(refSaveIsMobile.current, refSaveShowNumberPagination.current);
+                refSaveIsMobile.current = false;
+            }
         }
-    }
+
+        window.addEventListener('resize', hangleChange);
+
+        return () => {
+            window.removeEventListener('resize', hangleChange);
+        }
+
+    }, []);
+
 
     if (isArrows) {
         return (
@@ -114,14 +134,7 @@ export default function Pagination(props: IProps): JSX.Element {
                 <div className={styles.wrapper}>
                     <button onClick={hangleDecrement} ref={refBtnPrev} className={`${styles.btn} ${styles.btnPrev}`}></button>
                     <ul className={styles.list}>
-                        {countPagination.map((item, _) => {
-                            if (item !== '...') {
-                                return <li onClick={(e) => hangleClick(e)} key={item}
-                                    className={`${styles.item} ${item === savePrevPages ? styles.activePagination : ''}`}>{item}</li>
-                            } else {
-                                return <li className={styles.item}>{item}</li>
-                            }
-                        })}
+                        <ListPagination savePrevPages={savePrevPages} isArrow={true} list={countPagination} setSavePrevPages={setSavePrevPages} countPage={countPage} onChange={onChange} />
                     </ul>
                     <button onClick={hangleIncrement} ref={refBtnNext} className={`${styles.btn} ${styles.btnNext}`}></button>
                 </div>
@@ -132,15 +145,7 @@ export default function Pagination(props: IProps): JSX.Element {
         return (
             <section className={`${styles.pagination} ${className}`}>
                 <div className={styles.wrapper}>
-                    <ul className={styles.list}>
-                        {countPagination.map((item, _) => {
-                            if (item !== '...') {
-                                return <li onClick={(e) => hangleClick(e)} key={item} className={styles.item}>{item}</li>
-                            } else {
-                                return <li className={styles.item}>{item}</li>
-                            }
-                        })}
-                    </ul>
+                    <ListPagination savePrevPages={savePrevPages} isArrow={false} list={countPagination} setSavePrevPages={setSavePrevPages} countPage={countPage} onChange={onChange} />
                 </div>
             </section>
         )

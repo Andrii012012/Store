@@ -1,0 +1,50 @@
+@use 'sass:map';
+@import '../../../../../../utils/utilsStyles/rem.scss';
+@import '../../../../../../utils/utilsStyles/em.scss';
+@import '../../../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../../../utils/utilsStyles/colors.scss';
+
+.container {
+    position: absolute;
+    top: rem(126);
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.extraInfo {
+    @extend %mainColor;
+
+    span {
+        font-weight: 800;
+    }
+
+    text-align: center;
+    max-width: rem(244);
+    position: absolute;
+    left: 25%;
+    transform: translateX(-25%);
+}
+
+.title {
+    font-size: rem(34);
+    line-height: em(41.45, 34);
+    @extend %mainColor;
+    max-width: rem(795);
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: rem(30);
+}
+
+.body{
+    width: 100%;
+    max-height: rem(497);
+    position: relative;
+    min-height: 100%;
+}
+
+.img{
+    min-width: 100%;
+    height: 100%;
+}
+
+@import './media.scss';

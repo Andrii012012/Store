@@ -9,6 +9,7 @@ import { useAppSelector } from "../../../../hooks/useAppSelector";
 import { chooseBrand, chooseNotes, seachFilter } from "../../../../features/goods/slice";
 import { filterSeach } from "../../../../features/goods/createSelect";
 import { IGoodsCategory } from "../../../../interfaces/goods";
+import ListGoods from "./components/ListGoods/ListGoods";
 
 interface IProps {
     text: string;
@@ -52,12 +53,6 @@ const SeachGoods = memo((props: IProps): JSX.Element => {
         dispatch(seachFilter({ type: 'filterSeach', name: seach }));
     }
 
-    function handleChoose(e: React.MouseEvent<HTMLLIElement>) {
-        if (e.target instanceof HTMLLIElement) {
-            isSection(e.target.children[0].innerHTML)
-        }
-    }
-
     return (
         <section className={styles.seach}>
             <Accordion handleChoose={handleChooseFilter} text={text} selectClass={`${`${styles.section}`} ${selectClass}`} selectItem={selectItem} />
@@ -70,16 +65,7 @@ const SeachGoods = memo((props: IProps): JSX.Element => {
                     <ul className={`${styles.list} list-goods`}>
                         <div style={{ maxHeight: '266px', display: 'flex', flexDirection: 'column' }} className={styles.bodyScroll} ref={refScroll}>
                             <div style={{ display: 'contents' }}>
-                                <li className={styles.item}>ВСЕ</li>
-                                {goods.map((item: IGoodsCategory) => {
-                                    let grand;
-                                    let category;
-                                    for (let key in item) {
-                                        grand = item[key];
-                                        category = key;
-                                    }
-                                    return <li onClick={(e) => handleChoose(e)} key={category} className={styles.item}><span>{category}</span> <span>({Array.isArray(grand) && grand.length})</span></li>
-                                })}
+                                <ListGoods list={goods} isSection={isSection} />
                             </div>
                         </div>
                     </ul>

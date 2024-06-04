@@ -1,0 +1,9 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/media.scss';
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .checkbox p {
+        font-size: rem(14);
+    }
+}

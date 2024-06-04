@@ -8,7 +8,7 @@ import ChooseGender from '../ChooseGender/ChooseGender';
 import Goods from '../Goods/Goods';
 import { useState, memo } from 'react';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
-import { clearSettings, filterChange } from '../../../../features/goods/slice';
+import { TFilterPopular, clearSettings, filterChange } from '../../../../features/goods/slice';
 
 
 export const Category = memo((): JSX.Element => {
@@ -17,29 +17,8 @@ export const Category = memo((): JSX.Element => {
 
     const dispatch = useAppDispatch();
 
-    function handleChooseFilter(name: string) {
-        switch (name) {
-            case 'По популярности': {
-                dispatch(filterChange('inPopular'));
-                break;
-            }
-            case 'По рейтингу': {
-                dispatch(filterChange("inRating"));
-                break;
-            }
-            case 'Сортировка от последнего': {
-                dispatch(filterChange("inLast"));
-                break;
-            }
-            case 'Цена по убыванию': {
-                dispatch(filterChange("inDescending"));
-                break;
-            }
-            case 'Цена по возрастанию': {
-                dispatch(filterChange("inAscending"));
-                break;
-            }
-        }
+    function handleChooseFilter(name: any) {
+        dispatch(filterChange(name));
     }
 
     function handleSet(value: boolean) {
@@ -64,11 +43,11 @@ export const Category = memo((): JSX.Element => {
                 <h2 className={`${gStyles.titleSmall} ${styles.title}`}>Каталог</h2>
                 <div className={styles.wrapper}>
                     <div className={styles.bodyFilter}>
-                        <div>
-                            <Accordion handleSet={handleSet} handleChoose={handleChooseFilter} text='Фильтры' selectClass={`${styles.select} ${styles.selectFilter} category-select`} defaultMode={false} selectItem={itemFilter} />
+                        <div className={styles.wrapperFilter}>
+                            <Accordion handleSet={handleSet} handleChoose={handleChooseFilter} text='Фильтры' selectClass={`${styles.select} ${styles.selectFilter} select-category category-select`} defaultMode={false} selectItem={itemFilter} />
                         </div>
-                        <div className={styles.filter} style={{ display: updata ? 'flex' : 'contents' }}>
-                            <Accordion handleChoose={handleChooseFilter} text='По популярности' selectClass={`${styles.select} ${styles.selectPopular}`} selectItem={['По популярности', 'По рейтингу', 'Сортировка от последнего', 'Цена по убыванию', 'Цена по возрастанию']} />
+                        <div className={styles.filter} style={{ display: updata ? 'flex' : 'contents' }} >
+                            <Accordion handleChoose={handleChooseFilter} text='По популярности' selectClass={`${styles.select} ${styles.selectPopular} select-category`} selectItem={['По популярности', 'По рейтингу', 'Сортировка от последнего', 'Цена по убыванию', 'Цена по возрастанию']} />
                             <div className={styles.bodyGoods}>
                                 <Goods />
                             </div>

@@ -1,0 +1,15 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/media.scss';
+@import '../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .info {
+        margin-bottom: rem(40);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .info {
+        font-size: rem(16);
+    }
+}

@@ -7,8 +7,7 @@ interface IProps {
     isShowTooltip?: boolean;
     max: number;
     min: number;
-    // onChange: React.Dispatch<React.SetStateAction<number[]>>;
-    onChange: any
+    onChange: any;
     step: number;
     value: number[];
 }
@@ -23,8 +22,6 @@ export default function RangeSlider(props: IProps): JSX.Element | any {
 
     const [minValue, setMinValue] = useState<number>(value[0]);
     const [maxValue, setMaxValue] = useState<number>(value[1]);
-    const [minTooltip, setMinTooltip] = useState<number>(value[0]);
-    const [maxTooltip, setMaxTooltip] = useState<number>(value[1]);
 
     const refTrack = useRef<HTMLDivElement | null>(null);
     const refInputMin = useRef<HTMLInputElement | null>(null);
@@ -44,7 +41,6 @@ export default function RangeSlider(props: IProps): JSX.Element | any {
         const value = Number(e.target.value);
         if (value <= maxValue) {
             setMinValue(value);
-            setMinTooltip(value);
             onChange([value, maxValue]);
         }
     }
@@ -61,7 +57,6 @@ export default function RangeSlider(props: IProps): JSX.Element | any {
         const value = Number(e.target.value);
         if (value >= minValue) {
             setMaxValue(value);
-            setMaxTooltip(value);
             onChange([minValue, value]);
         }
     }
@@ -84,9 +79,7 @@ export default function RangeSlider(props: IProps): JSX.Element | any {
 
     useEffect(() => {
         setMaxValue(statePrice[1]);
-        setMaxTooltip(statePrice[1]);
         setMinValue(statePrice[0]);
-        setMinTooltip(statePrice[0]);
     }, [statePrice]);
 
     return (

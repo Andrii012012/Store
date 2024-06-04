@@ -1,21 +1,35 @@
+@use 'sass:map';
 @import '../../../../utils/utilsStyles/rem.scss';
 @import '../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
 
-.goods{
+.goods {
     width: 100%;
+    margin-top: rem(20);
 }
 
-.list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: rem(10);
+.listGoods {
+    width: 100%;
+    gap: rem(20);
     margin-bottom: rem(20);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.item {
+    cursor: pointer;
 }
 
 .bodyInfoGoods {
     padding: rem(30);
-    background-color: rgba(54, 51, 46, 1);
+    background-color: map.get($colors, 'jet');
     border-radius: rem(4);
+    border: 1px solid transparent;
+
+    &:hover {
+        border: 1px solid map.get($colors, 'blanchedAlmond');
+        background-color: map.get($colors, 'darkExtra');
+    }
 }
 
 .imgGoods {
@@ -36,55 +50,25 @@
     margin-bottom: rem(20);
 }
 
-.itemValume {
-    margin-right: rem(20);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-    &:last-child {
-        margin-right: 0;
-    }
-
-    width: 34px;
-    height: 34px;
-    border-radius: rem(4);
-    border: 1px solid rgba(214, 184, 141, 1);
-
-    span {
-        display: block;
-        @extend %mainColor;
-    }
-
-    &:hover {
-        background: linear-gradient(95.25deg, #C09E6C -5.68%, #FFEBCC 41.36%, #BF936B 104.69%);
-
-        span {
-            background: rgba(60, 52, 40, 1);
-            -webkit-background-clip: text;
-        }
-    }
-
-}
-
-.text{
-    color: rgba(190, 174, 151, 1);
+.text {
+    color: map.get($colors, 'vanilla');
     margin-bottom: rem(20);
 }
 
-.textValume{
-    color: rgba(190, 174, 151, 1);
+.textValume {
+    color: map.get($colors, 'vanilla');
 }
 
 .bodyPrice {
     display: flex;
     margin-bottom: rem(20);
-    p{
+
+    p {
         flex: 1 1 auto;
         margin-right: rem(5);
-        color: rgba(190, 174, 151, 1);
+        color: map.get($colors, 'vanilla');
     }
+
     span {
         @extend %mainColor;
     }
@@ -93,7 +77,7 @@
 .btn {
     padding: rem(12) rem(72);
     text-align: center;
-    background-color: rgba(43, 40, 37, 1);
+    background-color: map.get($colors, 'darkCoffe');
     text-transform: uppercase;
     font-weight: 700;
 
@@ -102,8 +86,19 @@
         @extend %mainColor;
     }
 
+    &:hover {
+        span {
+            background: map.get($colors, 'jet');
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        background: map.get($colors, 'gradientMain');
+        box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.4);
+    }
+
     border-radius: 4px;
-    border: 1px solid rgba(214, 184, 141, 1);
+    border: 1px solid map.get($colors, 'tan');
 }
 
 
@@ -111,4 +106,6 @@
     display: flex;
     width: 100%;
     justify-content: center;
-  }
+}
+
+@import './media.scss';

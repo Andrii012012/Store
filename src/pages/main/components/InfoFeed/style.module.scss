@@ -1,54 +1,8 @@
 @import '../../../../utils/utilsStyles/rem.scss';
-@import '../../../../utils/utilsStyles/em.scss';
-@import '../../../../utils/utilsStyles/mainColor.scss';
-
-.body{
-    width: 100%;
-    max-height: rem(500);
-    height: 100%;
-    position: relative;
-}
-
-.img{
-    min-width: 100%;
-    height: 100%;
-}
-
-.title{
-    font-size: rem(34);
-    line-height: em(41.45, 34);
-    @extend %mainColor;
-}
-
-.container{
-    position: absolute;
-    top: rem(126);
-    left: 50%;
-    transform: translate(-50%, 0%);
-}
-
-.title{
-    max-width: rem(795);
-    text-align: center;
-    font-weight: 600;
-    margin-bottom: rem(30);
-}
-
-.extraInfo{
-    @extend %mainColor;
-    
-     span{
-        font-weight: 800;
-     }
-     text-align: center;
-     max-width: rem(244);
-     position: absolute;
-     left: 25%;
-     transform: translateX(-25%);
-}
 
 .infoFeed{
-    padding-top: rem(132);
+    max-height: rem(500);
+    margin-top: rem(132);
 }
 
 @import './media.scss';

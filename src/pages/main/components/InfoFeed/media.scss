@@ -2,9 +2,25 @@
 @import '../../../../utils/utilsStyles/rem.scss';
 @import '../../../../utils/utilsStyles/colors.scss';
 @import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/media.scss';
 
-@media (max-width: 39.5em){
-  .infoFeed{
-    padding-top: rem(102);
+@media (max-width: map.get($breakpoints, 'teblet')) {
+  .infoFeed {
+    padding-top: rem(0);
+    margin-top: rem(132);
+  }
+}
+
+@media (max-width: 39.5em) {
+  .infoFeed {
+    padding-top: rem(0);
+    margin-top: rem(96);
+  }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+  .infoFeed {
+    margin-top: rem(66);
+    min-height: rem(500);
   }
 }

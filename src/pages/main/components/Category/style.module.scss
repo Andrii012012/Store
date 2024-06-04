@@ -1,9 +1,11 @@
+@use "sass:map";
 @import "../../../../utils/utilsStyles/rem.scss";
 @import "../../../../utils/utilsStyles/mainColor.scss";
 @import "../../../../utils/utilsStyles/em.scss";
+@import "../../../../utils/utilsStyles/colors.scss";
 
 .category {
-  background-color: rgba(33, 30, 28, 1);
+  background-color: map.get($colors, "darkCoffe");
   padding-top: rem(50);
   padding-bottom: rem(50);
 }
@@ -20,14 +22,13 @@
 }
 
 .select {
-  background-color: rgba(54, 51, 46, 1);
+  background-color: map.get($colors, "jet");
   max-width: rem(305);
   width: 100%;
   margin-right: rem(20);
 
   &:last-child {
     margin-right: 0;
-    // padding: rem(15) rem(20);
 
     ul {
       left: 0%;
@@ -42,7 +43,7 @@
   background-color: transparent;
 
   >div {
-    border: 1px solid rgba(214, 184, 141, 1);
+    border: 1px solid map.get($colors, "tan");
     padding: rem(13.5) rem(20);
     width: 100%;
     max-width: rem(285);
@@ -50,19 +51,9 @@
     position: relative;
     display: flex;
     align-items: center;
-    background-color: rgba(54, 51, 46, 1);
-    margin-bottom: rem(20);
+    background-color: map.get($colors, "jet");
+    min-height: initial !important;
 
-    &::after {
-      content: "";
-      display: block;
-      width: 40px;
-      height: 40px;
-      background: url("../../../../assets/imgs/Category/icon-category.svg");
-      position: absolute;
-      top: 0;
-      right: 20px;
-    }
   }
 
   display: flex;
@@ -86,8 +77,6 @@
 
 .selectItemFilter {
   >div {
-    margin-bottom: rem(10);
-
     &::after {
       content: "";
       display: block;
@@ -101,6 +90,20 @@
 }
 
 .selectFilter {
+  >div {
+    &::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 40px;
+      background: url("../../../../assets/imgs/Category/icon-category.svg");
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+    }
+  }
+
   ul {
     position: relative;
     width: 100%;
@@ -114,10 +117,7 @@
         background: transparent;
 
         p {
-          background: linear-gradient(95.25deg,
-              #c09e6c -5.68%,
-              #ffebcc 41.36%,
-              #bf936b 104.69%);
+          background: map.get($colors, "gradientMain");
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -133,22 +133,34 @@
   >div {
     margin-bottom: 0;
     max-width: initial;
+
+    &::after {
+      content: "";
+      width: 40px;
+      height: 40px;
+      background: url("../../../../assets/imgs/Category/arrow.svg") center no-repeat;
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%) rotate(180deg);
+    }
   }
 
   ul {
     position: absolute;
     top: 100%;
+    z-index: 10;
 
     li {
-      background-color: rgba(43, 40, 37, 1);
+      background-color: map.get($colors, "darkCoffe");
       padding: rem(12) rem(30);
     }
 
     &:hover {
-      background: linear-gradient(95.25deg, #C09E6C -5.68%, #FFEBCC 41.36%, #BF936B 104.69%);
+      background: map.get($colors, "gradientMain");
 
       p {
-        background-color: rgba(60, 52, 40, 1);
+        background-color: map.get($colors, "jet");
       }
     }
   }
@@ -157,7 +169,7 @@
 .btnReset {
   padding: rem(15) rem(20);
   border-radius: 4px;
-  background-color: rgba(54, 51, 46, 1);
+  background-color: map.get($colors, "jet");
   width: 100%;
   text-align: left;
   position: relative;
@@ -169,11 +181,11 @@
   }
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     width: 40px;
     height: 40px;
-    background: url('../../../../assets/imgs/global/close.svg') no-repeat;
+    background: url("../../../../assets/imgs/global/close.svg") no-repeat;
     position: absolute;
     top: 50%;
     right: rem(20);
@@ -189,8 +201,15 @@
 
 .bodyGoods {
   grid-column: span 2;
+  width: 100%;
 }
 
 .filter {
   flex-direction: column;
 }
+
+.wrapperFilter {
+  min-width: 100%;
+}
+
+@import './media.scss';
