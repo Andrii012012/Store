@@ -8,7 +8,7 @@ import ChooseGender from '../ChooseGender/ChooseGender';
 import Goods from '../Goods/Goods';
 import { useState, memo } from 'react';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
-import { TFilterPopular, clearSettings, filterChange } from '../../../../features/goods/slice';
+import { clearSettings, filterChange } from '../../../../features/goods/slice';
 
 
 export const Category = memo((): JSX.Element => {

@@ -1,6 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { IGoods } from "../../interfaces/goods";
-import { stat } from "fs";
 
 export const filterSeach = createSelector(
   [(state) => state.goods, (state) => state.goods],
@@ -94,5 +93,36 @@ export const filterSeachGoods = createSelector(
       }
     });
     return newGoods;
+  }
+);
+
+export const filterGoodsOffers = createSelector(
+  [(state) => state, (state) => state],
+  (state) => {
+    let newGoods = state.goods.goods;
+    const arrayRating: IGoods[] = [];
+    for (let i = 0; i < 20; i++) {
+      if (newGoods[i].rating > 3) {
+        arrayRating.push(newGoods[i]);
+      }
+    }
+    return arrayRating;
+  }
+);
+
+export const filterGoods = createSelector(
+  [(state) => state, (state) => state],
+  (state) => {
+    let goods = state.goods.goods;
+    const { gender, nameGoods } = state.goods.filterSeachGoods;
+    const newGoods = goods.map((item: IGoods) => {
+      if (
+        item.name.includes(nameGoods) &&
+        (gender === "all" || item.gender === gender)
+      ) {
+        return item;
+      }
+    });
+    return newGoods.filter((item: IGoods) => item && item)[0];
   }
 );

@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IGoods, IGoodsCategory } from "../../interfaces/goods";
 import { arrayGoods, arrayGoodsCategory } from "../../constants/goods";
+import { TStatusReducer } from "../../interfaces/statusReducer";
 
 type TGender = {
   women: "women" | "" | "Женские";
@@ -33,7 +34,7 @@ type TGenderList =
 interface IInitialState {
   goodsCategory: IGoodsCategory[];
   goods: IGoods[];
-  state: "idel" | "reject" | "success" | "loading";
+  state: TStatusReducer;
   error: null | React.ErrorInfo;
   filterGoods: {
     seachFilter: {
@@ -172,6 +173,13 @@ const slice = createSlice({
     ) => {
       state.filterSeachGoods.nameGoods = action.payload;
     },
+    addComments: (
+      state: IInitialState,
+      action: PayloadAction<{ id: number; comment: any }>
+    ) => {
+      let { id, comment } = action.payload;
+      state.goods[id].comments.push(comment);
+    },
     clearSettings: (state: IInitialState) => {
       state.filterGoods.gender = {
         men: "men",
@@ -198,5 +206,6 @@ export const {
   clearSettings,
   filterSeachGoodsSetGender,
   filterSeachGoodsSetNameGoods,
+  addComments,
 } = slice.actions;
 export type { IInitialState, TFilterPopular };

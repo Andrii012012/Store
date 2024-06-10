@@ -2,7 +2,7 @@ import gStyles from '../../../../styles/style.module.scss';
 import pStyles from '../../style.module.scss';
 import seach from '../../../../assets/imgs/Header/search.svg';
 import { debounce } from 'lodash';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { filterSeachGoodsSetNameGoods } from '../../../../features/goods/slice';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import ListGoods from '../ListGoods/ListGoods';
@@ -50,7 +50,7 @@ export default function Seach(props: IProps): JSX.Element {
         <form className={pStyles.seach} action="#" >
             <div className={`${pStyles.wrapper} seachWrapper`}>
                 <div className={`${pStyles.bodyInput} ${gStyles.bodyInput}`}>
-                    <input ref={refInput} className={pStyles.input} type='text' onChange={hangleChange} placeholder='Найти парфюм..' />
+                    <input ref={refInput} className={pStyles.input} type='text' onChange={hangleChange}  placeholder='Найти парфюм..' />
                     <img onClick={hangleOpenSeach} className={pStyles.iconSeach} src={seach} alt="" />
                     <ul className={`${pStyles.listGoods} header-list-goods`}>
                         <div style={{ maxHeight: '350px', display: 'flex' }} ref={refList}>

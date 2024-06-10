@@ -43,14 +43,12 @@
 
 .header {
     background: map.get($colors, 'almostBlack');
-    // max-height: rem(132);
-    // height: 100%;
     padding-top: rem(16);
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 30;
 
     &::before {
         content: '';

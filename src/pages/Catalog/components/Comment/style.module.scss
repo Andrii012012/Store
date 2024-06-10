@@ -1,0 +1,10 @@
+@import '../../../../utils/utilsStyles/rem.scss';
+
+.bodyBtn {
+    margin-bottom: rem(10);
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@import './media.scss';

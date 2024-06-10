@@ -1,6 +1,6 @@
 import pStyles from '../../style.module.scss';
 import Accordion from "../../../../containers/Accordion/Accordion";
-import { filterSeachGoodsSetGender } from '../../../../features/goods/slice';
+import {filterSeachGoodsSetGender } from '../../../../features/goods/slice';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 
 

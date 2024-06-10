@@ -1,0 +1,26 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+
+
+.select-active {
+    >div {
+        background: map.get($colors, 'gradientMain');
+
+        p {
+            color: map.get($colors, 'jet');
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 24px;
+            background: url('../../../../assets/imgs/Catalog/arrow-color.svg') no-repeat;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    }
+}

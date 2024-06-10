@@ -1,0 +1,50 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
+
+.item {
+    cursor: pointer;
+}
+
+.bodyInfoGoods {
+    padding: rem(30);
+    background-color: map.get($colors, 'jet');
+    border-radius: rem(4);
+    border: 1px solid transparent;
+
+    &:hover {
+        border: 1px solid map.get($colors, 'blanchedAlmond');
+        background-color: map.get($colors, 'darkExtra');
+    }
+}
+
+.imgGoods {
+    object-fit: contain;
+    margin-bottom: rem(20);
+    border-radius: rem(4);
+    width: 100%;
+}
+
+.text {
+    color: map.get($colors, 'vanilla');
+    margin-bottom: rem(20);
+}
+
+
+.bodyPrice {
+    display: flex;
+    margin-bottom: rem(20);
+
+    p {
+        flex: 1 1 auto;
+        margin-right: rem(5);
+        color: map.get($colors, 'vanilla');
+    }
+
+    span {
+        @extend %mainColor;
+    }
+}
+
+@import './media.scss';

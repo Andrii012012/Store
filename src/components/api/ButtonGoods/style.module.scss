@@ -1,0 +1,31 @@
+@use 'sass:map';
+@import '../../../utils/utilsStyles/colors.scss';
+@import '../../../utils/utilsStyles/rem.scss';
+@import '../../../utils/utilsStyles/mainColor.scss';
+
+.btn {
+    padding: rem(12) rem(72);
+    text-align: center;
+    background-color: map.get($colors, 'darkCoffe');
+    text-transform: uppercase;
+    font-weight: 700;
+
+    span {
+        display: block;
+        @extend %mainColor;
+    }
+
+    &:hover {
+        span {
+            background: map.get($colors, 'jet');
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        background: map.get($colors, 'gradientMain');
+        box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.4);
+    }
+
+    border-radius: 4px;
+    border: 1px solid map.get($colors, 'tan');
+}

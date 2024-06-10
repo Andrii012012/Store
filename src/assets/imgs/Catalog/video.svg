@@ -1,0 +1,18 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M55 20L40 30L55 40V20Z" stroke="url(#paint0_linear_4305_2040)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M35 15H10C7.23858 15 5 17.2386 5 20V40C5 42.7614 7.23858 45 10 45H35C37.7614 45 40 42.7614 40 40V20C40 17.2386 37.7614 15 35 15Z" stroke="url(#paint1_linear_4305_2040)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15 30H29" stroke="#BEAE97" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 23V37" stroke="#BEAE97" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<linearGradient id="paint0_linear_4305_2040" x1="39.598" y1="23.1548" x2="55.3204" y2="23.6447" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C09E6C"/>
+<stop offset="0.426246" stop-color="#FFEBCC"/>
+<stop offset="1" stop-color="#BF936B"/>
+</linearGradient>
+<linearGradient id="paint1_linear_4305_2040" x1="4.06198" y1="19.7321" x2="40.6972" y2="21.5078" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C09E6C"/>
+<stop offset="0.426246" stop-color="#FFEBCC"/>
+<stop offset="1" stop-color="#BF936B"/>
+</linearGradient>
+</defs>
+</svg>

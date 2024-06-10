@@ -57,7 +57,7 @@ function createGoods(): void {
     arrayGoodsCategory.forEach((item: any, index: number) => {
       if (item[choosedBrand]) {
         arrayGoodsCategory[index][choosedBrand].push({
-          id: String(i),
+          id: i,
           brand: choosedBrand,
           notes: choosedNotes,
           price: choosedPrices,
@@ -67,12 +67,27 @@ function createGoods(): void {
           img,
           popular: countPopular,
           rating: countRating,
+          comments: [
+            {
+              description:
+                "Спешу поделиться эмоциями от приобретенного аромата. Принадлежит к группе восточные цветочные. Доминирующей нотой является кофе... Но вот сейчас сижу нюхаю и уже прям сомневаюсь, что кофе, хотя при первом затесте ожидала кофе, его и получила, поэтому и не колебалась ни секунды при покупке. А тут не то, что принюхалась, просто открываю что-то новое для себя, и Опиум Блэк совсем не моно аромат, он многогранен и интересен. Если это кофе, то не крепкий черный, это кофе со сливками, с ликером, сладкий ванильный, потому что ваниль очень явная и бравурная",
+              date: "1.07.2023",
+              author: { name: "Елена", lastName: "Володина" },
+              stars: 3,
+              screens: [img, img, img, img],
+              videos: [
+                "https://www.youtube.com/watch?v=H8QnlH6sou0",
+                "https://www.youtube.com/watch?v=H8QnlH6sou0",
+                "https://www.youtube.com/watch?v=H8QnlH6sou0",
+              ],
+            },
+          ],
         });
       }
     });
 
     arrayGoods.push({
-      id: String(i),
+      id: i,
       brand: choosedBrand,
       notes: choosedNotes,
       price: choosedPrices,
@@ -82,6 +97,21 @@ function createGoods(): void {
       img,
       popular: countPopular,
       rating: countRating,
+      comments: [
+        {
+          description:
+            "Спешу поделиться эмоциями от приобретенного аромата. Принадлежит к группе восточные цветочные. Доминирующей нотой является кофе... Но вот сейчас сижу нюхаю и уже прям сомневаюсь, что кофе, хотя при первом затесте ожидала кофе, его и получила, поэтому и не колебалась ни секунды при покупке. А тут не то, что принюхалась, просто открываю что-то новое для себя, и Опиум Блэк совсем не моно аромат, он многогранен и интересен. Если это кофе, то не крепкий черный, это кофе со сливками, с ликером, сладкий ванильный, потому что ваниль очень явная и бравурная",
+          date: "1.07.2023",
+          author: { name: "Елена", lastName: "Володина" },
+          stars: 3,
+          screens: [img, img, img, img],
+          videos: [
+            "https://www.youtube.com/watch?v=H8QnlH6sou0",
+            "https://www.youtube.com/watch?v=H8QnlH6sou0",
+            "https://www.youtube.com/watch?v=H8QnlH6sou0",
+          ],
+        },
+      ],
     });
   }
 }

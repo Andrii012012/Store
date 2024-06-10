@@ -1,0 +1,22 @@
+@import '../../../utils/utilsStyles/media.scss';
+@import '../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .listValume {
+        justify-content: center;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .itemValume {
+        font-size: rem(12);
+    }
+}
+
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .itemValume {
+        width: rem(30);
+        height: rem(30);
+    }
+}

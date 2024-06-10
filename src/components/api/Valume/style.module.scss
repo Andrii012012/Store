@@ -1,7 +1,23 @@
 @use 'sass:map';
-@import '../../../../../../utils/utilsStyles/rem.scss';
-@import '../../../../../../utils/utilsStyles/mainColor.scss';
-@import '../../../../../../utils/utilsStyles/colors.scss';
+@import '../../../utils/utilsStyles/rem.scss';
+@import '../../../utils/utilsStyles/mainColor.scss';
+@import '../../../utils/utilsStyles/colors.scss';
+
+.textValume {
+    margin-bottom: rem(10);
+}
+
+.listValume {
+    display: flex;
+}
+
+.valume {
+    margin-bottom: rem(20);
+}
+
+.textValume {
+    color: map.get($colors, 'vanilla');
+}
 
 .itemValume {
     margin-right: rem(20);
@@ -34,5 +50,6 @@
     }
 
 }
+
 
 @import './media.scss';

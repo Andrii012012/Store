@@ -1,0 +1,113 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/em.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+
+%sizeObject {
+    max-width: rem(150);
+    width: 100%;
+    height: rem(150);
+}
+
+.item {
+    margin-bottom: rem(10);
+    padding: rem(20);
+    background: map.get($colors, 'jet') !important;
+
+    &:last-child {
+      margin: 0;
+    }
+}
+
+.header {
+    display: flex;
+}
+
+.author {
+    margin-bottom: rem(10);
+    flex: 1 1 auto;
+    margin-right: rem(5);
+}
+
+.starsBody {
+    position: relative;
+
+    &::before {
+        content: '★★★★★';
+        font-size: 19px;
+        display: block;
+        background: map.get($colors, 'darkExtra');
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .starsItems {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .starsItem {
+        flex: 0 0 20%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    .starsIdentifire {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        overflow: hidden;
+
+        &::before {
+            content: '★★★★★';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-size: 19px;
+            height: 100%;
+            background: map.get($colors, 'gradientMain');
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+.date {
+    margin-bottom: rem(16);
+    color: gold;
+}
+
+.description {
+    line-height: em(19.6, 14);
+}
+
+.listScreen {
+    display: flex;
+    gap: rem(20);
+    width: 100%;
+    margin-bottom: rem(10);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.extraComments{
+    text-align: center;
+    color: map.get($colors, 'warmDark');
+    font-size: rem(14);
+    line-height: em(17.07, 14);
+    margin-top: rem(23);
+}
+
+.list{
+    width: 100%;
+}
+
+@import './media.scss';

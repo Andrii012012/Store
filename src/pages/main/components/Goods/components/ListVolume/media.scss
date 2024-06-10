@@ -1,8 +1,0 @@
-@import '../../../../../../utils/utilsStyles/media.scss';
-@import '../../../../../../utils/utilsStyles/rem.scss';
-
-@media (max-width: map.get($breakpoints, 'tebletExtra')) {
-    .itemValume {
-        font-size: rem(12);
-    }
-}

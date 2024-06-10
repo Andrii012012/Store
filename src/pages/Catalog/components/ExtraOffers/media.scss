@@ -1,0 +1,59 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'desktop')){
+    .slide{
+        min-width: rem(300);
+        max-width: rem(300);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .extraOfferBody {
+        .swiper-button-prev {
+            bottom: 0;
+            left: 47.115%;
+        }
+
+        .swiper-button-next {
+            bottom: 0;
+            right: 38.8736%;
+        }
+
+        .swiper-horizontal {
+            padding-bottom: rem(66);
+        }
+        .swiper-slide {
+            margin-right: rem(10);
+        }
+    }
+    
+}
+
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .extraOfferBody .swiper-button-prev {
+        left: 45.227%;
+    }
+
+    .extraOfferBody .swiper-button-next {
+        right: 31.5909%;
+    }
+}
+
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .extraOfferBody .swiper-button-prev {
+        left: 40.223%;
+    }
+
+    .extraOfferBody .swiper-button-next {
+        right: 31.5909%;
+    }
+    .slide{
+        min-width: rem(297);
+        max-width: rem(297);
+    }
+}
+

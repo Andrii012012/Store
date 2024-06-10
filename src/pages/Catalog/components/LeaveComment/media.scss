@@ -1,0 +1,27 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/media.scss';
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .bonusInfo li {
+        font-size: rem(14);
+    }
+
+    .ratingChoose p {
+        font-size: rem(14);
+    }
+
+    .text {
+        font-size: rem(14);
+    }
+
+    .textAdd {
+        font-size: rem(14);
+    }
+    .wrapper{
+       padding: rem(20);
+    }
+    .btn{
+        width: 100%;
+    }
+}

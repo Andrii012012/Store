@@ -1,0 +1,9 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .btn {
+        width: 100%;
+    }
+}

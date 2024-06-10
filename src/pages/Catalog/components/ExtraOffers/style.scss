@@ -1,0 +1,105 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/colors.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+.extraOfferBody {
+    position: relative;
+    .swiper-button-prev {
+        width: 36px;
+        height: 36px;
+        border: 1px solid map.get($colors, 'vanilla');
+        background-color: transparent;
+        border-radius: rem(6);
+        position: absolute;
+        bottom: 0;
+        left: 47.74%;
+        transform: translateX(-50%);
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 12.8px;
+            background: url('../../../../assets/imgs/global/arrow-color.svg') no-repeat;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-180deg);
+            z-index: 20;
+        }
+    }
+
+    .swiper-button-next {
+        width: 36px;
+        height: 36px;
+        border: 1px solid map.get($colors, 'vanilla');
+        background-color: transparent;
+        border-radius: rem(6);
+        position: absolute;
+        bottom: 0;
+        right: 41.465%;
+        transform: translateX(-50%);
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 12.8px;
+            background: url('../../../../assets/imgs/global/arrow-color.svg') no-repeat;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+        }
+    }
+    .swiper-horizontal{
+        padding-bottom: rem(66);
+    }
+}
+
+.extraOfferBody .swiper-button-next.swiper-button-disabled{
+    background-color: map.get($colors, 'jet');
+    border: 1px solid map.get($colors, 'jet');
+    &::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 12.8px;
+        background: url('../../../../assets/imgs/global/arrow.svg') no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-180deg);
+        z-index: 20;
+    }
+}
+
+.extraOfferBody .swiper-button-prev.swiper-button-disabled{
+    background-color: map.get($colors, 'jet');
+    border: 1px solid map.get($colors, 'jet');
+    &::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 12.8px;
+        background: url('../../../../assets/imgs/global/arrow-color.svg') no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-180deg);
+        z-index: 20;
+    }
+}
+
+.extraOfferBody .swiper-slide{
+    margin-right: rem(20);
+     &:last-child{
+        margin-right: 0;
+     }
+}
+
+
+@import './media.scss';

@@ -1,0 +1,13 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/colors.scss';
+
+.catalog {
+    padding: rem(132) 0 rem(50) 0;
+    width: 100%;
+    background: map.get($colors, 'almostBlack');
+}
+
+.container {
+    margin-top: rem(30);
+}

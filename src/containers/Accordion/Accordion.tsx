@@ -9,7 +9,7 @@ interface IProps {
     selectItem: string[] | JSX.Element[];
     children?: ReactNode;
     defaultMode?: boolean;
-    handleChoose: (name: string) => void;
+    handleChoose?: (name: string) => void;
     handleSet?: (value: boolean) => void;
 }
 
@@ -47,9 +47,9 @@ const Accordion = memo((props: IProps): JSX.Element => {
     function handleCloseSelect(e: React.MouseEvent<HTMLLIElement>) {
         if (refBodySelect.current && select.current && defaultMode && e.target instanceof HTMLElement) {
             if (e.target.children[0]) {
-                handleChoose(e.target.children[0].innerHTML);
+                handleChoose && handleChoose(e.target.children[0].innerHTML);
             } else {
-                handleChoose(e.target.innerHTML);
+                handleChoose && handleChoose(e.target.innerHTML);
             }
             refBodySelect.current.style.maxHeight = '0px';
             select.current.classList.remove('select-active');

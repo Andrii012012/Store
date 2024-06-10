@@ -1,7 +1,6 @@
 import { Reducer, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook } from "react-redux";
 import { IInitialState, goods } from "../features/goods/slice";
-
 interface IReducer {
   goods: Reducer<IInitialState>;
 }

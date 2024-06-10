@@ -1,0 +1,109 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'desktop')) {
+    .accordion {
+        max-width: 100%;
+        width: 100%;
+
+        >ul li {
+            padding: rem(10) 0 0 0;
+
+            li {
+                padding: rem(20);
+            }
+        }
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .goodsInfo {
+        margin-bottom: rem(40);
+    }
+
+    .nameGoods {
+        margin-bottom: rem(20);
+        font-size: rem(20);
+    }
+}
+
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .goodsInfo {
+        margin-bottom: rem(40);
+    }
+
+    .nameGoods {
+        margin-bottom: rem(10);
+        font-size: rem(18);
+    }
+
+    .valume {
+        margin-bottom: rem(10);
+    }
+
+    .count {
+        max-height: rem(38);
+    }
+
+    .imgGoods {
+        max-width: rem(170);
+        max-height: rem(192);
+    }
+
+    .price {
+        text-align: center;
+        margin: 0 0 0 0;
+    }
+
+    .cost {
+        margin: 0 rem(20) 0 0;
+    }
+
+    .goodsBody {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .changeBodyFirst {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-column: span 2;
+
+        >div {
+            margin-bottom: rem(20);
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .bodyFirst {
+        display: none;
+    }
+
+    .btnBasket {
+        width: 100%;
+    }
+
+    .goodsBody {
+        margin-bottom: rem(30);
+    }
+
+    .kinds {
+        font-size: rem(12);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .imgGoods {
+        width: 140px;
+        height: 150px;
+    }
+
+    .goodsBody {
+        margin-bottom: rem(40);
+    }
+}

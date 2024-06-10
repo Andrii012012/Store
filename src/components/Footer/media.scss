@@ -2,6 +2,13 @@
 @import '../../utils/utilsStyles/media.scss';
 @import '../../utils/utilsStyles/rem.scss';
 
+
+@media (max-width: map.get($breakpoints, 'desktop')) {
+    .info {
+        flex-wrap: wrap;
+    }
+}
+
 @media (max-width: map.get($breakpoints, 'teblet')) {
     .info {
         margin-bottom: rem(40);

@@ -7,7 +7,7 @@ import logo from '../../assets/imgs/global/logo.svg';
 import gStyles from '../../styles/style.module.scss';
 import user from '../../assets/imgs/Header/user.svg';
 import basket from '../../assets/imgs/Header/basket.svg';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Seach from './components/Seach/Seach';
 import Catalog from './components/Catalog/Catalog';
 
