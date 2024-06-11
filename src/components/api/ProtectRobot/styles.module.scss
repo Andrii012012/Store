@@ -1,0 +1,19 @@
+@use 'sass:map';
+@import '../../../utils/utilsStyles/rem.scss';
+@import '../../../utils/utilsStyles/colors.scss';
+
+.protect {
+    padding: rem(40);
+    max-width: rem(340);
+    background-color: map.get($colors, 'jet');
+    margin-bottom: rem(30);
+}
+
+.checkRobot {
+    p {
+        margin-left: rem(10);
+    }
+}
+
+
+@import './media.scss';

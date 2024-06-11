@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 import './style.scss';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import imgPhone from '../../assets/imgs/Header/phone-call.svg';
 import imgCity from '../../assets/imgs/Header/message.svg';
 import logo from '../../assets/imgs/global/logo.svg';
@@ -70,7 +70,7 @@ export default function Header(): JSX.Element {
                 <a className={styles.logo} href='#'><img src={logo} alt="" /></a>
                 <Catalog />
                 <Seach refHeader={refHeader} />
-                <img className={styles.user} src={user} alt="" />
+                <Link className={styles.user} to='account'><img src={user} alt="" /></Link>
                 <div className={styles.basket}>
                     <img src={basket} alt="" />
                 </div>

@@ -1,0 +1,56 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+@import '../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../utils/utilsStyles/em.scss';
+
+.sign{
+    min-width: 50%;
+    margin-right: rem(20);
+}
+
+.titleSign {
+    margin-bottom: rem(30);
+    @extend %mainColor;
+}
+
+.input {
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid map.get($colors, 'warmGray');
+    max-width: rem(522);
+    padding: rem(16) rem(14);
+    width: 100%;
+}
+
+.bodyInput {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: rem(20);
+
+    &:last-child {
+        margin-bottom: rem(30);
+    }
+    label{
+        margin-bottom: rem(4);
+    }
+}
+
+.remember {
+    p {
+        margin-left: rem(10);
+    }
+
+    margin-bottom: rem(30);
+}
+
+.btnSign {
+    margin-bottom: rem(30);
+}
+
+.forgotPassword {
+    display: block;
+    line-height: em(20, 16);
+}
+
+@import './media.scss';

@@ -1,0 +1,19 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .sign {
+        margin: 0 0 rem(40) 0;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .btnSign {
+        width: 100%;
+    }
+
+    .titleSign {
+        margin-bottom: rem(20);
+    }
+}

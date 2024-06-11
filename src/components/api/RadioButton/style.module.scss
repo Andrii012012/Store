@@ -1,0 +1,27 @@
+@use 'sass:map';
+@import '../../../utils/utilsStyles/rem.scss';
+@import '../../../utils/utilsStyles/colors.scss';
+
+.radio {
+    width: rem(24);
+    height: rem(24);
+    border-radius: 50%;
+    border: 1px solid #BF936B;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > div {
+        position: relative;
+        z-index: 2;
+        background-color: map.get($colors, 'dark');
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+    }
+}
+
+.bodyRadioButton {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,37 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
+@import '../../utils/utilsStyles/em.scss';
+
+.account {
+    width: 100%;
+    padding: rem(182) 0 rem(50) 0;
+    background-color: map.get($colors, 'dark');
+    color: map.get($colors, 'vanilla');
+
+    a {
+        color: map.get($colors, 'vanilla');
+    }
+}
+
+.title {
+    margin-bottom: rem(10);
+}
+
+.page {
+    display: flex;
+    font-size: rem(14);
+    margin-bottom: rem(46);
+
+    span {
+        margin: 0 rem(10);
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+@import './media.scss';
