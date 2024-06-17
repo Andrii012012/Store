@@ -10,7 +10,7 @@ import basket from '../../assets/imgs/Header/basket.svg';
 import { useEffect, useRef } from 'react';
 import Seach from './components/Seach/Seach';
 import Catalog from './components/Catalog/Catalog';
-import { ROUTE_BONUS } from '../../route/route';
+import { ROUTE_ABOUT, ROUTE_BONUS } from '../../route/route';
 
 export default function Header(): JSX.Element {
 
@@ -54,7 +54,7 @@ export default function Header(): JSX.Element {
                     <ul className={styles.listMenu}>
                         <li onClick={hangleCloseBurger} className={styles.item}><NavLink to={ROUTE_BONUS}>Бонусы</NavLink></li>
                         <li onClick={hangleCloseBurger} className={styles.item}><NavLink to='#'>Документация</NavLink></li>
-                        <li onClick={hangleCloseBurger} className={styles.item}><NavLink to='#'>О нас</NavLink></li>
+                        <li onClick={hangleCloseBurger} className={styles.item}><NavLink to={ROUTE_ABOUT}>О нас</NavLink></li>
                     </ul>
                 </nav>
                 <div className={styles.numberPhone}>

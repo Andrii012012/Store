@@ -1,0 +1,125 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/media.scss';
+@import '../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'desktop')) {
+    .container {
+        padding-top: rem(30);
+    }
+
+    .fragmentImageSmall {
+        top: 53.2%;
+        left: 58.2%;
+    }
+
+    .fragmentImageBig {
+        position: absolute;
+        top: 34.662%;
+        left: 77%;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .container {
+        padding-top: rem(40);
+    }
+
+    .about {
+        padding-bottom: rem(40);
+    }
+
+    .fragmentImageSmall {
+        top: 48%;
+        left: 71.159%;
+    }
+
+    .fragmentImageBig {
+        top: initial;
+        bottom: -35px;
+        left: 22%;
+    }
+
+    .listInfo {
+        margin-bottom: rem(20);
+    }
+}
+
+
+@media (max-width: rem(632)) {
+    .about {
+        margin-top: rem(70);
+    }
+
+    .fragmentImageSmall {
+        top: 51%;
+        left: 71.159%;
+    }
+
+    .fragmentImageBig {
+        top: 57%;
+        left: 24%;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .listInfo {
+        margin-bottom: rem(30);
+    }
+
+    .about {
+        margin-top: rem(66);
+    }
+
+    .container {
+        padding-top: rem(30);
+    }
+
+    .text {
+        margin-bottom: rem(30);
+        font-size: rem(18);
+    }
+
+    .textModelNotes {
+        font-size: rem(18);
+    }
+
+    .textAim {
+        font-size: rem(18);
+    }
+
+    .greating {
+        font-size: rem(18);
+    }
+
+    .list {
+        margin-bottom: rem(30);
+
+        li {
+            font-size: rem(18);
+        }
+    }
+
+    .fragmentImageSmall {
+        top: 45.26%;
+        left: 72.2%;
+    }
+
+    .fragmentImageBig {
+        top: initial;
+        bottom: -26px;
+        left: 10%;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .fragmentImageSmall {
+        top: 35.6%;
+        left: 52.3%;
+    }
+
+    .fragmentImageBig {
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
