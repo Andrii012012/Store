@@ -2,7 +2,7 @@ import GoodsInfo from './components/GoodsInfo/GoodsInfo';
 import styles from './style.module.scss';
 import gStyles from '../../styles/style.module.scss';
 import ExtraOffers from './components/ExtraOffers/ExtraOffers';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { filterSeachGoodsSetNameGoods } from '../../features/goods/slice';

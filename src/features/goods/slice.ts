@@ -1,7 +1,8 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IGoods, IGoodsCategory } from "../../interfaces/goods";
 import { arrayGoods, arrayGoodsCategory } from "../../constants/goods";
 import { TStatusReducer } from "../../interfaces/statusReducer";
+import { clientAPI } from "../../api/client";
 
 type TGender = {
   women: "women" | "" | "Женские";
@@ -34,7 +35,7 @@ type TGenderList =
 interface IInitialState {
   goodsCategory: IGoodsCategory[];
   goods: IGoods[];
-  state: TStatusReducer;
+  status: TStatusReducer;
   error: null | React.ErrorInfo;
   filterGoods: {
     seachFilter: {
@@ -64,10 +65,18 @@ type TFilter = {
   name: string;
 };
 
+export const cancelOrderThunk = createAsyncThunk(
+  "cancelOrder/goods",
+  async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
+    const data = await clientAPI("post", url, form, rejectWithValue);
+     console.log(data);
+  }
+);
+
 const initialState: IInitialState = {
   goodsCategory: arrayGoodsCategory,
   goods: arrayGoods,
-  state: "idel",
+  status: "idel",
   error: null,
   filterGoods: {
     seachFilter: { type: "", name: "" },
@@ -192,6 +201,22 @@ const slice = createSlice({
       state.filterGoods.seachFilter = { type: "", name: "" };
       state.filterGoods.filter = "all";
     },
+  },
+  extraReducers(build) {
+    build.addCase(cancelOrderThunk.pending, (state: IInitialState) => {
+      state.status = "pending";
+      state.error = null;
+    });
+    build.addCase(cancelOrderThunk.fulfilled, (state: IInitialState) => {
+      state.status = "success";
+    });
+    build.addCase(
+      cancelOrderThunk.rejected,
+      (state: IInitialState, action: PayloadAction<any>) => {
+        state.status = "reject";
+        state.error = action.payload;
+      }
+    );
   },
 });
 

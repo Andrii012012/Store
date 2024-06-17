@@ -1,0 +1,10 @@
+@use 'sass:map';
+@import '../../../../../../utils/utilsStyles/rem.scss';
+@import '../../../../../../utils/utilsStyles/em.scss';
+@import '../../../../../../utils/utilsStyles/media.scss';
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .addAddressPay{
+        padding-bottom: rem(40);
+    }
+}

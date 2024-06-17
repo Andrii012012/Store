@@ -7,7 +7,7 @@
 .account {
     width: 100%;
     padding: rem(182) 0 rem(50) 0;
-    background-color: map.get($colors, 'dark');
+    background-color: map.get($colors, 'darkExtra');
     color: map.get($colors, 'vanilla');
 
     a {
@@ -32,6 +32,10 @@
 .container {
     display: flex;
     justify-content: space-between;
+}
+
+.pageInfo{
+    margin-bottom: rem(24);
 }
 
 @import './media.scss';

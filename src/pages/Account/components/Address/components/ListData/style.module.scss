@@ -1,0 +1,54 @@
+@use 'sass:map';
+@import '../../../../../../utils/utilsStyles/rem.scss';
+@import '../../../../../../utils/utilsStyles/colors.scss';
+@import '../../../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../../../utils/utilsStyles/em.scss';
+
+.address{
+    padding-bottom: rem(40);
+}
+
+.success {
+    margin-bottom: rem(20);
+
+    h1 {
+        margin-bottom: rem(30);
+    }
+
+    div {
+        margin-bottom: rem(30);
+    }
+
+    >p {
+        margin-bottom: rem(20);
+    }
+}
+
+
+.text {
+    margin-bottom: rem(20);
+}
+
+.item {
+    margin-bottom: rem(20);
+
+    span {
+        margin-right: rem(5);
+    }
+}
+
+.list {
+    margin-bottom: rem(20);
+}
+
+.btn {
+    background: transparent;
+    color: map.get($colors, 'vanilla');
+    text-decoration: underline;
+}
+
+.addressPay {
+    font-size: rem(20);
+    line-height: em(28, 20);
+    margin-bottom: rem(20);
+}

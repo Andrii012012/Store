@@ -1,0 +1,66 @@
+@use 'sass:map';
+@import '../../../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../../../utils/utilsStyles/colors.scss';
+@import '../../../../../../utils/utilsStyles/rem.scss';
+@import '../../../../../../utils/utilsStyles/em.scss';
+
+.wrapper {
+    max-width: rem(738);
+    width: 100%;
+}
+
+.title {
+    margin-bottom: rem(30);
+    @extend %mainColor;
+}
+
+.address{
+    padding-bottom: rem(50);
+}
+
+.addressPay {
+    margin-bottom: rem(30);
+    font-size: rem(20);
+    line-height: em(28, 20);
+}
+
+.bodyInput {
+    display: flex;
+    min-width: 100%;
+    margin-bottom: rem(20);
+
+    input {
+        width: 100%;
+
+        &:focus {
+            border: 1px solid map.get($colors, 'blanchedAlmond') !important;
+        }
+    }
+}
+
+.inputName {
+    width: 100%;
+    margin-right: rem(20);
+}
+
+.inputSurname {
+    width: 100%;
+    margin: 0 !important;
+}
+
+.input {
+    width: 100%;
+    margin-bottom: rem(20);
+
+    input {
+        &:focus {
+            border: 1px solid map.get($colors, 'blanchedAlmond') !important;
+        }
+    }
+}
+
+.inputEmail {
+    margin-bottom: rem(30);
+}
+
+@import './media.scss';

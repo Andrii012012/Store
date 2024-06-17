@@ -1,2 +1,2 @@
 
-export type TStatusReducer = "idel" | "reject" | "success" | "loading";
+export type TStatusReducer = "idel" | "reject" | "success" | "pending";

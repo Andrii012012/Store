@@ -1,0 +1,28 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+@import '../../../../utils/utilsStyles/mainColor.scss';
+
+.title {
+    margin-bottom: rem(30);
+    @extend %mainColor;
+}
+
+.warning {
+    padding: rem(10);
+    background-color: map.get($colors, 'jet');
+    max-width: rem(299);
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.icon {
+    margin-right: rem(10);
+}
+
+.order{
+    padding-bottom: rem(50);
+}
+
+@import './media.scss';

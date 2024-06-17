@@ -1,0 +1,110 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/em.scss';
+@import '../../../../utils/utilsStyles/media.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .wrapperInfo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: flex-start;
+    }
+
+    .bodyInfo {
+        margin-bottom: rem(30);
+    }
+
+    .bodyInfoBonus {
+        width: 100%;
+        max-width: initial;
+        grid-column: 2 span;
+    }
+
+    .lineMarking {
+        max-width: initial;
+    }
+
+    .breakpoint {
+        &:hover::after {
+            left: -100%;
+            transform: translate(15%, -10%);
+        }
+
+        &:last-child {
+            right: 0;
+
+            &:hover::after {
+                left: 100%;
+                transform: translate(-100%, -50%);
+            }
+        }
+
+        &:nth-child(3) {
+            left: 50%;
+
+            &:hover::after {
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    .wrapperListBonus {
+        max-width: initial;
+    }
+
+    .date {
+        padding: rem(10);
+    }
+    .bonus{
+        padding-bottom: rem(40);
+    }    
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .breakpoint {
+        &:hover::after {
+            font-size: rem(12);
+        }
+
+        &:last-child {
+            &:hover::after {
+                font-size: rem(12);
+            }
+        }
+
+        &:nth-child(3) {
+            &:hover::after {
+                font-size: rem(12);
+            }
+        }
+    }
+    .wrapperInfo{
+       grid-template-columns: 1fr 0.1fr;
+    }
+    .user{
+       margin: 0 rem(40) 0 0;
+    }
+    .infoBought{
+        font-size: rem(12);
+    }
+    .lineMarking{
+      margin-bottom: rem(40);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .bonus{
+        padding-bottom: rem(20);
+    }
+    .countBought {
+        margin-bottom: rem(10);
+    }
+    .wrapperInfo{
+        margin-bottom: rem(20);
+    }
+    .item:last-child {
+    margin-bottom: rem(20);
+}
+}
+

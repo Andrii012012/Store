@@ -1,0 +1,12 @@
+@import '../../../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../../../utils/utilsStyles/em.scss';
+@import '../../../../../../utils/utilsStyles/rem.scss';
+
+.title{
+    @extend %mainColor;
+}
+
+.addressPay{
+    font-size: rem(20);
+    line-height: em(28, 20);
+}

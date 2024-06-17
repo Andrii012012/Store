@@ -1,0 +1,13 @@
+@import '../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+.download{
+    padding-bottom: rem(156);
+}
+
+.title{
+    @extend %mainColor;
+    margin-bottom: rem(30);
+}
+
+@import './media.scss';

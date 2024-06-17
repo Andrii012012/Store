@@ -1,0 +1,25 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/em.scss';
+@import '../../../../utils/utilsStyles/media.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .controlPanel {
+        max-width: rem(482);
+        margin-bottom: rem(240);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .controlPanel {
+        margin-bottom: rem(40);
+    }
+
+    .greeting {
+        font-size: rem(16);
+    }
+
+    .text {
+        font-size: rem(16);
+    }
+}

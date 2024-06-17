@@ -66,14 +66,19 @@ body {
     font-size: rem(16);
     font-weight: 400;
     line-height: em(22.4, 16);
-    text-align: left;
 }
 
 .textInfo {
     font-size: rem(18);
     font-weight: 400;
     line-height: em(25.2, 18);
-    text-align: left;
+}
+
+.textSmall {
+    // font-family: Open Sans;
+    font-size: rem(14);
+    font-weight: 400;
+    line-height: em(19.6, 14);
 }
 
 @import "./media.scss";

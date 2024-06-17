@@ -1,0 +1,60 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+
+.detail{
+    padding-bottom: rem(50);
+}
+
+.title {
+    margin-bottom: rem(30);
+    @extend %mainColor;
+}
+
+.wrapperInput {
+    margin-bottom: rem(20);
+    display: flex;
+
+    div {
+        width: 100%;
+
+        &:first-child {
+            margin-right: rem(20);
+        }
+    }
+}
+
+.body {
+    margin-bottom: rem(20);
+}
+
+.titleChangePassword {
+    margin-bottom: rem(20);
+}
+
+.input {
+    margin-bottom: rem(20);
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.inputForm {
+    input {
+        &:focus {
+            border: 1px solid map.get($colors, 'vanilla') !important;
+        }
+    }
+}
+
+@import './media.scss';

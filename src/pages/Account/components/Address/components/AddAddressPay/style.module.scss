@@ -1,0 +1,25 @@
+@use 'sass:map';
+@import '../../../../../../utils/utilsStyles/rem.scss';
+@import '../../../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../../../utils/utilsStyles/colors.scss';
+
+.addAddressPay{
+    padding-bottom: rem(122);
+}
+
+.header {
+    margin-bottom: rem(20);
+    h1 {
+        margin-bottom: rem(30);
+    }
+    p{
+        margin-bottom: rem(20);
+    }
+}
+
+.btn{
+    background-color: transparent;
+    color: map.get($colors, 'vanilla');
+}
+
+@import './media.scss';

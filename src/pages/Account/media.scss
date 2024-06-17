@@ -4,7 +4,7 @@
 
 @media (max-width: map.get($breakpoints, 'teblet')) {
     .account{
-        padding: rem(182) 0 rem(40) 0;
+        padding: rem(182) 0 0 0;
     }
     .container{
         flex-direction: column;
@@ -13,7 +13,7 @@
 
 @media (max-width: map.get($breakpoints, 'tebletExtra')){
     .account{
-        padding: rem(110) 0 rem(40) 0;
+        padding: rem(110) 0 0 0;
     }
     .page{
         font-size: rem(12);

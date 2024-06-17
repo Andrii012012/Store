@@ -1,0 +1,28 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')){
+    .order{
+        padding-bottom: rem(40);
+    }
+    .title{
+        margin-bottom: rem(20);
+    }
+    .bodyWorning{
+       margin-bottom: rem(289);   
+    }
+}
+
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')){
+    .bodyWorning{
+       margin-bottom: rem(256);   
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')){
+    .bodyWorning{
+       margin-bottom: rem(0);   
+    }
+}

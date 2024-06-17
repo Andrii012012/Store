@@ -1,0 +1,24 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+
+.item {
+    display: flex;
+    padding: rem(19) rem(16);
+
+    p {
+        flex: 1 1 auto;
+        margin-right: rem(5);
+    }
+
+    ;
+
+    &:hover {
+        background-color: map.get($colors, 'jet');
+
+        svg {
+            stroke: url(#gradient);
+        }
+    }
+
+}

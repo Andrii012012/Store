@@ -16,11 +16,9 @@ export default function Pagination(props: IProps): JSX.Element {
 
     const goods = useAppSelector((state) => state.goods);
 
-
     const refSaveIsMobile = useRef<boolean>(window.matchMedia('(max-width: 480px)').matches ? true : false);
 
     const refSaveShowNumberPagination = useRef<number>(window.matchMedia('(max-width: 480px)').matches ? 1 : 4);
-
 
     const refBtnNext = useRef<HTMLButtonElement | null>(null);
 
@@ -29,7 +27,6 @@ export default function Pagination(props: IProps): JSX.Element {
     const [savePrevPages, setSavePrevPages] = useState<number>(1);
 
     const [countPagination, setCountPagination] = useState<(number | string)[]>([]);
-
 
     const length: number = array.length;
 
@@ -73,10 +70,12 @@ export default function Pagination(props: IProps): JSX.Element {
             arrayCountPagination.unshift('...');
             arrayCountPagination.unshift(1);
             arrayCountPagination.splice(5, 1);
-            arrayCountPagination.push('...');
-            !isMobile
-                ? arrayCountPagination.push(resultPagination - 2, resultPagination - 1, resultPagination)
-                : arrayCountPagination.push(resultPagination);
+            if (length > 8) {
+                arrayCountPagination.push('...');
+                !isMobile
+                    ? arrayCountPagination.push(resultPagination - 2, resultPagination - 1, resultPagination)
+                    : arrayCountPagination.push(resultPagination);
+            }
         }
 
         if (savePrevPages >= resultPagination - 3) {

@@ -57,7 +57,7 @@ export default function Rating(props: IProps): JSX.Element {
                     : <svg className={styles.icon} width={width} height={height} viewBox="0 0 16 15" fill={isCheckStyles(index)} xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="-1.94%" stop-color="#C09E6" />
+                                <stop offset="-1.94%" stop-color="#C09E6C" />
                                 <stop offset="40.99%" stop-color="#FFEBCC" />
                                 <stop offset="98.79%" stop-color="#BF936B" />
                             </linearGradient>

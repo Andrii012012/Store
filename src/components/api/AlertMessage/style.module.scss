@@ -1,0 +1,19 @@
+@use 'sass:map';
+@import '../../../utils/utilsStyles/rem.scss';
+@import '../../../utils/utilsStyles/colors.scss';
+
+.alertMessage {
+    padding: rem(10);
+    display: inline-flex;
+    align-items: center;
+    background-color: map.get($colors, 'jet');
+    border-radius: 4px;
+}
+
+.icon{
+    margin-right: rem(10);
+}
+
+.text{
+    white-space: nowrap;
+}

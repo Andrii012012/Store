@@ -1,0 +1,8 @@
+@use "sass:map";
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/colors.scss';
+
+.bonus{
+    width: 100%;
+    background-color: map.get($colors, 'darkExtra');
+}

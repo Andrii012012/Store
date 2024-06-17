@@ -74,4 +74,8 @@
     @extend %mainColor;
 }
 
+.wrapper{
+    width: 100%;
+}
+
 @import './media.scss';

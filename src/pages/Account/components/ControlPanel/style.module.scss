@@ -1,0 +1,11 @@
+@import '../../../../utils/utilsStyles/rem.scss';
+
+.greeting{
+    margin-bottom: rem(20);
+}
+
+.link{
+    text-decoration: underline;
+}
+
+@import './media.scss';

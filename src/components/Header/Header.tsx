@@ -7,9 +7,10 @@ import logo from '../../assets/imgs/global/logo.svg';
 import gStyles from '../../styles/style.module.scss';
 import user from '../../assets/imgs/Header/user.svg';
 import basket from '../../assets/imgs/Header/basket.svg';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Seach from './components/Seach/Seach';
 import Catalog from './components/Catalog/Catalog';
+import { ROUTE_BONUS } from '../../route/route';
 
 export default function Header(): JSX.Element {
 
@@ -51,7 +52,7 @@ export default function Header(): JSX.Element {
                 </div>
                 <nav className={styles.menu}>
                     <ul className={styles.listMenu}>
-                        <li onClick={hangleCloseBurger} className={styles.item}><NavLink to='#'>Бонусы</NavLink></li>
+                        <li onClick={hangleCloseBurger} className={styles.item}><NavLink to={ROUTE_BONUS}>Бонусы</NavLink></li>
                         <li onClick={hangleCloseBurger} className={styles.item}><NavLink to='#'>Документация</NavLink></li>
                         <li onClick={hangleCloseBurger} className={styles.item}><NavLink to='#'>О нас</NavLink></li>
                     </ul>
@@ -67,7 +68,7 @@ export default function Header(): JSX.Element {
                         <span></span>
                     </div>
                 </div>
-                <a className={styles.logo} href='#'><img src={logo} alt="" /></a>
+                <Link className={styles.logo} to='/'><img src={logo} alt="" /></Link>
                 <Catalog />
                 <Seach refHeader={refHeader} />
                 <Link className={styles.user} to='account'><img src={user} alt="" /></Link>

@@ -1,0 +1,31 @@
+@use 'sass:map';
+@import '../../../utils/utilsStyles/rem.scss';
+@import '../../../utils/utilsStyles/colors.scss';
+@import '../../../utils/utilsStyles/em.scss';
+
+.bodyInput {
+    display: flex;
+    flex-direction: column;
+
+    input {
+        padding: rem(16) rem(14);
+        background-color: transparent;
+        border-radius: 4px;
+        border: 1px solid map.get($colors, 'warmGray');
+    }
+
+    label{
+        margin-bottom: rem(4);
+        line-height: em(19.6, 16);
+    }
+
+}
+
+
+.body{
+    position: relative;
+    width: 100%;
+     input{
+        width: 100%;
+     }
+}
