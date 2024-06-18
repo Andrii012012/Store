@@ -3,7 +3,7 @@
 @import '../../../../utils/utilsStyles/colors.scss';
 
 
-.select-active {
+.goodsInfoSelect.select-active {
     >div {
         background: map.get($colors, 'gradientMain');
 

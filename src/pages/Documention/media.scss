@@ -1,0 +1,86 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/media.scss';
+
+@media (max-width: map.get($breakpoints, 'desktop')) {
+    .fragment {
+        position: absolute;
+        top: 15.2%;
+        left: 28.4%;
+    }
+
+    .list {
+        padding-bottom: rem(208);
+    }
+
+    .container {
+        padding-top: rem(30);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .fragment {
+        position: absolute;
+        top: 12%;
+        left: 32.8%;
+    }
+
+    .list {
+        padding-bottom: rem(258);
+    }
+
+    .listPath {
+        margin-bottom: rem(20);
+    }
+
+    .container {
+        padding-top: rem(40);
+    }
+}
+
+@media (max-width: rem(632)) {
+    .documention {
+        margin-top: rem(70);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .documention {
+        margin-top: rem(65);
+    }
+    .fragment {
+        position: absolute;
+        top: initial;
+        left: 38.1%;
+        bottom: -14.4%;
+         img{
+            width: rem(270);
+            height: rem(270);
+         }
+    }
+    .text{
+        font-size: rem(18);
+    }
+    .listPath{
+        font-size: rem(12);
+        margin-bottom: rem(30);
+    }
+    .container {
+        padding-top: rem(30);
+    }
+    .list {
+        padding-bottom: rem(0);
+        font-size: rem(18);
+    }
+    .documention{
+        padding-bottom: rem(40);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .fragment {
+        position: absolute;
+        left: 31.2%;
+        bottom: -9.4%;
+    }
+}

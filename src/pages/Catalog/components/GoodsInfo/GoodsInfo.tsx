@@ -81,7 +81,7 @@ export default function GoodsInfo(): JSX.Element {
                     </div>
                 </div>
                 <div className={styles.infoGoods}>
-                    <Accordion text='Описание' defaultMode={false} selectClass={styles.accordion} selectItem={[`
+                    <Accordion text='Описание' defaultMode={false} selectClass={`${styles.accordion} goodsInfoSelect`} selectItem={[`
                  Этот аромат для мужчин и женщин. Композиция аромата
                  состоит из: апельсина, имбиря,бергамота, толуанского бальзама, ванили и мускуса. Уникальная композиция 
                  нот доставит удовольствие своему обладателю. А название аромата придаст ему уверенность и хорошее настроение`]} />

@@ -1,0 +1,80 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
+
+.documention {
+    width: 100%;
+    margin-top: rem(132);
+    background-color: map.get($colors, 'darkExtra');
+    color: map.get($colors, 'vanilla');
+    min-height: 100%;
+    overflow: hidden;
+    a {
+        color: map.get($colors, 'vanilla');
+    }
+}
+
+.title {
+    @extend %mainColor;
+    margin-bottom: rem(10);
+}
+
+.listPath {
+    display: flex;
+    margin-bottom: rem(23);
+
+    span {
+        margin: 0 rem(10);
+    }
+
+    li {
+        &:last-child {
+            color: map.get($colors, 'warmDark');
+        }
+    }
+}
+
+.text {
+    margin-bottom: rem(50);
+}
+
+.container {
+    padding-top: rem(50);
+    position: relative;
+}
+
+.list {
+    padding-bottom: rem(415);
+    position: relative;
+    z-index: 2;
+}
+
+.item {
+    margin-bottom: rem(50);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+
+        img {
+            margin-right: rem(50);
+        }
+
+        p {
+            text-decoration: underline;
+        }
+    }
+}
+
+.fragment {
+    position: absolute;
+    top: 31.5%;
+    left: 36.36%;
+}
+
+@import './media.scss';
