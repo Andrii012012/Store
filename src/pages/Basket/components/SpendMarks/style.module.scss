@@ -1,0 +1,28 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+
+.bodySpendMarks {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: rem(20);
+     input{
+        width: rem(87);
+        height: rem(45);
+        border-radius: 4px;
+        text-align: center;
+        border: 1px solid map.get($colors, 'vanilla');
+        margin-right: rem(10);
+     }
+}
+
+.textSpendMarks {
+    margin-bottom: rem(20);
+}
+
+.btnSpendMarks {
+    min-height: rem(45);
+    padding: 0;
+    max-width: rem(245);
+    width: 100%;
+}

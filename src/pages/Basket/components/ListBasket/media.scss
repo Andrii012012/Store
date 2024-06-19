@@ -1,0 +1,116 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .list {
+        margin-bottom: rem(40);
+    }
+
+    .item {
+        padding: rem(20) rem(0) rem(38) rem(0);
+    }
+
+}
+
+@media (max-width: rem(632)) {
+    .bodyPrice {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bodyControll {
+        display: contents;
+    }
+
+    .btn {
+        grid-column: 2 span;
+        justify-self: flex-start;
+        margin-top: -11.5px;
+    }
+
+    .imageGoods {
+        margin: 0 rem(13) 0 0;
+    }
+
+    .checkbox {
+        margin-right: rem(28);
+        transform: translateY(-50%);
+    }
+
+    .price {
+        margin: 0 0 rem(45) 0;
+    }
+
+    .goodsName {
+        margin-right: rem(13);
+    }
+
+    .goods {
+        grid-template-columns: 0.1fr 1fr 0.1fr;
+    }
+
+    .infoGoods {
+        display: contents;
+    }
+
+    .bodyPrice {
+        grid-row: 2 span;
+    }
+
+    .item {
+        padding: rem(20) rem(0);
+    }
+
+    .count {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .list {
+        margin-bottom: rem(40);
+    }
+
+    .count {
+        max-width: rem(130);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .goods {
+        grid-template-columns: 0.1fr 1fr;
+        grid-template-rows: initial;
+    }
+
+    .bodyPrice {
+        grid-row: initial;
+    }
+
+    .infoGoods {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .price {
+        margin-bottom: rem(10);
+    }
+
+    .goodsName {
+        margin: 0 0 rem(10) 0;
+    }
+
+    .imageGoods {
+        margin-right: rem(10);
+    }
+
+    .checkbox {
+        margin-right: rem(10);
+        transform: translateY(-100%);
+    }
+
+    .btn {
+        margin-top: -40px;
+    }
+}

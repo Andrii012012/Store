@@ -44,9 +44,10 @@ export const signThunk = createAsyncThunk(
     },
     { rejectWithValue }
   ) => {
-    const date = await clientAPI("post", url, form, rejectWithValue);
-    if (date && date.data) {
-      const object: signObject = { dateServer: date.data, ref: ref || [] };
+    const data = await clientAPI("post", url, form, rejectWithValue);
+    if (data && data.data) {
+      console.log(data);
+      const object: signObject = { dateServer: data.data, ref: ref || [] };
       return object;
     } else {
       return null;
@@ -77,7 +78,6 @@ export const changePasswordThunk = createAsyncThunk(
   "changePassword/user",
   async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
     const data = await clientAPI("post", url, form, rejectWithValue);
-    console.log(data);
      return data;
   }
 );

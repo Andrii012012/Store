@@ -1,6 +1,5 @@
 import { ReactElement, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
-import styles from './style.module.scss';
 
 const modal = document.getElementById('modal')!;
 

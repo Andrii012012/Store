@@ -1,18 +1,19 @@
-
-export interface IHistoryOrder  {
+export interface IHistoryOrder {
   id: string;
   fromOrderDate: string;
   price: number;
-  statusDelivery: "Ожидает на почте" | "Получен" | "Отменен" | 'Ожидает оплаты';
-  delivery: 'Доставка курьером:' | 'Доставка почтой:';
+  statusDelivery: "Ожидает на почте" | "Получен" | "Отменен" | "Ожидает оплаты";
+  delivery: "Доставка курьером:" | "Доставка почтой:";
   waitDate: string;
-  consistOrder: {
-    id: string,
-    name: string,
-    things: string,
-    volume: string;
-    id_order: string;
-  }[] | [];
+  consistOrder:
+    | {
+        id: string;
+        name: string;
+        things: string;
+        volume: string;
+        id_order: string;
+      }[]
+    | [];
 }
 
 export interface IUser {

@@ -29,6 +29,7 @@ export const filterSeach = createSelector(
 export const FilterProducts = createSelector(
   [(state) => state.goods, (state) => state.goods],
   (state) => {
+    // console.log(state.
     const { gender, brand, price, notes, filter } = state.filterGoods;
     let copyNewGoods;
     let newGoods = state.goods.map((item: IGoods) => {
@@ -82,7 +83,7 @@ export const filterSeachGoods = createSelector(
   (state) => {
     const newGoods: string[] = [];
     state.goods.filter((item: IGoods) => {
-      if (
+      if ( 
         item.name
           .toLocaleLowerCase()
           .includes(state.filterSeachGoods.nameGoods.toLocaleLowerCase()) &&

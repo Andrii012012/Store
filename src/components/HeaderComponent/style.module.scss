@@ -1,0 +1,31 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
+@import '../../utils/utilsStyles/colors.scss';
+
+.title {
+    margin-bottom: rem(10);
+    @extend %mainColor;
+}
+
+.listInfo {
+    display: flex;
+
+    >li {
+        span {
+            margin: 0 rem(10);
+        }
+    }
+
+    li {
+        &:last-child {
+            color: map.get($colors, 'warmDark');
+        }
+    }
+}
+
+.wrapper {
+    margin-bottom: rem(23);
+}
+
+@import './media.scss';

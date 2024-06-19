@@ -1,0 +1,71 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
+
+.basket {
+    width: 100%;
+    margin-top: rem(132);
+    background-color: map.get($colors, 'darkExtra');
+    color: map.get($colors, 'vanilla');
+    padding: rem(50) 0;
+}
+
+.useBonus {
+    background-color: map.get($colors, 'jet');
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px 0px rgba(160, 149, 133, 0.2);
+    padding: rem(30);
+
+    img {
+        margin-right: rem(20);
+    }
+
+    margin-bottom: rem(40);
+}
+
+.bodyInfoBonus {
+    margin-bottom: rem(20);
+    display: flex;
+    align-items: center;
+}
+
+.wrapper{
+    max-width: rem(955);
+    width: 100%;
+}
+
+.countMarks{
+    padding: rem(10) rem(18);
+    border: 1px solid map.get($colors, 'vanilla');
+    border-radius: 4px;
+    color: map.get($colors, 'vanilla');
+    max-width: rem(87);
+    max-height: rem(45);
+    margin-right: rem(10);
+    text-align: center;
+}
+
+.loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: rem(30);
+    display: none;
+}
+
+.itemInfo{
+    display: flex;
+    margin-bottom: rem(30);
+    border-bottom: 1px solid map.get($colors, "darkExtra");
+    padding-bottom: rem(10);
+    .textAction{
+        margin-right: rem(96);
+    }
+    .textActionActive{
+        margin-right: rem(80);
+    }
+}
+
+@import './media.scss';

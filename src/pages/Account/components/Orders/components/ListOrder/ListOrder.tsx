@@ -1,11 +1,11 @@
 import ButtonGoods from '../../../../../../components/api/ButtonGoods/ButtonGoods';
 import { cancelOrderURL } from '../../../../../../config/config';
 import Accordion from '../../../../../../containers/Accordion/Accordion';
-import { cancelOrderThunk } from '../../../../../../features/goods/slice';
 import { useAppDispatch } from '../../../../../../hooks/useAppDispatch';
 import { IHistoryOrder } from '../../../../../../interfaces/user';
 import styles from './style.module.scss';
 import gStyles from '../../../../../../styles/style.module.scss';
+import { cancelOrderThunk } from '../../../../../../features/basket/basket';
 
 interface IProps {
     list: IHistoryOrder[];

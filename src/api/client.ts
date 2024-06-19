@@ -3,8 +3,8 @@ import axios from "axios";
 export async function clientAPI(
   method: string,
   url: string,
-  form: object,
-  functionReject: (error: any) => void
+  form?: object,
+  functionReject?: (error: any) => void
 ) {
   try {
     if (method === "post") {
@@ -27,7 +27,7 @@ export async function clientAPI(
       return response;
     }
   } catch (err) {
-    if (err instanceof Error) {
+    if (err instanceof Error && functionReject) {
       functionReject(err.message);
     }
   }

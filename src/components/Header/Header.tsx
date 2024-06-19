@@ -10,9 +10,12 @@ import basket from '../../assets/imgs/Header/basket.svg';
 import { useEffect, useRef } from 'react';
 import Seach from './components/Seach/Seach';
 import Catalog from './components/Catalog/Catalog';
-import { ROUTE_ABOUT, ROUTE_BONUS, ROUTE_DOCUMATION } from '../../route/route';
+import { ROUTE_ABOUT, ROUTE_BASKET, ROUTE_BONUS, ROUTE_DOCUMATION } from '../../route/route';
+import { useAppSelector } from '../../hooks/useAppSelector';
 
 export default function Header(): JSX.Element {
+
+    const basketArray = useAppSelector((state) => state.basket.basket);
 
     const refHeader = useRef<HTMLDivElement | null>(null);
 
@@ -71,10 +74,11 @@ export default function Header(): JSX.Element {
                 <Link className={styles.logo} to='/'><img src={logo} alt="" /></Link>
                 <Catalog />
                 <Seach refHeader={refHeader} />
-                <Link className={styles.user} to='account'><img src={user} alt="" /></Link>
-                <div className={styles.basket}>
+                <NavLink className={styles.user} to='account'><img src={user} alt="" /></NavLink>
+                <NavLink to={ROUTE_BASKET} className={styles.basket}>
                     <img src={basket} alt="" />
-                </div>
+                    <div>{basketArray.length}</div>
+                </NavLink>
             </div>
         </div>
     </header>

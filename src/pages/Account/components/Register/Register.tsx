@@ -8,8 +8,9 @@ import { useRef, useState } from 'react';
 import validation from '../../../../utils/helps/validation';
 import { useAppSelector } from '../../../../hooks/useAppSelector';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
-import { registerThunk, signThunk } from '../../../../features/user/slice';
-import { registerURL, signURL } from '../../../../config/config';
+import { registerThunk } from '../../../../features/user/slice';
+import { registerURL } from '../../../../config/config';
+import Modal from '../../../../components/Header/components/Modal/Modal';
 
 type TRadio = {
     women: boolean;
@@ -38,6 +39,8 @@ export default function Register(props: IProps): JSX.Element {
             women: false,
         }
     );
+
+    const [isPopup, setIsPopup] = useState<boolean>(false);
 
     const status = useAppSelector((state) => state.user.status);
 
@@ -96,7 +99,7 @@ export default function Register(props: IProps): JSX.Element {
                 form.append('gender', gender);
                 dispatch(registerThunk({ url: registerURL, form }));
                 if (status === 'success') {
-                    dispatch(signThunk({ url: signURL, form }));
+                    setIsPopup(true);
                 }
             }
         }
@@ -125,6 +128,10 @@ export default function Register(props: IProps): JSX.Element {
                     <ButtonGoods className={styles.btnRegister} text='Регистрация' />
                 </div>
             </form>
+            {isPopup && <Modal><div className={styles.popup}>
+               <h2 className={styles.popupTile}>Вы успешно зарегистрированы!</h2>
+                <ButtonGoods text={'Перейти к покупкам'}/>
+            </div></Modal>}
         </section>
     );
 }

@@ -25,7 +25,7 @@ export default function ListComment() {
 
     let comments = useAppSelector(filterGoods);
 
-    comments = comments.comments;
+    comments = comments?.comments;
 
     useEffect(() => {
         function hangleResize() {
@@ -50,7 +50,7 @@ export default function ListComment() {
     }, []);
 
 
-    for (let index = 0; index < comments.length; index++) {
+    for (let index = 0; index < comments?.length; index++) {
         if (index < showComments) {
             const element = (
                 <li className={styles.item} key={comments[index].date}>
@@ -83,7 +83,7 @@ export default function ListComment() {
     return (
         <ul className={styles.list}>
             {elementJsx}
-            {comments.length > showComments && <p className={styles.extraComments}
+            {comments?.length > showComments && <p className={styles.extraComments}
                 onClick={() => setShowComments((prevState) => prevState += 3)}>Показать еще</p>}
         </ul>
     );

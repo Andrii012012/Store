@@ -1,11 +1,11 @@
 import styles from './styles.module.scss';
 import chackMark from '../../../assets/imgs/ChooseGender/check-mark.svg';
-import { useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 
 interface IProps {
     text?: string;
     className?: string;
-    onChange: (value: boolean, text: string) => void;
+    onChange?: (value: boolean, text: string) => void;
     value: boolean;
     icon?: string;
     refCheckbox?: React.MutableRefObject<HTMLDivElement | null>;
@@ -18,7 +18,7 @@ export default function Checkbox(props: IProps): JSX.Element {
 
     function hangleChange() {
         if (refCheckbox.current) {
-            onChange(!value, text || '');
+            onChange && onChange(!value, text || '');
         }
     }
 

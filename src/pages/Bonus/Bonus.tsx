@@ -12,6 +12,7 @@ import image4TebletExtra from '../../assets/imgs/Bonus/image-4-teblet-extra.png'
 import image5TebletExtra from '../../assets/imgs/Bonus/image-5-teblet-extra.png';
 import ListItem from './components/ListItem/ListItem';
 import { TListItem } from './interface/interface';
+import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 
 const listItem: TListItem[] = [
     {
@@ -45,11 +46,7 @@ export default function Bonus(): JSX.Element {
     return (
         <main className={styles.bonus}>
             <div className={`${gStyles.container} ${styles.container}`}>
-                <h1 className={`${gStyles.title} ${styles.title}`}>Бонусы</h1>
-                <ul className={`${styles.listInfo} ${gStyles.textSmall}`}>
-                    <li>Главная<span>/</span></li>
-                    <li>Бонусы</li>
-                </ul>
+                <HeaderComponent text='Бонусы' title='Бонусы' />
                 <p className={`${gStyles.text} ${styles.text}`}>Совершая покупки, а также определённые действия у нас на сайте, вы можете зарабатывать себе бонусные баллы. Этими баллами можно оплачивать покупки!</p>
                 <ul className={styles.list}>
                     <ListItem list={listItem} />

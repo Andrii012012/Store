@@ -1,0 +1,10 @@
+@use 'sass:map';
+@import '../../../utils/utilsStyles/media.scss';
+@import '../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .bodyNumberCount{
+        text-align: center;
+        width: rem(56);
+    }
+}

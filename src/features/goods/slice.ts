@@ -56,7 +56,7 @@ interface IInitialState {
   };
   filterSeachGoods: {
     gender: TGenderList;
-    nameGoods: string;
+    nameGoods: string | null;
   };
 }
 
@@ -64,14 +64,6 @@ type TFilter = {
   type: string;
   name: string;
 };
-
-export const cancelOrderThunk = createAsyncThunk(
-  "cancelOrder/goods",
-  async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
-    const data = await clientAPI("post", url, form, rejectWithValue);
-     console.log(data);
-  }
-);
 
 const initialState: IInitialState = {
   goodsCategory: arrayGoodsCategory,
@@ -178,7 +170,7 @@ const slice = createSlice({
     },
     filterSeachGoodsSetNameGoods: (
       state: IInitialState,
-      action: PayloadAction<string>
+      action: PayloadAction<string | null>
     ) => {
       state.filterSeachGoods.nameGoods = action.payload;
     },
@@ -201,22 +193,6 @@ const slice = createSlice({
       state.filterGoods.seachFilter = { type: "", name: "" };
       state.filterGoods.filter = "all";
     },
-  },
-  extraReducers(build) {
-    build.addCase(cancelOrderThunk.pending, (state: IInitialState) => {
-      state.status = "pending";
-      state.error = null;
-    });
-    build.addCase(cancelOrderThunk.fulfilled, (state: IInitialState) => {
-      state.status = "success";
-    });
-    build.addCase(
-      cancelOrderThunk.rejected,
-      (state: IInitialState, action: PayloadAction<any>) => {
-        state.status = "reject";
-        state.error = action.payload;
-      }
-    );
   },
 });
 

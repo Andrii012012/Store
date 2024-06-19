@@ -1,0 +1,103 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/media.scss';
+@import '../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'desktop')) {
+    .useBonus {
+        margin-bottom: rem(30);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .useBonus {
+        margin-bottom: rem(20);
+    }
+
+    .bodyInfoBonus {
+        margin-bottom: rem(20);
+    }
+
+    .useBonus {
+        padding: rem(32) rem(30) rem(30) rem(30);
+    }
+
+    .basket {
+        padding-top: rem(40);
+    }
+}
+
+@media (max-width: rem(632)) {
+    .basket {
+        margin-top: rem(70);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .useBonus {
+        margin-bottom: rem(40);
+        padding: rem(10);
+    }
+
+    .basket {
+        margin-top: rem(66);
+        padding-top: rem(30);
+    }
+
+    .bodyInfoBonus img {
+        margin-right: rem(10);
+    }
+
+    .itemInfo {
+        &:first-child {
+            p:nth-child(1) {
+                margin-right: rem(40);
+            }
+        }
+
+        &:nth-child(2) {
+            p:nth-child(1) {
+                margin-right: rem(56);
+            }
+        }
+
+        &:nth-child(3) {
+            p:nth-child(1) {
+                margin-right: rem(56);
+            }
+        }
+    }
+
+    .container {
+        display: contents;
+    }
+
+    .wrapper {
+        padding: 0 rem(20);
+    }
+}
+
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .itemInfo {
+        &:first-child {
+            p:nth-child(1) {
+                margin-right: rem(12);
+            }
+        }
+
+        &:nth-child(2) {
+            p:nth-child(1) {
+                margin-right: rem(28);
+            }
+        }
+
+        &:nth-child(3) {
+            p:nth-child(1) {
+                margin-right: rem(28);
+            }
+        }
+    }
+    .wrapper{
+        padding: 0 rem(16);
+    }
+}

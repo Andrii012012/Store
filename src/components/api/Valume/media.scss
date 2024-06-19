@@ -2,20 +2,20 @@
 @import '../../../utils/utilsStyles/rem.scss';
 
 @media (max-width: map.get($breakpoints, 'teblet')) {
-    .listValume {
+    .listVolume {
         justify-content: center;
     }
 }
 
 @media (max-width: map.get($breakpoints, 'tebletExtra')) {
-    .itemValume {
+    .itemVolume {
         font-size: rem(12);
     }
 }
 
 
 @media (max-width: map.get($breakpoints, 'phone')) {
-    .itemValume {
+    .itemVolume {
         width: rem(30);
         height: rem(30);
     }

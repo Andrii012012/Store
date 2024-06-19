@@ -5,19 +5,21 @@ import { filterSeachGoodsSetNameGoods } from "../../../../features/goods/slice";
 interface IProps {
     refInput: React.MutableRefObject<HTMLInputElement | null>;
     list: string[];
+    setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function ListGoods(props: IProps): JSX.Element {
-    let { list, refInput } = props;
+    let { list, refInput, setIsShow } = props;
 
     const goGoods = useNavigate();
 
-     const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
-    function hangleSwitch(e: React.MouseEvent<HTMLLIElement>){
-        if(e.target && e.target instanceof HTMLElement && e.target.innerHTML){
+    function hangleSwitch(e: React.MouseEvent<HTMLLIElement>) {
+        if (e.target && e.target instanceof HTMLElement && e.target.innerHTML) {
             dispatch(filterSeachGoodsSetNameGoods(e.currentTarget.children[0].innerHTML));
             goGoods(`/catalog/${e.currentTarget.children[0].innerHTML}`);
+            setIsShow(false);
         }
     }
 

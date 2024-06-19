@@ -3,11 +3,11 @@
 @import '../../../utils/utilsStyles/mainColor.scss';
 @import '../../../utils/utilsStyles/colors.scss';
 
-.textValume {
+.textVolume {
     margin-bottom: rem(10);
 }
 
-.listValume {
+.listVolume {
     display: flex;
 }
 
@@ -15,11 +15,11 @@
     margin-bottom: rem(20);
 }
 
-.textValume {
+.textVolume {
     color: map.get($colors, 'vanilla');
 }
 
-.itemValume {
+.itemVolume {
     margin-right: rem(20);
     display: flex;
     align-items: center;
@@ -49,6 +49,15 @@
         }
     }
 
+}
+
+.itemVolumeAction{
+    background: map.get($colors, 'gradientMain');
+
+    span {
+        background: map.get($colors, 'jet');
+        -webkit-background-clip: text;
+    }
 }
 
 

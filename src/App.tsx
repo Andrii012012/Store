@@ -8,6 +8,7 @@ import Account from './pages/Account/Account';
 import {
   ROUTE_ABOUT,
   ROUTE_ACCOUNT,
+  ROUTE_BASKET,
   ROUTE_BONUS, ROUTE_CATALOG_ITEM,
   ROUTE_DOCUMATION,
   ROUTE_MAIN
@@ -15,6 +16,7 @@ import {
 import Bonus from './pages/Bonus/Bonus';
 import About from './pages/About/About';
 import Documention from './pages/Documention/Documention';
+import Basket from './pages/Basket/Basket';
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         <Route path={ROUTE_BONUS} element={<Bonus />} />
         <Route path={ROUTE_ABOUT} element={<About />} />
         <Route path={ROUTE_DOCUMATION} element={<Documention />} />
+        <Route path={ROUTE_BASKET} element={<Basket />} />
       </Routes>
     </Layout>
   );

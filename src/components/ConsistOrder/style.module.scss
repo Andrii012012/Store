@@ -1,0 +1,48 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
+
+.consistOrderBody {
+    background-color: map.get($colors, 'jet');
+    padding: rem(30);
+    max-width: rem(630);
+    width: 100%;
+    border-radius: 4px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: rem(30);
+    @extend %mainColor;
+
+    span {
+        margin-left: rem(40);
+        font-weight: 700;
+        color: map.get($colors, 'vanilla');
+        font-size: rem(20);
+    }
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+      span{
+        font-size: rem(16);
+      }
+}
+
+.resultSum{
+    display: flex;
+    justify-content: center;
+    margin-bottom: rem(30);
+    @extend %mainColor;
+     span{
+        margin-left: rem(40);
+        font-weight: 700;
+        color: map.get($colors, 'vanilla');
+        font-size: rem(20);
+     }
+}
+
+@import './media.scss';

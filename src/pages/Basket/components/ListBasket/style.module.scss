@@ -1,0 +1,103 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
+
+.goods {
+    // display: flex;
+    display: grid;
+    grid-template-columns: 0.1fr 1fr;
+    width: 100%;
+}
+
+.bodyControll {
+    max-width: rem(955);
+    width: 100%;
+}
+
+.infoGoods {
+    display: flex;
+    width: 100%;
+}
+
+.goodsName {
+    flex: 1 1 auto;
+}
+
+.imageGoods {
+    max-width: rem(80);
+    max-height: rem(80);
+    min-height: rem(80);
+    min-width: rem(80);
+    margin-right: rem(45);
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.price {
+    margin-right: rem(45);
+}
+
+.btn {
+    background-color: transparent;
+    font-size: rem(12);
+    color: map.get($colors, 'vanilla');
+    transform: translateY(-4px);
+    position: relative;
+
+    &::after {
+        content: '';
+        display: block;
+        width: rem(12);
+        height: rem(2);
+        border-radius: 2px;
+        background-color: map.get($colors, 'warmGray');
+        position: absolute;
+        top: 50%;
+        right: -14px;
+        transform: translate(100%, -50%) rotate(-45deg);
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        width: rem(12);
+        height: rem(2);
+        border-radius: 2px;
+        background-color: map.get($colors, 'warmGray');
+        position: absolute;
+        top: 50%;
+        right: -14px;
+        transform: translate(100%, -50%) rotate(45deg);
+    }
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    margin-bottom: rem(20);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    padding: rem(20) rem(0);
+    border-bottom: 1px solid map.get($colors, 'almostBlack');
+    width: 100%;
+}
+
+.checkbox {
+    margin-right: rem(45);
+}
+
+.list {
+    margin-bottom: rem(50);
+}
+
+.bodyPrice{
+   display: flex;
+}
+
+@import './media.scss';

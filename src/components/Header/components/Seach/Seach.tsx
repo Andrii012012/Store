@@ -2,7 +2,7 @@ import gStyles from '../../../../styles/style.module.scss';
 import pStyles from '../../style.module.scss';
 import seach from '../../../../assets/imgs/Header/search.svg';
 import { debounce } from 'lodash';
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { filterSeachGoodsSetNameGoods } from '../../../../features/goods/slice';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import ListGoods from '../ListGoods/ListGoods';
@@ -19,6 +19,8 @@ export default function Seach(props: IProps): JSX.Element {
 
     let { refHeader } = props;
 
+    const [isShow, setIsShow] = useState<boolean>(true);
+
     const dispatch = useAppDispatch();
 
     const listGoods = useAppSelector(filterSeachGoods);
@@ -31,18 +33,19 @@ export default function Seach(props: IProps): JSX.Element {
 
     useScrollbar(refList);
 
-     const hangleChange = useCallback(
+    const hangleChange = useCallback(
         debounce(() => {
             if (refInput.current && refInput.current instanceof HTMLInputElement) {
+                setIsShow(true);
                 dispatch(filterSeachGoodsSetNameGoods(refInput.current.value));
             }
-        }, 1000),
-     []);
+        }, 300),
+        []);
 
     function hangleOpenSeach() {
         if (refHeader.current) {
             refHeader.current.classList.add(pStyles.openSeachActive);
-            setWatch({elementHangle: refHeader.current, watchClassName: 'seachWrapper', removeClassName: pStyles.openSeachActive});
+            setWatch({ elementHangle: refHeader.current, watchClassName: 'seachWrapper', removeClassName: pStyles.openSeachActive });
         }
     }
 
@@ -50,12 +53,12 @@ export default function Seach(props: IProps): JSX.Element {
         <form className={pStyles.seach} action="#" >
             <div className={`${pStyles.wrapper} seachWrapper`}>
                 <div className={`${pStyles.bodyInput} ${gStyles.bodyInput}`}>
-                    <input ref={refInput} className={pStyles.input} type='text' onChange={hangleChange}  placeholder='Найти парфюм..' />
+                    <input ref={refInput} className={pStyles.input} type='text' onChange={hangleChange} placeholder='Найти парфюм..' />
                     <img onClick={hangleOpenSeach} className={pStyles.iconSeach} src={seach} alt="" />
                     <ul className={`${pStyles.listGoods} header-list-goods`}>
                         <div style={{ maxHeight: '350px', display: 'flex' }} ref={refList}>
                             <div style={{ display: 'contest' }}>
-                                <ListGoods list={listGoods} refInput={refInput} />
+                                {isShow && <ListGoods setIsShow={setIsShow} list={listGoods} refInput={refInput} />}
                             </div>
                         </div>
                     </ul>

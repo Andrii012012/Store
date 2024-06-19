@@ -1,75 +1,80 @@
 import { TOffer } from "../../interface/interface";
 import styles from './style.module.scss';
 import gStyles from '../../../../../../styles/style.module.scss';
-import { useEffect, useState } from "react";
 import { SwiperSlide, Swiper } from "swiper/react";
+import useWatchMedia from "../../../../../../hooks/useWatchMedia";
+import { useAppDispatch } from "../../../../../../hooks/useAppDispatch";
+import { chooseBrand, chooseGender } from "../../../../../../features/goods/slice";
+import { useAppSelector } from "../../../../../../hooks/useAppSelector";
+import { FilterProducts } from "../../../../../../features/goods/createSelect";
+import { addInBasketURL } from "../../../../../../config/config";
+import { addInBasketThunk } from "../../../../../../features/basket/basket";
+import renderState from "../../../../../../features/basket/utils/updateBasket";
 
 interface IProps {
     list: TOffer[],
 }
 
-type TSettingsSwiper = {
-    isSwiper: boolean;
-    showSlides: number;
-}
-
 export default function ListOffer(props: IProps): JSX.Element {
     let { list } = props;
 
-    const [settingsSwiper, setSettingsSwiper] = useState<TSettingsSwiper>({
-        isSwiper: window.matchMedia('(max-width: 768px)').matches,
-        showSlides: window.matchMedia('(max-width: 480px)').matches ? 1 : 2,
-    });
+    const dataMedia = useWatchMedia({ widthTeblet: 768, widthPhone: 480, showSlide: [3, 2, 1] });
 
-    useEffect(() => {
-        function hangleRender() {
-            let matchTeblet = window.matchMedia('(max-width: 768px)').matches;
-            let matchPhone = window.matchMedia('(max-width: 480px)').matches;
+    const dispatch = useAppDispatch();
 
-            setSettingsSwiper((prevState: TSettingsSwiper): TSettingsSwiper => {
+    const goods = useAppSelector(FilterProducts);
 
-                const newState = {...prevState};
+    const user = useAppSelector((state) => state.user.user);
 
-                if (matchTeblet && !settingsSwiper.isSwiper) {
-                    newState.isSwiper = true;
-                } else if (!matchTeblet && settingsSwiper.isSwiper) {
-                    newState.isSwiper = false;
-                }
+    const basketStatus = useAppSelector((state) => state.basket.status);
 
-                if (matchPhone && newState.showSlides === 2) {
-                    newState.showSlides = 1;
-                } else if (!matchPhone && newState.showSlides === 1) {
-                    newState.showSlides = 2;
-                }
+    function hangleSendBasket(text: string) {
 
-                return newState;
-            });
-
+        if (text === 'Для неё') {
+            dispatch(chooseGender({ gender: 'Унисекс', value: false }));
+            dispatch(chooseGender({ gender: 'Женские', value: true }));
+            dispatch(chooseGender({ gender: 'Мужские', value: false }));
+        } else if (text === 'Для него') {
+            dispatch(chooseGender({ gender: 'Унисекс', value: false }));
+            dispatch(chooseGender({ gender: 'Мужские', value: true }));
+            dispatch(chooseGender({ gender: 'Женские', value: false }));
+        } else if (text === 'Унисекс') {
+            dispatch(chooseGender({ gender: 'Мужские', value: false }));
+            dispatch(chooseGender({ gender: 'Унисекс', value: true }));
+            dispatch(chooseGender({ gender: 'Женские', value: false }));
         }
 
-        window.addEventListener('resize', hangleRender);
+        const itemGoods = goods[0];
 
-        return () => {
-            window.removeEventListener('resize', hangleRender);
-        };
+        if (user && user.id) {
+            const form = new FormData();
+            form.append('id', user.id);
+            form.append('originPrice', String(itemGoods.price));
+            form.append('name', itemGoods.name);
+            form.append('price', String(itemGoods.price * (Number('1') || 1)));
+            form.append('volume', String('30'));
+            form.append('things', '1');
+            dispatch(addInBasketThunk({ url: addInBasketURL, form }));
+            renderState({ dispatch, status: basketStatus, id: user.id });
+        }
 
-    }, []);
+    }
 
     return (
         <>
             {
-                !settingsSwiper.isSwiper ? list.map((item, _) => (
+                !dataMedia.media ? list.map((item, _) => (
                     <li key={item.title} className={styles.item}>
                         <img className={styles.background} src={item.background} alt="" />
                         <div className={styles.content}>
                             <h3 className={`${styles.titleCard} ${gStyles.titleSmall}`}>{item.title}</h3>
                             <p className={styles.text}>{item.text}</p>
-                            <button className={styles.btn}><span>В корзину</span></button>
+                            <button onClick={() => hangleSendBasket(item.title)} className={styles.btn}><span>В корзину</span></button>
                         </div>
                     </li>
                 )) : <Swiper
                     spaceBetween={10}
-                    slidesPerView={settingsSwiper.showSlides}
+                    slidesPerView={dataMedia.showSlide}
                 >
                     <>
                         {list.map((item, _) => (
@@ -79,7 +84,7 @@ export default function ListOffer(props: IProps): JSX.Element {
                                     <div className={styles.content}>
                                         <h3 className={`${styles.titleCard} ${gStyles.titleSmall}`}>{item.title}</h3>
                                         <p className={styles.text}>{item.text}</p>
-                                        <button className={styles.btn}><span>В корзину</span></button>
+                                        <button onClick={() => hangleSendBasket(item.title)} className={styles.btn}><span>В корзину</span></button>
                                     </div>
                                 </li>
                             </SwiperSlide>

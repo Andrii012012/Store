@@ -3,3 +3,8 @@ export const signURL = "http://storeserver?action=sign";
 export const setAddressURL = "http://storeserver?action=setAddress";
 export const changePasswordURL = 'http://storeserver?action=changePassword';
 export const cancelOrderURL = 'http://storeserver?action=cancelOrder';
+export const addInBasketURL = 'http://storeserver?action=addInBasket';
+export const getBasketURL = 'http://storeserver?action=getBasket';
+export const changeCheckboxURL = 'http://storeserver?action=changeCheckbox';
+export const removeGoodsURL = 'http://storeserver?action=removeGoods';
+export const changeCountGoodsURL = 'http://storeserver?action=changeCountGoods';

@@ -1,0 +1,74 @@
+@use 'sass:map';
+@import '../../../utils/utilsStyles/colors.scss';
+@import '../../../utils/utilsStyles/rem.scss';
+
+.count {
+    background: map.get($colors, 'darkCoffe');
+    width: rem(144);
+    height: rem(44);
+    border-radius: rem(4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: rem(20);
+}
+
+.btn {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 2px;
+        background-color: map.get($colors, 'warmGray');
+        border-radius: 2px;
+    }
+}
+
+.decrement {
+    justify-self: flex-end;
+}
+
+.increment {
+    &::before {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 2px;
+        background-color: map.get($colors, 'vanilla');
+        border-radius: 2px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%) rotate(-90deg);
+    }
+    &::after {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 2px;
+        background-color: map.get($colors, 'vanilla');
+        border-radius: 2px;
+    }
+}
+
+.bodyNumberCount {
+    font-size: rem(14);
+    line-height: em(17.04, 16);
+    padding: rem(7.5) rem(19);
+    margin: 0 rem(10);
+    border: 1px solid map.get($colors, 'warmGray');
+    border-radius: 4px;
+    color: map.get($colors, 'vanilla');
+    cursor: pointer;
+     &:hover{
+         border: 1px solid map.get($colors, 'vanilla');
+     }
+}
+
+@import './media.scss';

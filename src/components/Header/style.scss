@@ -1,5 +1,19 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/rem.scss';
+
 .header-list-goods .os-scrollbar.os-scrollbar-vertical.os-scrollbar-cornerless, .os-scrollbar.os-scrollbar-vertical.os-scrollbar-cornerless.os-scrollbar-rtl {
     top: 0;
     bottom: 0;
     width: 14px;
+}
+
+.style_user__Qz78d.active{
+    background-color: map.get($colors, 'jet');
+    border-radius: 4px;
+}
+
+.style_basket__byB3a.active{
+    background-color: map.get($colors, 'jet');
+    border-radius: 4px;
 }
