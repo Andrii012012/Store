@@ -10,11 +10,6 @@
         align-items: flex-start;
     }
 
-    .indexation::after {
-        content: "";
-        transform: translate(0%, -50%);
-    }
-
     .bodyInfo {
         margin-bottom: rem(30);
     }
@@ -25,91 +20,46 @@
         grid-column: 2 span;
     }
 
-    .lineMarking {
-        max-width: initial;
-    }
-
-    .breakpoint {
-        &:hover::after {
-            left: -100%;
-            transform: translate(15%, -10%);
-        }
-
-        &:last-child {
-            right: 0;
-
-            &:hover::after {
-                left: 100%;
-                transform: translate(-100%, -50%);
-            }
-        }
-
-        &:nth-child(3) {
-            left: 50%;
-
-            &:hover::after {
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        }
-    }
-
-    .wrapperListBonus {
-        max-width: initial;
-    }
-
     .date {
         padding: rem(10);
     }
-    .bonus{
+
+    .bonus {
         padding-bottom: rem(40);
-    }    
+    }
 }
 
 @media (max-width: map.get($breakpoints, 'tebletExtra')) {
-    .breakpoint {
-        &:hover::after {
-            font-size: rem(12);
-        }
+    .wrapperInfo {
+        grid-template-columns: 1fr 0.1fr;
+    }
 
-        &:last-child {
-            &:hover::after {
-                font-size: rem(12);
-            }
-        }
+    .user {
+        margin: 0 rem(40) 0 0;
+    }
 
-        &:nth-child(3) {
-            &:hover::after {
-                font-size: rem(12);
-            }
-        }
-    }
-    .wrapperInfo{
-       grid-template-columns: 1fr 0.1fr;
-    }
-    .user{
-       margin: 0 rem(40) 0 0;
-    }
-    .infoBought{
+    .infoBought {
         font-size: rem(12);
-    }
-    .lineMarking{
-      margin-bottom: rem(40);
     }
 }
 
 @media (max-width: map.get($breakpoints, 'phone')) {
-    .bonus{
+    .bonus {
         padding-bottom: rem(20);
     }
+
     .countBought {
         margin-bottom: rem(10);
     }
-    .wrapperInfo{
+
+    .wrapperInfo {
         margin-bottom: rem(20);
     }
-    .item:last-child {
-    margin-bottom: rem(20);
-}
-}
 
+    .item:last-child {
+        margin-bottom: rem(20);
+    }
+    .user{
+        margin-right: 0;
+    }
+}

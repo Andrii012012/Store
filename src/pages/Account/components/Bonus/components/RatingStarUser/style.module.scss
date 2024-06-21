@@ -1,0 +1,9 @@
+.bodyStars {
+    display: flex;
+}
+
+.iconStar {
+    &:nth-child(2) {
+        transform: translateY(50%);
+    }
+}

@@ -88,7 +88,7 @@ export default function Basket(): JSX.Element {
                                 <p className={gStyles.text}>У вас сейчас есть {user.marks} баллов. Используйте их, чтобы получить скидку 100 ₽ на эту покупку</p>
                             </div>
                             {!isSpendMarks ? <ButtonGoods hangle={hangleIsUseMarks} text='Потратить баллы' /> :
-                                <SpendMarks setValue={setMarks} />
+                                <SpendMarks status={basketStatus} id={user.id} setValue={setMarks} />
                             }
                         </div>
                         {(basketStatus !== 'success') ? <h2 className={styles.loading}>Загрузка....</h2>

@@ -74,11 +74,20 @@ export const cancelOrderThunk = createAsyncThunk(
   }
 );
 
-export const checkoutOrder = createAsyncThunk(
+export const checkoutOrderThunk = createAsyncThunk(
   "checkoutOrder/goods",
   async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
     const data = await clientAPI("post", url, form, rejectWithValue);
     console.log(data);
+  }
+);
+
+export const checkBonusFiledThunk = createAsyncThunk(
+  "checkBonusFiled/goods",
+  async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
+    const data = await clientAPI("post", url, form, rejectWithValue);
+    console.log(data);
+     return data?.data;
   }
 );
 
@@ -208,15 +217,34 @@ export const slice = createSlice({
       }
     );
 
-    build.addCase(checkoutOrder.pending, (state: IInitialStateBasket) => {
+    build.addCase(checkoutOrderThunk.pending, (state: IInitialStateBasket) => {
       state.status = "pending";
       state.error = null;
     });
-    build.addCase(checkoutOrder.fulfilled, (state: IInitialStateBasket) => {
+    build.addCase(checkoutOrderThunk.fulfilled, (state: IInitialStateBasket) => {
       state.status = "success";
     });
     build.addCase(
-      checkoutOrder.rejected,
+      checkoutOrderThunk.rejected,
+      (state: IInitialStateBasket, action: PayloadAction<any>) => {
+        state.status = "reject";
+        state.error = action.payload;
+      }
+    );
+    build.addCase(checkBonusFiledThunk.pending, (state: IInitialStateBasket) => {
+      state.status = "pending";
+      state.error = null;
+    });
+    build.addCase(checkBonusFiledThunk.fulfilled, (state: IInitialStateBasket, action: PayloadAction<string>) => {
+        if(action.payload.length > 1){
+          state.status = "reject";
+          state.error = action.payload;
+        } else {
+          state.status = "success";
+        }
+    });
+    build.addCase(
+      checkBonusFiledThunk.rejected,
       (state: IInitialStateBasket, action: PayloadAction<any>) => {
         state.status = "reject";
         state.error = action.payload;
@@ -224,6 +252,5 @@ export const slice = createSlice({
     );
   },
 });
-
 export const basket = slice.reducer;
 export const { setCheckout } = slice.actions;

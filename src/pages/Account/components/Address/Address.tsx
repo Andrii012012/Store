@@ -15,9 +15,11 @@ export default function Address(): JSX.Element {
         seIsChange(!isChange);
     }
 
-    if (user && user.address && !user.address.name && isChange) {
+    console.log(user);
+
+    if (user && !user.address && isChange) {
         return <AddAddressPay onChange={hangleIsChange} />
-    } else if (user && isChange) {
+    } else if (user && user.address && isChange) {
         return <ListData user={user} onChange={hangleIsChange} />;
     } else if (user && !isChange) {
         return <EditForm user={user} onChange={hangleIsChange} />;

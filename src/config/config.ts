@@ -9,3 +9,4 @@ export const changeCheckboxURL = 'http://storeserver?action=changeCheckbox';
 export const removeGoodsURL = 'http://storeserver?action=removeGoods';
 export const changeCountGoodsURL = 'http://storeserver?action=changeCountGoods';
 export const checkoutOrderURL = 'http://storeserver?action=checkoutOreder';
+export const checkBonusFieldURL = 'http://storeserver?action=checkBonusField';

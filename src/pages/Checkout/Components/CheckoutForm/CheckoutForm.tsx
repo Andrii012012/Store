@@ -1,34 +1,17 @@
 import InputForm from '../../../../components/api/InputForm/InputForm';
 import styles from './styles.module.scss';
 import gStyles from '../../../../styles/style.module.scss';
-import { useState } from 'react';
-import { IAddressInfo } from '../../../../interfaces/addressInfo';
-
-
-interface IInputsValues extends IAddressInfo {
-    description: string;
-}
+import { IInputsValues } from '../../interface/interface';
 
 interface IProps {
     refWrapper: React.MutableRefObject<HTMLDivElement | null>;
+    inputsValues: IInputsValues;
+    setInputsValues: React.Dispatch<React.SetStateAction<IInputsValues>>;
 }
 
 export default function CheckoutForm(props: IProps): JSX.Element {
 
-    let { refWrapper } = props;
-
-    const [inputsValues, setInputsValues] = useState<IInputsValues>({
-        name: '',
-        surname: '',
-        country: '',
-        address: '',
-        locality: '',
-        area: '',
-        postcode: '',
-        phone: '',
-        email: '',
-        description: '',
-    });
+    let { refWrapper, inputsValues, setInputsValues } = props;
 
     function hangleChange(target: HTMLInputElement): void {
         setInputsValues((prevState) => {
@@ -72,8 +55,8 @@ export default function CheckoutForm(props: IProps): JSX.Element {
                     newState.email = value;
                     break;
                 }
-                case 'description': {
-                    newState.description = value;
+                case 'detailInfo': {
+                    newState.detailInfo = value;
                     break;
                 }
             }
@@ -106,7 +89,7 @@ export default function CheckoutForm(props: IProps): JSX.Element {
                     <h2 className={`${styles.detailOrder} ${gStyles.titleSmall}`}>Детали заказа</h2>
                     <p className={styles.text}>Что бы вы хотели, чтобы мы написали на флаконе? (необязательно)</p>
                 </div>
-                <InputForm className={styles.description} placeholder={'Например, «Любимой мамуле»'} name='description' id='checkoutDescription' type='text' value={inputsValues.description} hangleChange={hangleChange} />
+                <InputForm className={styles.description} placeholder={'Например, «Любимой мамуле»'} name='detailInfo' id='checkoutDetailInfo' type='text' value={inputsValues.detailInfo} hangleChange={hangleChange} />
             </div>
         </form>
     );

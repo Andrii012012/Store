@@ -6,8 +6,23 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import CheckoutForm from './Components/CheckoutForm/CheckoutForm';
 import PopupNotification from '../../components/PopupNotification/PopupNotification';
 import ConsistOrderInfo from './Components/ConsistOrderInfo/ConsistOrderInfo';
+import { IInputsValues } from './interface/interface';
 
 export default function Checkout(): JSX.Element {
+
+    const [inputsValues, setInputsValues] = useState<IInputsValues>({
+        name: '',
+        surname: '',
+        country: '',
+        address: '',
+        locality: '',
+        area: '',
+        postcode: '',
+        phone: '',
+        email: '',
+        detailInfo: '',
+    });
+
 
     const refWrapperForm = useRef<HTMLDivElement | null>(null);
 
@@ -37,12 +52,13 @@ export default function Checkout(): JSX.Element {
                 <HeaderComponent className={styles.headerBody} title={'Оформление заказа'} text='Оформление заказа' />
                 <div className={styles.body}>
                     <div className={styles.wrapper}>
-                        <CheckoutForm refWrapper={refWrapperForm} />
+                        <CheckoutForm refWrapper={refWrapperForm} inputsValues={inputsValues} setInputsValues={setInputsValues}/>
                         <div className={styles.order}>
                             <h2 className={`${styles.titleOrder} ${gStyles.titleSmall}`}>
                                 Ваш заказ
                             </h2>
-                            <ConsistOrderInfo marks={marks}
+                            <ConsistOrderInfo
+                                marks={marks}
                                 cashback={cashback}
                                 resultPrice={resultPrice}
                                 resultPriceWithExtra={resultPriceWithExtra}
@@ -53,6 +69,7 @@ export default function Checkout(): JSX.Element {
                                 setIsModal={setIsModal}
                                 goods={basket.consistOrder.infoGoods}
                                 ordersId={ordersId}
+                                inputsValues={inputsValues}
                             />
                         </div>
                     </div>

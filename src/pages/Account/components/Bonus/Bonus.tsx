@@ -3,6 +3,8 @@ import styles from './style.module.scss';
 import gStyles from '../../../../styles/style.module.scss';
 import Pagination from "../../../../components/api/Pagination/Pagination";
 import { useRef, useState } from "react";
+import RatingStarUser from "./components/RatingStarUser/RatingStarUser";
+import LineBreakpoint from "./components/LineBreakpoint/LineBreakpoint";
 
 
 export default function Bonus(): JSX.Element {
@@ -54,37 +56,7 @@ export default function Bonus(): JSX.Element {
                     </div>
                     <div className={styles.user}>
                         <img src={require(`../../../../assets/imgs/avatar/${user?.avatar}`)} alt="" />
-                        <div className={styles.bodyStars}>
-                            {Array.from({ length: 3 }, (_, index: number) => {
-                                if (Number(user?.status) > index) {
-                                    return (
-                                        <svg className={styles.iconStar} width={24} height={24} viewBox="0 0 16 15" fill='url(#gradient)' xmlns="http://www.w3.org/2000/svg">
-                                            <defs>
-                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                    <stop offset="-1.94%" stop-color="#C09E6" />
-                                                    <stop offset="40.99%" stop-color="#FFEBCC" />
-                                                    <stop offset="98.79%" stop-color="#BF936B" />
-                                                </linearGradient>
-                                            </defs>
-                                            <path d="M8 0L10.472 4.93691L16 5.73344L12 9.57413L12.944 15L8 12.4369L3.056 15L4 9.57413L0 5.73344L5.528 4.93691L8 0Z" />
-                                        </svg>
-                                    )
-                                } else {
-                                    return (
-                                        <svg className={styles.iconStar} width={20} height={20} viewBox="0 0 16 15" fill='#000' xmlns="http://www.w3.org/2000/svg">
-                                            <defs>
-                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                    <stop offset="-1.94%" stop-color="#C09E6" />
-                                                    <stop offset="40.99%" stop-color="#FFEBCC" />
-                                                    <stop offset="98.79%" stop-color="#BF936B" />
-                                                </linearGradient>
-                                            </defs>
-                                            <path d="M8 0L10.472 4.93691L16 5.73344L12 9.57413L12.944 15L8 12.4369L3.056 15L4 9.57413L0 5.73344L5.528 4.93691L8 0Z" />
-                                        </svg>
-                                    )
-                                }
-                            })}
-                        </div>
+                        <RatingStarUser status={Number(user.status)}/>
                     </div>
                     <div className={`${styles.bodyInfoBonus} ${gStyles.textSmall}`}>
                         <div className={styles.countBought}>
@@ -94,24 +66,8 @@ export default function Bonus(): JSX.Element {
                             вам нужно сделать количество покупок 5</p>
                     </div>
                 </div>
-                <div className={styles.lineMarking}>
-                    <div className={styles.wrapperIndexation}>
-                        <div className={styles.indexation} style={{ width: `${(Number(user?.historyOrder?.length <= 10 ? user?.historyOrder?.length : 10) * 10)}%` }}></div>
-                        {Array.from({ length: 3 }, (_, index) => {
-                            if ((index + 1) === Number(user?.status)) {
-                                return (
-                                    <div className={
-                                        `${styles.breakpoint} ${styles.breakpointActive}`
-                                    }></div>
-                                );
-                            } else {
-                                return (
-                                    <div className={`${styles.breakpoint}`}></div>
-                                );
-                            }
-                        })}
-                    </div>
-                </div>
+                <LineBreakpoint status={Number(user.status)}
+                 lengthHistoryOrder={user.historyOrder.length}/>
                 <h2 className={`${gStyles.titleSmall} ${styles.titleBonus}`}>История бонусов</h2>
                 <div className={styles.wrapperListBonus}>
                     <ul className={styles.listBonus}>

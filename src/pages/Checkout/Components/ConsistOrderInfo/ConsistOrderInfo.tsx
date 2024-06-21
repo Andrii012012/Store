@@ -5,10 +5,11 @@ import ConsistOrder from '../../../../components/ConsistOrder/ConsistOrder';
 import { ROUTE_DOCUMATION } from '../../../../route/route';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import validation from '../../../../utils/helps/validation';
-import { checkoutOrder } from '../../../../features/basket/basket';
+import { checkoutOrderThunk } from '../../../../features/basket/basket';
 import { checkoutOrderURL } from '../../../../config/config';
 import { TStatusReducer } from '../../../../interfaces/statusReducer';
 import { TInfoGoods } from '../../../../interfaces/consistOrder';
+import { IInputsValues } from '../../interface/interface';
 
 interface IProps {
     marks: number;
@@ -22,11 +23,12 @@ interface IProps {
     setIsModal: React.Dispatch<React.SetStateAction<boolean>>;
     ordersId: string[];
     goods: TInfoGoods[] | [];
+    inputsValues: IInputsValues;
 }
 
 export default function ConsistOrderInfo(props: IProps): JSX.Element {
 
-    let { marks, cashback, resultPrice, resultPriceWithExtra, refWrapperForm, id, basketStatus, setIsModal, ordersId, goods, count } = props;
+    let { marks, cashback, resultPrice, inputsValues, resultPriceWithExtra, refWrapperForm, id, basketStatus, setIsModal, ordersId, goods, count } = props;
 
     const dispatch = useAppDispatch();
 
@@ -45,11 +47,25 @@ export default function ConsistOrderInfo(props: IProps): JSX.Element {
                 form.append('cashback', String(cashback));
                 form.append('consistOrder', JSON.stringify(goods));
                 form.append('ordersId', JSON.stringify(ordersId));
-                dispatch(checkoutOrder({ url: checkoutOrderURL, form }));
+                form.append('marks', String(marks));
+                form.append('cause', 'Покупка');
+                form.append('bonusDate', new Date().toLocaleString().split(',').join(' '));
+                form.append('name', inputsValues.name);
+                form.append('surname', inputsValues.surname);
+                form.append('country', inputsValues.country);
+                form.append('locality', inputsValues.locality);
+                form.append('postcode', inputsValues.postcode);
+                form.append('email', inputsValues.email);
+                form.append('area', inputsValues.area);
+                form.append('phone', inputsValues.phone);
+                form.append('address', inputsValues.address);
+                form.append('detailInfo', inputsValues.detailInfo);
+                dispatch(checkoutOrderThunk({ url: checkoutOrderURL, form }));
 
                 if (basketStatus === 'success') {
                     setIsModal(true);
                 }
+                
             }
         }
     }

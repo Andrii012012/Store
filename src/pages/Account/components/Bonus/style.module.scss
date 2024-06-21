@@ -3,23 +3,23 @@
 @import '../../../../utils/utilsStyles/colors.scss';
 @import '../../../../utils/utilsStyles/mainColor.scss';
 
-@mixin hoverInfo ($text) {
-    display: flex;
-    justify-content: center;
+// @mixin hoverInfo ($text) {
+//     display: flex;
+//     justify-content: center;
 
-    &:hover::after {
-        content: $text;
-        display: block;
-        padding: rem(10);
-        border-radius: 4px;
-        background-color: map.get($colors, 'jet');
-        position: absolute;
-        top: -100%;
-        transform: translateY(-50%);
-        font-size: rem(14);
-        white-space: nowrap;
-    }
-}
+//     &:hover::after {
+//         content: $text;
+//         display: block;
+//         padding: rem(10);
+//         border-radius: 4px;
+//         background-color: map.get($colors, 'jet');
+//         position: absolute;
+//         top: -100%;
+//         transform: translateY(-50%);
+//         font-size: rem(14);
+//         white-space: nowrap;
+//     }
+// }
 
 .bonus{
     padding-bottom: rem(50);
@@ -43,16 +43,6 @@
     margin: 0 rem(15);
     max-width: rem(72);
     max-height: rem(86);
-}
-
-.bodyStars {
-    display: flex;
-}
-
-.iconStar {
-    &:nth-child(2) {
-        transform: translateY(50%);
-    }
 }
 
 .countBought {
@@ -86,99 +76,99 @@
     width: 100%;
 }
 
-.lineMarking {
-    max-width: rem(593);
-    width: 100%;
-    height: rem(18);
-    border-radius: 4px;
-    margin-bottom: rem(50);
-}
+// .lineMarking {
+//     max-width: rem(593);
+//     width: 100%;
+//     height: rem(18);
+//     border-radius: 4px;
+//     margin-bottom: rem(50);
+// }
 
-.wrapperIndexation {
-    width: 100%;
-    height: rem(4);
-    background-color: map.get($colors, 'dark');
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
+// .wrapperIndexation {
+//     width: 100%;
+//     height: rem(4);
+//     background-color: map.get($colors, 'dark');
+//     border-radius: 4px;
+//     display: flex;
+//     align-items: center;
+//     position: relative;
+// }
 
-.breakpoint {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: map.get($colors, 'gradientExtraMain');
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    @include hoverInfo('Новый покупатель');
+// .breakpoint {
+//     width: 18px;
+//     height: 18px;
+//     border-radius: 50%;
+//     background: map.get($colors, 'gradientExtraMain');
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     z-index: 10;
+//     @include hoverInfo('Новый покупатель');
 
-    &::before {
-        content: '';
-        display: block;
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background-color: map.get($colors, 'tan');
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+//     &::before {
+//         content: '';
+//         display: block;
+//         width: 9px;
+//         height: 9px;
+//         border-radius: 50%;
+//         background-color: map.get($colors, 'tan');
+//         position: absolute;
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-50%, -50%);
+//     }
 
-    &:last-child {
-        right: -3%;
-        @include hoverInfo('Постоянный покупатель');
-    }
+//     &:last-child {
+//         right: -3%;
+//         @include hoverInfo('Постоянный покупатель');
+//     }
 
-    &:nth-child(3) {
-        @include hoverInfo('Частый покупатель');
-        left: 50%
-    }
-}
+//     &:nth-child(3) {
+//         @include hoverInfo('Частый покупатель');
+//         left: 50%
+//     }
+// }
 
-.breakpointActive {
-    width: 28px;
-    height: 28px;
+// .breakpointActive {
+//     width: 28px;
+//     height: 28px;
 
-    &:hover::after {
-        transform: translateY(0);
-        z-index: 0;
-    }
+//     &:hover::after {
+//         transform: translateY(0);
+//         z-index: 0;
+//     }
 
-    &::before {
-        content: '';
-        background-color: map.get($colors, 'jet');
-    }
-}
+//     &::before {
+//         content: '';
+//         background-color: map.get($colors, 'jet');
+//     }
+// }
 
-.indexation {
-    width: 0%;
-    min-height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: map.get($colors, 'blanchedAlmond');
-    display: flex;
-    align-items: center;
+// .indexation {
+//     width: 0%;
+//     min-height: 100%;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     background-color: map.get($colors, 'blanchedAlmond');
+//     display: flex;
+//     align-items: center;
 
-    &::after {
-        content: '';
-        display: block;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: map.get($colors, 'jet');
-        border: 2px solid map.get($colors, 'blanchedAlmond');
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate(96%, -50%);
-        z-index: 0;
-    }
-}
+//     &::after {
+//         content: '';
+//         display: block;
+//         width: 12px;
+//         height: 12px;
+//         border-radius: 50%;
+//         background-color: map.get($colors, 'jet');
+//         border: 2px solid map.get($colors, 'blanchedAlmond');
+//         position: absolute;
+//         top: 50%;
+//         right: 0;
+//         transform: translate(96%, -50%);
+//         z-index: 0;
+//     }
+// }
 
 .titleBonus {
     @extend %mainColor;

@@ -1,0 +1,67 @@
+@use 'sass:map';
+@import '../../../../../../utils/utilsStyles/rem.scss';
+@import '../../../../../../utils/utilsStyles/em.scss';
+@import '../../../../../../utils/utilsStyles/media.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .indexation::after {
+        content: "";
+        transform: translate(0%, -50%);
+    }
+
+    .lineMarking {
+        max-width: initial;
+    }
+
+    .breakpoint {
+        &:hover::after {
+            left: -100%;
+            transform: translate(15%, -10%);
+        }
+
+        &:last-child {
+            right: 0;
+
+            &:hover::after {
+                left: 100%;
+                transform: translate(-100%, -50%);
+            }
+        }
+
+        &:nth-child(3) {
+            left: 50%;
+
+            &:hover::after {
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }    
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .breakpoint {
+        &:hover::after {
+            font-size: rem(12);
+        }
+
+        &:last-child {
+            &:hover::after {
+                font-size: rem(12);
+            }
+        }
+
+        &:nth-child(3) {
+            &:hover::after {
+                font-size: rem(12);
+            }
+        }
+    }
+    .wrapperInfo{
+       grid-template-columns: 1fr 0.1fr;
+    }
+    .lineMarking{
+      margin-bottom: rem(40);
+    }
+}
+
