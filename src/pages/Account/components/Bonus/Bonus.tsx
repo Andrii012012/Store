@@ -48,7 +48,7 @@ export default function Bonus(): JSX.Element {
                 <h1 className={`${gStyles.titleSmall} ${styles.title}`}>Бонусы</h1>
                 <div className={styles.wrapperInfo}>
                     <div className={styles.bodyInfo}>
-                        <p>Ваш статус: {user?.status === '1' ? 'Новый покупать' : 'Часный покупатель'}</p>
+                        <p>Ваш статус: {user?.status === '1' ? 'Новый покупать' : user?.status === '2' ?  'Часный покупатель' : 'Постоянный покупатель'}</p>
                         <p>Ваш кэшбек: {user?.cashback}%</p>
                         <p>Баллов сейчас: {user?.marks} баллов</p>
                     </div>
@@ -88,7 +88,7 @@ export default function Bonus(): JSX.Element {
                     </div>
                     <div className={`${styles.bodyInfoBonus} ${gStyles.textSmall}`}>
                         <div className={styles.countBought}>
-                            <p className={styles.infoBought}><span style={{ color: user?.historyOrder && user?.historyOrder.length < 5 ? 'green' : 'orange' }}>{user?.historyOrder ? user?.historyOrder.length : 0}</span><span>/5</span> покупок сделано</p>
+                            <p className={styles.infoBought}><span style={{ color: user?.historyOrder && user?.historyOrder.length < 5 ? 'orange' : 'green' }}>{user?.historyOrder ? user?.historyOrder.length : 0}</span><span>/5</span> покупок сделано</p>
                         </div>
                         <p className={styles.description}>Чтобы получать кэшбек 3% и статус «Частый покупатель» ,
                             вам нужно сделать количество покупок 5</p>
@@ -96,7 +96,7 @@ export default function Bonus(): JSX.Element {
                 </div>
                 <div className={styles.lineMarking}>
                     <div className={styles.wrapperIndexation}>
-                        <div className={styles.indexation} style={{ width: `${(Number(user?.historyOrder?.length) * 10)}%` }}></div>
+                        <div className={styles.indexation} style={{ width: `${(Number(user?.historyOrder?.length <= 10 ? user?.historyOrder?.length : 10) * 10)}%` }}></div>
                         {Array.from({ length: 3 }, (_, index) => {
                             if ((index + 1) === Number(user?.status)) {
                                 return (
@@ -118,7 +118,7 @@ export default function Bonus(): JSX.Element {
                         {JSXElements}
                     </ul>
                     <div className={styles.pagination}>
-                        <Pagination countPage={2}
+                       <Pagination countPage={2}
                             array={user.historyBonus} onChange={hangleChangePage} />
                     </div>
                 </div>

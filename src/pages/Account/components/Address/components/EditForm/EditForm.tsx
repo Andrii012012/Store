@@ -8,19 +8,7 @@ import { useRef, useState } from 'react';
 import { useAppDispatch } from '../../../../../../hooks/useAppDispatch';
 import { IUser } from '../../../../../../interfaces/user';
 import { setAddressThunk } from '../../../../../../features/user/slice';
-
-
-interface IAddressInfo {
-    name: string,
-    surname: string,
-    country: string,
-    address: string,
-    locality: string,
-    area: string,
-    postcode: string,
-    phone: string,
-    email: string,
-}
+import { IAddressInfo } from '../../../../../../interfaces/addressInfo';
 
 interface IProps {
     user: IUser | null;

@@ -57,7 +57,7 @@ export default function ListBasket(props: IProps): JSX.Element {
             {list.map((item) => (
                 <li key={item.id} className={styles.item}>
                     <div className={styles.checkbox} onClick={() => hangleChangeCheckbox(item.checked, item.id)}>
-                        <Checkbox value={item.checked} />
+                        <Checkbox value={!!item.checked} />
                     </div>
                     <div className={styles.goods}>
                         <div className={styles.imageGoods}><img src={img} /></div>

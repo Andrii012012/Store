@@ -10,6 +10,7 @@ import {
   ROUTE_ACCOUNT,
   ROUTE_BASKET,
   ROUTE_BONUS, ROUTE_CATALOG_ITEM,
+  ROUTE_CHECKOUT,
   ROUTE_DOCUMATION,
   ROUTE_MAIN
 } from './route/route';
@@ -17,6 +18,7 @@ import Bonus from './pages/Bonus/Bonus';
 import About from './pages/About/About';
 import Documention from './pages/Documention/Documention';
 import Basket from './pages/Basket/Basket';
+import Checkout from './pages/Checkout/Checkout';
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Route path={ROUTE_ABOUT} element={<About />} />
         <Route path={ROUTE_DOCUMATION} element={<Documention />} />
         <Route path={ROUTE_BASKET} element={<Basket />} />
+        <Route path={ROUTE_CHECKOUT} element={<Checkout />} />
       </Routes>
     </Layout>
   );

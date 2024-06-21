@@ -6,11 +6,13 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import ButtonGoods from '../../components/api/ButtonGoods/ButtonGoods';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { getBasketThunk } from '../../features/basket/basket';
+import { getBasketThunk, setCheckout } from '../../features/basket/basket';
 import { getBasketURL } from '../../config/config';
 import ListBasket from './components/ListBasket/ListBasket';
 import ConsistOrder from '../../components/ConsistOrder/ConsistOrder';
 import SpendMarks from './components/SpendMarks/SpendMarks';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_CHECKOUT } from '../../route/route';
 
 export default function Basket(): JSX.Element {
 
@@ -21,6 +23,8 @@ export default function Basket(): JSX.Element {
     const [isSpendMarks, setIsSpendMarks] = useState<boolean>(false);
 
     const [marks, setMarks] = useState<string>('');
+
+    const goTo = useNavigate();
 
     useEffect(() => {
         if (user && user.id) {
@@ -36,18 +40,40 @@ export default function Basket(): JSX.Element {
 
     const basketGoods = optionsBasket.basket;
 
-    const countChosed = basketGoods.filter((item) => item.checked === true && item);
+    const countChosed = basketGoods.filter((item) => !!item.checked === true && item);
 
     const resultSum = countChosed.reduce((sum, item) => {
         return sum + item.price;
     }, 0);
 
+    const consistGoods = countChosed.map((item) => {
+        return {
+            name: item.name,
+            things: item.things,
+            volume: item.volume,
+        }
+    });
+
+    const ordersId = countChosed.map((item) => item.id);
+
     const resultSumPlusMarks = resultSum - Number(marks);
 
-    const cashback = Math.round(resultSum * Number(('0' +  '.0' + user?.cashback)));
+    const cashback = Math.round(resultSum * Number(('0' + '.0' + user?.cashback)));
 
     function hangleIsUseMarks() {
         setIsSpendMarks(true);
+    }
+
+    function hangleGoCheckout() {
+        dispatch(setCheckout({
+            resultPrice: resultSum,
+            resultPriceWithExtra: resultSumPlusMarks,
+            count: countChosed.length, infoGoods: consistGoods,
+            marks: Number(marks),
+            cashback: Number(cashback),
+            ordersId: ordersId,
+        }));
+        goTo(ROUTE_CHECKOUT);
     }
 
     if (user) {
@@ -70,7 +96,7 @@ export default function Basket(): JSX.Element {
                             <ListBasket list={basketGoods} status={basketStatus} id={user.id} />
                         }
                     </div>
-                    <ConsistOrder count={countChosed.length} result={resultSum} resultPlusMarks={resultSumPlusMarks}>
+                    <ConsistOrder hangle={hangleGoCheckout} count={countChosed.length} result={resultSum} resultPlusMarks={resultSumPlusMarks}>
                         <ul className={styles.listInfo}>
                             <li className={`${styles.itemInfo} ${gStyles.text}`}>
                                 <p className={`${styles.textAction} ${styles.textActionActive}`}>Доставка</p>

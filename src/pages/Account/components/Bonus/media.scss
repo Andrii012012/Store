@@ -10,6 +10,11 @@
         align-items: flex-start;
     }
 
+    .indexation::after {
+        content: "";
+        transform: translate(0%, -50%);
+    }
+
     .bodyInfo {
         margin-bottom: rem(30);
     }

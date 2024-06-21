@@ -1,0 +1,117 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/media.scss';
+@import '../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'desktop')) {
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .container {
+        padding-top: rem(30);
+    }
+
+    .checkoutBody {
+        max-width: rem(620);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .container {
+        padding-top: rem(40);
+    }
+
+    .checkout {
+        padding-bottom: rem(40);
+    }
+
+    .checkoutBody {
+        max-width: initial;
+    }
+}
+
+@media (max-width: rem(632)) {
+    .checkout {
+        margin-top: rem(96);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .checkout {
+        padding-bottom: rem(40);
+        margin-top: rem(66);
+    }
+
+    .checkoutBody {
+        max-width: initial;
+    }
+
+    .container {
+        padding: rem(30) 0 0 0;
+    }
+
+    .titleOrder {
+        margin-bottom: rem(20);
+    }
+
+    .textPay {
+        margin-bottom: rem(20);
+    }
+
+    .descriptionText {
+        margin-bottom: rem(20);
+    }
+
+    .item {
+        margin-bottom: rem(20);
+    }
+
+    .checkoutBody {
+        padding: rem(20);
+
+        >h2 {
+            margin-bottom: rem(20);
+        }
+
+        >p {
+            margin-bottom: rem(20);
+        }
+    }
+
+    .item {
+        p {
+            font-size: rem(16);
+        }
+    }
+
+    .textPay {
+        font-size: rem(16);
+    }
+
+    .descriptionText {
+        font-size: rem(16);
+    }
+    .checkoutBody{
+        button{
+            padding: rem(12) rem(20);
+        }
+    }
+    .headerBody{
+        padding: 0 rem(20);
+    }
+    .titleOrder{
+        padding: 0 rem(20);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .titleOrder{
+      display: none;
+    }
+    .headerBody{
+        padding: 0 rem(16);
+    }
+    .titleOrder{
+        padding: 0 rem(16);
+    }
+}

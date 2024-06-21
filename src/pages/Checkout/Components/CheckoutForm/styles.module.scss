@@ -1,0 +1,40 @@
+@import '../../../../utils/utilsStyles/mainColor.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+
+.checkoutForm{
+    margin-right: rem(20);
+}
+
+.checkoutWrapper{
+    width: 100%;
+}
+
+.title{
+    @extend %mainColor;
+    margin-bottom: rem(20);
+}
+
+.containerInput {
+    display: flex;
+    margin-bottom: rem(20);
+
+    div {
+        width: 100%;
+    }
+
+    div:first-child {
+        margin-right: 20px;
+    }
+}
+
+.email {
+    margin-bottom: rem(30);
+}
+
+.detailOrder {
+    @extend %mainColor;
+    margin-bottom: rem(20);
+}
+
+@import './media.scss';

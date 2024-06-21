@@ -8,9 +8,10 @@ import { useRef, useState } from 'react';
 import validation from '../../../../utils/helps/validation';
 import { useAppSelector } from '../../../../hooks/useAppSelector';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
-import { registerThunk } from '../../../../features/user/slice';
-import { registerURL } from '../../../../config/config';
+import { registerThunk, signThunk } from '../../../../features/user/slice';
+import { registerURL, signURL } from '../../../../config/config';
 import Modal from '../../../../components/Header/components/Modal/Modal';
+import PopupNotification from '../../../../components/PopupNotification/PopupNotification';
 
 type TRadio = {
     women: boolean;
@@ -105,6 +106,14 @@ export default function Register(props: IProps): JSX.Element {
         }
     }
 
+    function signIn(){
+        const form = new FormData();
+        form.append('login', date.login);
+        form.append('password', date.password);
+        dispatch(signThunk({ url: signURL, form }));
+    }
+
+
     return (
         <section className={styles.register}>
             <h2 className={`${styles.title} ${gStyles.titleSmall}`}>Регистрация</h2>
@@ -128,10 +137,7 @@ export default function Register(props: IProps): JSX.Element {
                     <ButtonGoods className={styles.btnRegister} text='Регистрация' />
                 </div>
             </form>
-            {isPopup && <Modal><div className={styles.popup}>
-               <h2 className={styles.popupTile}>Вы успешно зарегистрированы!</h2>
-                <ButtonGoods text={'Перейти к покупкам'}/>
-            </div></Modal>}
+            {isPopup && <Modal><PopupNotification hangle={signIn} to='/' close={setIsPopup} title='Вы успешно зарегистрированы!' text='Перейти к покупкам' /></Modal>}
         </section>
     );
 }

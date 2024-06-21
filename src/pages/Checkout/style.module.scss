@@ -1,0 +1,28 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
+
+.checkout {
+    margin-top: rem(132);
+    background-color: map.get($colors, 'darkExtra');
+    color: map.get($colors, 'vanilla');
+    padding-bottom: rem(50);
+}
+
+.container {
+    padding-top: rem(50);
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleOrder {
+    @extend %mainColor;
+    margin-bottom: rem(30);
+}
+
+
+@import './media.scss';

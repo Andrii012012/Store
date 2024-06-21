@@ -1,0 +1,46 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/mainColor.scss';
+
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     &::before{
+        content: '';
+        display: block;
+        width: 100%;
+        min-height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+     }
+}
+
+.container{
+    padding: rem(62.5) rem(70);
+    background-color: map-get($colors, 'jet');
+    max-height: rem(250);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5;
+}
+
+.title{
+   @extend %mainColor;
+   margin-bottom: rem(50);
+   text-align: center;
+   font-weight: 700;
+}
+
+@import './media.scss';

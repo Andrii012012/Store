@@ -2,15 +2,26 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IBasket } from "../../interfaces/basket";
 import { TStatusReducer } from "../../interfaces/statusReducer";
 import { clientAPI } from "../../api/client";
+import { IConsistOrder } from "../../interfaces/consistOrder";
 
 export interface IInitialStateBasket {
   basket: IBasket[];
+  consistOrder: IConsistOrder;
   status: TStatusReducer;
   error: string | null;
 }
 
 const initialState: IInitialStateBasket = {
   basket: [],
+  consistOrder: {
+    infoGoods: [],
+    count: 0,
+    resultPrice: 0,
+    resultPriceWithExtra: 0,
+    cashback: 2,
+    marks: 0,
+    ordersId: [],
+  },
   status: "idel",
   error: null,
 };
@@ -52,7 +63,6 @@ export const changeCountGoodsThunk = createAsyncThunk(
   "changeCountGoods/basket",
   async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
     const data = await clientAPI("post", url, form, rejectWithValue);
-    console.log(data);
     return data?.data;
   }
 );
@@ -64,10 +74,40 @@ export const cancelOrderThunk = createAsyncThunk(
   }
 );
 
+export const checkoutOrder = createAsyncThunk(
+  "checkoutOrder/goods",
+  async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
+    const data = await clientAPI("post", url, form, rejectWithValue);
+    console.log(data);
+  }
+);
+
 export const slice = createSlice({
   name: "basket",
   initialState,
-  reducers: {},
+  reducers: {
+    setCheckout: (
+      state: IInitialStateBasket,
+      action: PayloadAction<IConsistOrder>
+    ) => {
+      let {
+        count,
+        resultPrice,
+        resultPriceWithExtra,
+        infoGoods,
+        cashback,
+        marks,
+        ordersId,
+      } = action.payload;
+      state.consistOrder.resultPrice = resultPrice;
+      state.consistOrder.resultPriceWithExtra = resultPriceWithExtra;
+      state.consistOrder.infoGoods = infoGoods;
+      state.consistOrder.count = count;
+      state.consistOrder.cashback = cashback;
+      state.consistOrder.marks = marks;
+      state.consistOrder.ordersId = ordersId;
+    },
+  },
   extraReducers: (build) => {
     build.addCase(addInBasketThunk.pending, (state: IInitialStateBasket) => {
       state.status = "pending";
@@ -153,28 +193,37 @@ export const slice = createSlice({
       }
     );
 
+    build.addCase(cancelOrderThunk.pending, (state: IInitialStateBasket) => {
+      state.status = "pending";
+      state.error = null;
+    });
+    build.addCase(cancelOrderThunk.fulfilled, (state: IInitialStateBasket) => {
+      state.status = "success";
+    });
     build.addCase(
-        cancelOrderThunk.pending,
-        (state: IInitialStateBasket) => {
-          state.status = "pending";
-          state.error = null;
-        }
-      );
-      build.addCase(
-        cancelOrderThunk.fulfilled,
-        (state: IInitialStateBasket) => {
-          state.status = "success";
-        }
-      );
-      build.addCase(
-        cancelOrderThunk.rejected,
-        (state: IInitialStateBasket, action: PayloadAction<any>) => {
-          state.status = "reject";
-          state.error = action.payload;
-        }
-      );
+      cancelOrderThunk.rejected,
+      (state: IInitialStateBasket, action: PayloadAction<any>) => {
+        state.status = "reject";
+        state.error = action.payload;
+      }
+    );
+
+    build.addCase(checkoutOrder.pending, (state: IInitialStateBasket) => {
+      state.status = "pending";
+      state.error = null;
+    });
+    build.addCase(checkoutOrder.fulfilled, (state: IInitialStateBasket) => {
+      state.status = "success";
+    });
+    build.addCase(
+      checkoutOrder.rejected,
+      (state: IInitialStateBasket, action: PayloadAction<any>) => {
+        state.status = "reject";
+        state.error = action.payload;
+      }
+    );
   },
 });
 
 export const basket = slice.reducer;
-export const {} = slice.actions;
+export const { setCheckout } = slice.actions;

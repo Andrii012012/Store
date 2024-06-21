@@ -1,0 +1,63 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'desktop')) {
+    .checkoutBody {
+        max-width: rem(620);
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+    .checkoutBody {
+        max-width: initial;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .checkoutBody {
+        max-width: initial;
+    }
+    .textPay {
+        margin-bottom: rem(20);
+    }
+
+    .descriptionText {
+        margin-bottom: rem(20);
+    }
+
+    .item {
+        margin-bottom: rem(20);
+    }
+
+    .checkoutBody {
+        padding: rem(20);
+
+        >h2 {
+            margin-bottom: rem(20);
+        }
+
+        >p {
+            margin-bottom: rem(20);
+        }
+    }
+
+    .item {
+        p {
+            font-size: rem(16);
+        }
+    }
+
+    .textPay {
+        font-size: rem(16);
+    }
+
+    .descriptionText {
+        font-size: rem(16);
+    }
+    .checkoutBody{
+        button{
+            padding: rem(12) rem(20);
+        }
+    }
+}
