@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 import gStyles from '../../../../styles/style.module.scss';
-import ButtonGoods from '../../../../components/api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../../../../components/api/Button/Button';
 import { useRef } from 'react';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import { checkBonusFiledThunk } from '../../../../features/basket/basket';

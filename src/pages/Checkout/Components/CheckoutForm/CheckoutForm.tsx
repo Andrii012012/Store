@@ -89,7 +89,7 @@ export default function CheckoutForm(props: IProps): JSX.Element {
                     <h2 className={`${styles.detailOrder} ${gStyles.titleSmall}`}>Детали заказа</h2>
                     <p className={styles.text}>Что бы вы хотели, чтобы мы написали на флаконе? (необязательно)</p>
                 </div>
-                <InputForm className={styles.description} placeholder={'Например, «Любимой мамуле»'} name='detailInfo' id='checkoutDetailInfo' type='text' value={inputsValues.detailInfo} hangleChange={hangleChange} />
+                <InputForm className={styles.detailInfo} placeholder={'Например, «Любимой мамуле»'} name='detailInfo' id='checkoutDetailInfo' type='text' value={inputsValues.detailInfo} hangleChange={hangleChange} />
             </div>
         </form>
     );

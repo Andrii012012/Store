@@ -174,7 +174,7 @@ export default function validation(props: IProps): any {
                 break;
               }
               case "oldPassword": {
-                if (item.value.length < 4) {
+                if (item.value !== "" && item.value.length < 4) {
                   changeColor(item);
                   options.oldPassword = false;
                 } else {
@@ -183,7 +183,7 @@ export default function validation(props: IProps): any {
                 break;
               }
               case "newPassword": {
-                if (item.value.length < 4) {
+                if (item.value !== "" && item.value.length < 4) {
                   changeColor(item);
                   options.newPassword = false;
                 } else {

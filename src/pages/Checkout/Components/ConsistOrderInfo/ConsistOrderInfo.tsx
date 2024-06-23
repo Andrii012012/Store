@@ -10,6 +10,7 @@ import { checkoutOrderURL } from '../../../../config/config';
 import { TStatusReducer } from '../../../../interfaces/statusReducer';
 import { TInfoGoods } from '../../../../interfaces/consistOrder';
 import { IInputsValues } from '../../interface/interface';
+import iconCard from '../../../../assets/imgs/Checkout/icon-card.svg';
 
 interface IProps {
     marks: number;
@@ -87,9 +88,9 @@ export default function ConsistOrderInfo(props: IProps): JSX.Element {
                 </li>
                 <li className={`${styles.item} ${gStyles.text}`}>
                     <p>Способ оплаты</p>
-                    <div>
+                    <div className={styles.bodyCard}>
                         <p>Тинькофф Банк</p>
-                        <img />
+                        <img src={iconCard} />
                     </div>
                 </li>
             </ul>

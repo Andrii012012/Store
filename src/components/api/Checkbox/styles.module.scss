@@ -1,7 +1,12 @@
 
 @import '../../../utils/utilsStyles/rem.scss';
 
-.chackbox{
+.bodyCheckbox {
+    display: flex;
+    align-items: center;
+}
+
+.chackbox {
     width: rem(24);
     height: rem(24);
     border-radius: rem(6);
@@ -12,11 +17,6 @@
     justify-content: center;
 }
 
-.bodyCheckbox{
-    display: flex;
-    align-items: center;
-}
-
 .icon{
     position: absolute;
     top: 25%;
@@ -24,5 +24,6 @@
     transform: translate(-50%);
     pointer-events: none;
 }
+
 
 

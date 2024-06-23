@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ButtonGoods from '../../../../components/api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../../../../components/api/Button/Button';
 import ListComment from '../ListComment/ListComment';
 import styles from './style.module.scss';
 import LeaveComment from '../LeaveComment/LeaveComment';

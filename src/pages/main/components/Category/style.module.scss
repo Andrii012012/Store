@@ -77,6 +77,8 @@
 
 .selectItemFilter {
   >div {
+    font-family: 'Montserrat';
+
     &::after {
       content: "";
       display: block;
@@ -85,6 +87,30 @@
       background: url("../../../../assets/imgs/Category/arrow.svg") no-repeat;
       order: 2;
       margin-right: rem(17);
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      p {
+        font-weight: 700;
+      }
+    }
+  }
+
+  ul {
+    font-family: 'Open Sans';
+  }
+}
+
+.select{
+  >div {
+    &:hover{
+      background: map.get($colors, 'gradientMain');
+       p{
+         background: map.get($colors, 'jet');;
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+       }
     }
   }
 }
@@ -101,6 +127,18 @@
       top: 50%;
       right: 20px;
       transform: translateY(-50%);
+    }
+    &:hover{
+      background: map.get($colors, 'gradientMain');
+       p{
+         background: map.get($colors, 'jet');;
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+       }
+       &::after {
+        content: "";
+        background: url("../../../../assets/imgs/Category/icon-category-black.svg");
+      }
     }
   }
 
@@ -121,6 +159,7 @@
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+
       }
     }
   }
@@ -144,12 +183,27 @@
       right: 30px;
       transform: translateY(-50%) rotate(180deg);
     }
+
+    &:hover{
+      &::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        background: url("../../../../assets/imgs/Category/arrow-black.svg") center no-repeat;
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+
   }
 
   ul {
     position: absolute;
     top: 100%;
     z-index: 10;
+    font-family: 'Open Sans';
 
     li {
       background-color: map.get($colors, "darkCoffe");

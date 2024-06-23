@@ -1,14 +1,13 @@
 import styles from './style.module.scss';
 import gStyles from '../../../../styles/style.module.scss';
 import Checkbox from '../../../../components/api/Checkbox/Checkbox';
-import ButtonGoods from '../../../../components/api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../../../../components/api/Button/Button';
 import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import ProtectRobot from '../../../../components/api/ProtectRobot/ProtectRobot';
 import validation from '../../../../utils/helps/validation';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
-import { useAppSelector } from '../../../../hooks/useAppSelector';
-import {  signThunk } from '../../../../features/user/slice';
+import { signThunk } from '../../../../features/user/slice';
 import { signURL } from '../../../../config/config';
 
 type TCheckbox = {

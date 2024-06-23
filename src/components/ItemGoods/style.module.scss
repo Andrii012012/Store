@@ -5,6 +5,7 @@
 
 .item {
     cursor: pointer;
+    font-family: "Open Sans";
 }
 
 .bodyInfoGoods {
@@ -43,6 +44,8 @@
     }
 
     span {
+        font-weight: 700;
+        font-family: 'Open Sans';
         @extend %mainColor;
     }
 }

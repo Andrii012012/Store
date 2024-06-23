@@ -5,6 +5,7 @@ import Register from './components/Register/Register';
 import { useRef, useState } from 'react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import MenuAccount from './components/MenuAccount/MenuAccount';
+import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 
 export default function Account(): JSX.Element {
 
@@ -20,12 +21,7 @@ export default function Account(): JSX.Element {
     if (!token) {
         return (<main className={styles.account}>
             <div className={gStyles.container}>
-                <h1 className={`${gStyles.title} ${styles.title}`}>Мой аккаунт</h1>
-                <div className={styles.page}>
-                    <p>Главная</p>
-                    <span>/</span>
-                    <p>Аккаунт</p>
-                </div>
+                <HeaderComponent text='Аккаунт' title='Мой аккаунт' />
                 <div className={styles.container}>
                     <Sign refWrapperInput={refWrapperInput} date={date} setDate={setDate} />
                     <Register refWrapperInput={refWrapperInput} date={date} />
@@ -36,13 +32,8 @@ export default function Account(): JSX.Element {
         return (
             <main className={styles.account}>
                 <div className={gStyles.container}>
-                    <h1 className={`${gStyles.title} ${styles.title}`}>Мой аккаунт</h1>
-                    <div className={`${styles.page} ${styles.pageInfo}`}>
-                        <p>Главная</p>
-                        <span>/</span>
-                        <p>Аккаунт</p>
-                    </div>
-                  <MenuAccount/>
+                    <HeaderComponent text='Аккаунт' title='Мой аккаунт' />
+                    <MenuAccount />
                 </div>
             </main>
         );

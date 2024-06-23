@@ -8,12 +8,6 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { filterSeachGoodsSetNameGoods } from '../../features/goods/slice';
 import useWatchMedia from '../../hooks/useWatchMedia';
 
-type TRender = {
-    media: boolean,
-    isRender: boolean,
-    showSlide: number,
-}
-
 export default function Catalog(): JSX.Element {
 
     const nameGoods = useParams();

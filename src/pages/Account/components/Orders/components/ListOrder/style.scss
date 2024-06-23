@@ -1,0 +1,19 @@
+@use 'sass:map';
+@import '../../../../../../utils/utilsStyles/colors.scss';
+
+.consistOrderCheck.select-active {
+    >div {
+        background: map.get($colors, 'gradientMain');
+
+        p {
+            color: map.get($colors, 'jet');
+        }
+
+        >div {
+            &::after {
+                content: '';
+                background: url('../../../../../../assets/imgs/global/arrow-black.svg') no-repeat;
+            }
+        }
+    }
+}

@@ -32,3 +32,15 @@
     text-decoration: underline;
     color: map.get($colors, 'vanilla');
 }
+
+.bodyCard{
+    display: flex;
+    p{
+       margin-right: rem(30);
+    }
+     img{
+        transform: translateY(-25%);
+     }
+}
+
+@import 'media.scss';

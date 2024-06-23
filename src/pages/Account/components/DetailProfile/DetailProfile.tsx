@@ -2,7 +2,7 @@ import styles from './style.module.scss';
 import gStyles from '../../../../styles/style.module.scss';
 import InputForm from '../../../../components/api/InputForm/InputForm';
 import { useRef, useState } from 'react';
-import ButtonGoods from '../../../../components/api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../../../../components/api/Button/Button';
 import validation from '../../../../utils/helps/validation';
 import iconShowValue from '../../../../assets/imgs/global/icon-show-value.svg';
 import iconHideValue from '../../../../assets/imgs/global/icon-hide-value.svg';

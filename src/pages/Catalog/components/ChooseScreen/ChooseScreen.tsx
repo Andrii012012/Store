@@ -3,7 +3,6 @@ import { IOptions } from '../interface/interface';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRef } from 'react';
 import screenIcon from '../../../../assets/imgs/Catalog/camera.svg';
-import { IUsewatchMedia } from '../../../../interfaces/useWatchMedia';
 
 interface IProps {
     count: number,

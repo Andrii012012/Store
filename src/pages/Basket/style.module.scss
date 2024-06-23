@@ -9,6 +9,7 @@
     background-color: map.get($colors, 'darkExtra');
     color: map.get($colors, 'vanilla');
     padding: rem(50) 0;
+    font-family: "Open Sans";
 }
 
 .useBonus {
@@ -55,17 +56,5 @@
     display: none;
 }
 
-.itemInfo{
-    display: flex;
-    margin-bottom: rem(30);
-    border-bottom: 1px solid map.get($colors, "darkExtra");
-    padding-bottom: rem(10);
-    .textAction{
-        margin-right: rem(96);
-    }
-    .textActionActive{
-        margin-right: rem(80);
-    }
-}
 
 @import './media.scss';

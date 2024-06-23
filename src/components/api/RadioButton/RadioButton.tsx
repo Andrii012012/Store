@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import styles from './style.module.scss';
+import RadioButtonExtra from "./components/RadioButtonExtra/RadioButtonExtra";
+import RadioButtonDefault from "./components/RadioButtonDefault/RadioButtonDefault";
 
 interface IProps {
     text?: string;
@@ -21,18 +23,20 @@ export default function RadioButton(props: IProps): JSX.Element {
 
     if (text) {
         return (
-            <div className={`${styles.bodyRadioButton} ${className}`}>
-                <div className={styles.radio} ref={refRadioButton} style={{ background: value ? 'linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%)' : '' }} onClick={hangleChange}>
-                    {value && <div></div>}
-                </div>
-                <p className={styles.text}>{text}</p>
-            </div>
+            <RadioButtonExtra
+                hangleChange={hangleChange}
+                value={value} text={text}
+                className={className}
+                refRadioButton={refRadioButton} />
         );
     } else {
         return (
-            <div ref={refRadioButton} style={{ background: value ? 'linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%)' : '' }} className={`${styles.radioButton} ${className}`} onClick={hangleChange}>
-                {value && <div></div>}
-            </div>
+            <RadioButtonDefault
+                hangleChange={hangleChange}
+                value={value}
+                className={className}
+                refRadioButton={refRadioButton}
+            />
         );
     }
 }

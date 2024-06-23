@@ -8,8 +8,8 @@
     text-align: center;
     background-color: map.get($colors, 'darkCoffe');
     text-transform: uppercase;
-    font-weight: 700;
-
+    font-weight: 600;
+    font-family: 'Montserrat';
     span {
         display: block;
         @extend %mainColor;

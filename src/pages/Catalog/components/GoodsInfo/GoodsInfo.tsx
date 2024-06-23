@@ -2,7 +2,7 @@ import styles from './style.module.scss';
 import './style.scss';
 import gStyles from '../../../../styles/style.module.scss';
 import Valume from '../../../../components/api/Valume/Valume';
-import ButtonGoods from '../../../../components/api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../../../../components/api/Button/Button';
 import imgBack from '../../../../assets/imgs/global/image-goods1.png';
 import { useEffect, useState } from 'react';
 import Accordion from '../../../../containers/Accordion/Accordion';
@@ -25,7 +25,7 @@ export default function GoodsInfo(): JSX.Element {
 
     const dispatch = useAppDispatch();
 
-    const [count, setCount] = useState<number>(0);
+    const [count, setCount] = useState<number>(1);
 
     const [volume, setVolume] = useState<number>(0);
 
@@ -50,7 +50,7 @@ export default function GoodsInfo(): JSX.Element {
     }
 
     useEffect(() => {
-        setPriceSum(goods.price * count); 
+        setPriceSum(goods.price * count);
     }, [count]);
 
     if (goods) {
@@ -95,7 +95,7 @@ export default function GoodsInfo(): JSX.Element {
                  Этот аромат для мужчин и женщин. Композиция аромата
                  состоит из: апельсина, имбиря,бергамота, толуанского бальзама, ванили и мускуса. Уникальная композиция 
                  нот доставит удовольствие своему обладателю. А название аромата придаст ему уверенность и хорошее настроение`]} />
-                    <Accordion text='Отзывы' selectClass={`${styles.accordion} ${styles.reviews}`} defaultMode={false} selectItem={[<Comment goods={goods} />]} />
+                    <Accordion text='Отзывы' selectClass={`${styles.accordion} ${styles.reviews} goodsInfoSelect`} defaultMode={false} selectItem={[<Comment goods={goods} />]} />
                 </div>
 
             </section>

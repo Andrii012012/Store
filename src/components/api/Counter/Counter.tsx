@@ -28,9 +28,11 @@ export default function Counter(props: IProps): JSX.Element {
 
     return (
         <div className={`${styles.count} ${className}`}>
-            <div className={`${styles.btn} ${styles.decrement}`} onClick={() => selfProcessing ? hangleDecrement() : decrement && decrement()}></div>
+            <div className={`${styles.btn} ${styles.decrement}`}
+                onClick={() => selfProcessing ? hangleDecrement() : decrement && decrement()}></div>
             <p className={styles.bodyNumberCount}><span>{value}</span></p>
-            <div className={`${styles.btn} ${styles.increment}`} onClick={() => selfProcessing ? hangleIncrement() : increment && increment()}></div>
+            <div className={`${styles.btn} ${styles.increment}`}
+                onClick={() => selfProcessing ? hangleIncrement() : increment && increment()}></div>
         </div>
     );
 }

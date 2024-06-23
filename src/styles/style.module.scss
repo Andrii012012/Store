@@ -2,21 +2,10 @@
 @import "../utils/utilsStyles/rem.scss";
 @import "../utils/utilsStyles/em.scss";
 @import "../utils/utilsStyles/mainColor.scss";
-
-// PLUG FONTS
-
-@font-face {
-    font-family: "Montserrat";
-    display: swap;
-    src: url("../assets/fonts/Montserrat-Regular.ttf");
-    font-style: normal;
-    font-weight: 400;
-}
-
-//OTHER STYLES...
+@import './fonts.scss';
 
 body {
-    font-family: "Montserrat";
+    font-family: 'Open Sans';
 }
 
 .container {
@@ -27,6 +16,7 @@ body {
 }
 
 .titleSmall {
+    font-family: 'Montserrat';
     font-size: rem(24);
     font-weight: 400;
     line-height: em(29, 26.49);
@@ -34,7 +24,7 @@ body {
 }
 
 .title {
-    // font-family: Montserrat;
+    font-family: 'Montserrat';
     font-size: rem(30);
     font-weight: 400;
     line-height: em(36.57, 30);
@@ -62,7 +52,7 @@ body {
 }
 
 .text {
-    // font-family: Open Sans;
+    font-family: 'Open Sans';
     font-size: rem(16);
     font-weight: 400;
     line-height: em(22.4, 16);
@@ -75,7 +65,7 @@ body {
 }
 
 .textSmall {
-    // font-family: Open Sans;
+    font-family: 'Open Sans';
     font-size: rem(14);
     font-weight: 400;
     line-height: em(19.6, 14);

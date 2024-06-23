@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import Rating from '../../../../components/api/Rating/Rating';
 import styles from './style.module.scss';
 import gStyles from '../../../../styles/style.module.scss';
-import ButtonGoods from '../../../../components/api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../../../../components/api/Button/Button';
 import bonus from '../../../../assets/imgs/Catalog/icon-bonus.svg';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import { addComments } from '../../../../features/goods/slice';
@@ -11,6 +11,7 @@ import ChooseVideo from '../ChooseVideo/ChooseVideo';
 import { IOptions } from '../interface/interface';
 import ChooseScreen from '../ChooseScreen/ChooseScreen';
 import useWatchMedia from '../../../../hooks/useWatchMedia';
+import { useAppSelector } from '../../../../hooks/useAppSelector';
 
 interface IProps {
     goods: IGoods,
@@ -25,13 +26,21 @@ export default function LeaveComment(props: IProps): JSX.Element {
 
     const refAddComment = useRef<HTMLDivElement | null>(null);
 
+    const user = useAppSelector((state) => state.user.user);
+
     const [options, setOptions] = useState<IOptions>({
         stars: 1,
         date: new Date().toLocaleString().split(',')[0],
         description: "",
         videos: [],
         screens: [],
+        author: {
+            name: (user?.name || ""),
+            lastName: (user?.surname || ""),
+        },
     });
+
+    console.log(user);
 
     const dataMedia = useWatchMedia({ widthTeblet: 768, widthTebletExtra: 480, widthPhone: 390, showSlide: [3, 2.5, 2] });
 
@@ -58,7 +67,9 @@ export default function LeaveComment(props: IProps): JSX.Element {
             newState.date = new Date().toLocaleString().split(',')[0];
             return newState;
         });
-        dispatch(addComments({ id: goods.id, comment: options }));
+        dispatch(addComments({
+            id: goods.id, comment: options,
+        }));
         close(false);
     }
 

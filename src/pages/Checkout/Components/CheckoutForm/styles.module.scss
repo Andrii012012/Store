@@ -1,6 +1,7 @@
+@use 'sass:map';
 @import '../../../../utils/utilsStyles/mainColor.scss';
 @import '../../../../utils/utilsStyles/rem.scss';
-
+@import '../../../../utils/utilsStyles/colors.scss';
 
 .checkoutForm{
     margin-right: rem(20);
@@ -8,6 +9,7 @@
 
 .checkoutWrapper{
     width: 100%;
+    font-family: "Montserrat";
 }
 
 .title{
@@ -35,6 +37,15 @@
 .detailOrder {
     @extend %mainColor;
     margin-bottom: rem(20);
+}
+
+.detailInfo{
+   input::placeholder{
+    color: map.get($colors, 'warmDark');
+    background: initial;
+    -webkit-text-fill-color: initial;
+    -webkit-background-clip: initial;
+   }
 }
 
 @import './media.scss';

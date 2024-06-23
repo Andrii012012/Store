@@ -1,4 +1,4 @@
-import ButtonGoods from '../../../../../../components/api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../../../../../../components/api/Button/Button';
 import InputForm from '../../../../../../components/api/InputForm/InputForm';
 import { setAddressURL } from '../../../../../../config/config';
 import styles from './style.module.scss';

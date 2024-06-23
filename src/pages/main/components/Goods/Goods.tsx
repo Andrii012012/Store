@@ -47,7 +47,7 @@ export default function Goods(): JSX.Element {
                     {jsxElements.map((item) => item)}
                 </ul>
                 <div style={{ minWidth: '100%' }} className={styles.pagination}>
-                    <Pagination countPage={12}
+                    <Pagination<IGoods> countPage={12}
                         array={goods} onChange={hangleChangePage} />
                 </div>
             </div>

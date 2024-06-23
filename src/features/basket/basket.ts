@@ -30,7 +30,6 @@ export const addInBasketThunk = createAsyncThunk(
   "addInBasket/basket",
   async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
     const data = await clientAPI("post", url, form, rejectWithValue);
-    console.log(data);
     return data;
   }
 );
@@ -78,7 +77,7 @@ export const checkoutOrderThunk = createAsyncThunk(
   "checkoutOrder/goods",
   async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
     const data = await clientAPI("post", url, form, rejectWithValue);
-    console.log(data);
+     console.log(data);
   }
 );
 
@@ -86,8 +85,7 @@ export const checkBonusFiledThunk = createAsyncThunk(
   "checkBonusFiled/goods",
   async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
     const data = await clientAPI("post", url, form, rejectWithValue);
-    console.log(data);
-     return data?.data;
+    return data?.data;
   }
 );
 
@@ -108,6 +106,7 @@ export const slice = createSlice({
         marks,
         ordersId,
       } = action.payload;
+
       state.consistOrder.resultPrice = resultPrice;
       state.consistOrder.resultPriceWithExtra = resultPriceWithExtra;
       state.consistOrder.infoGoods = infoGoods;
@@ -221,9 +220,12 @@ export const slice = createSlice({
       state.status = "pending";
       state.error = null;
     });
-    build.addCase(checkoutOrderThunk.fulfilled, (state: IInitialStateBasket) => {
-      state.status = "success";
-    });
+    build.addCase(
+      checkoutOrderThunk.fulfilled,
+      (state: IInitialStateBasket) => {
+        state.status = "success";
+      }
+    );
     build.addCase(
       checkoutOrderThunk.rejected,
       (state: IInitialStateBasket, action: PayloadAction<any>) => {
@@ -231,18 +233,24 @@ export const slice = createSlice({
         state.error = action.payload;
       }
     );
-    build.addCase(checkBonusFiledThunk.pending, (state: IInitialStateBasket) => {
-      state.status = "pending";
-      state.error = null;
-    });
-    build.addCase(checkBonusFiledThunk.fulfilled, (state: IInitialStateBasket, action: PayloadAction<string>) => {
-        if(action.payload.length > 1){
+    build.addCase(
+      checkBonusFiledThunk.pending,
+      (state: IInitialStateBasket) => {
+        state.status = "pending";
+        state.error = null;
+      }
+    );
+    build.addCase(
+      checkBonusFiledThunk.fulfilled,
+      (state: IInitialStateBasket, action: PayloadAction<string>) => {
+        if (action.payload.length > 1) {
           state.status = "reject";
           state.error = action.payload;
         } else {
           state.status = "success";
         }
-    });
+      }
+    );
     build.addCase(
       checkBonusFiledThunk.rejected,
       (state: IInitialStateBasket, action: PayloadAction<any>) => {

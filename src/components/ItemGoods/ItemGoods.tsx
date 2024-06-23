@@ -1,13 +1,13 @@
 import styles from './style.module.scss';
 import gStyles from '../../styles/style.module.scss';
 import Valume from '../api/Valume/Valume';
-import ButtonGoods from '../api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../api/Button/Button';
 import { IGoods } from '../../interfaces/goods';
 import { useState } from 'react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { addInBasketThunk, getBasketThunk } from '../../features/basket/basket';
-import { addInBasketURL, getBasketURL } from '../../config/config';
+import { addInBasketThunk } from '../../features/basket/basket';
+import { addInBasketURL } from '../../config/config';
 import renderState from '../../features/basket/utils/updateBasket';
 
 interface IProps {

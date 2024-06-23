@@ -1,0 +1,47 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+    .itemInfo {
+        &:first-child {
+            p:nth-child(1) {
+                margin-right: rem(40);
+            }
+        }
+
+        &:nth-child(2) {
+            p:nth-child(1) {
+                margin-right: rem(56);
+            }
+        }
+
+        &:nth-child(3) {
+            p:nth-child(1) {
+                margin-right: rem(56);
+            }
+        }
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')) {
+    .itemInfo {
+        &:first-child {
+            p:nth-child(1) {
+                margin-right: rem(12);
+            }
+        }
+
+        &:nth-child(2) {
+            p:nth-child(1) {
+                margin-right: rem(28);
+            }
+        }
+
+        &:nth-child(3) {
+            p:nth-child(1) {
+                margin-right: rem(28);
+            }
+        }
+    }
+}

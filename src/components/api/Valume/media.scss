@@ -6,17 +6,3 @@
         justify-content: center;
     }
 }
-
-@media (max-width: map.get($breakpoints, 'tebletExtra')) {
-    .itemVolume {
-        font-size: rem(12);
-    }
-}
-
-
-@media (max-width: map.get($breakpoints, 'phone')) {
-    .itemVolume {
-        width: rem(30);
-        height: rem(30);
-    }
-}

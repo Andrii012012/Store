@@ -4,4 +4,8 @@ export interface IOptions {
   videos: string[];
   screens: string[];
   date: string;
+  author: {
+    name: string;
+    lastName: string;
+  };
 }

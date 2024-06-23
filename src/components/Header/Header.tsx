@@ -51,7 +51,7 @@ export default function Header(): JSX.Element {
             <div className={styles.sectionMenu}>
                 <div className={styles.city}>
                     <img src={imgCity} alt="" />
-                    <p>Ваш город: Москва</p>
+                    <p>Ваш город: Киев</p>
                 </div>
                 <nav className={styles.menu}>
                     <ul className={styles.listMenu}>

@@ -5,4 +5,6 @@ export interface IBasket {
   volume: number;
   price: number;
   checked: boolean;
+  idBasket: string;
+  originPrice: string;
 }

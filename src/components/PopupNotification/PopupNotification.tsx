@@ -1,4 +1,4 @@
-import ButtonGoods from '../api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../api/Button/Button';
 import styles from './style.module.scss';
 import gStyles from '../../styles/style.module.scss';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ interface IProps {
     title: string;
     text: string;
     to?: string;
-    hangle?: () => void; 
+    hangle?: () => void;
     close: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -17,11 +17,11 @@ export default function PopupNotification(props: IProps): JSX.Element {
 
     const goTo = useNavigate();
 
-     function hangleGoTo(){
+    function hangleGoTo() {
         goTo(to);
         close(false);
         hangle && hangle();
-     }
+    }
 
     return (
         <div className={styles.popup}>

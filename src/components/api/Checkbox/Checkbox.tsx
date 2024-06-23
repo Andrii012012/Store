@@ -1,6 +1,7 @@
-import styles from './styles.module.scss';
+import CheckboxText from './components/CheckboxText/CheckboxText';
+import { useRef } from 'react';
 import chackMark from '../../../assets/imgs/ChooseGender/check-mark.svg';
-import { ReactNode, useRef } from 'react';
+import CheckboxDefault from './components/CheckboxDefault/CheckboxDefault';
 
 interface IProps {
     text?: string;
@@ -24,18 +25,27 @@ export default function Checkbox(props: IProps): JSX.Element {
 
     if (text) {
         return (
-            <div ref={checkboxRef} role='checkbox' className={`${styles.bodyCheckbox} ${className}`}>
-                <div className={styles.chackbox} ref={refCheckbox} style={{ background: value ? 'linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%)' : '' }} onClick={hangleChange}>
-                    {value && <img className={icon ? icon : styles.icon} src={chackMark} />}
-                </div>
-                <p className={styles.text}>{text}</p>
-            </div>
+            <CheckboxText
+                className={className}
+                text={text}
+                icon={icon}
+                value={value}
+                checkboxRef={checkboxRef}
+                refCheckbox={refCheckbox}
+                hangleChange={hangleChange}
+                chackMark={chackMark}
+            />
         );
     } else {
         return (
-            <div role='checkbox' ref={refCheckbox} style={{ background: value ? 'linear-gradient(92.38deg, #C09E6C -1.94%, #FFEBCC 40.99%, #BF936B 98.79%)' : '' }} className={`${styles.chackbox} ${className}`} onClick={hangleChange}>
-                {value && <img className={icon ? icon : styles.icon} src={chackMark} />}
-            </div>
+            <CheckboxDefault
+                className={className}
+                icon={icon}
+                refCheckbox={refCheckbox}
+                hangleChange={hangleChange}
+                chackMark={chackMark}
+                value={value}
+            />
         );
     }
 }

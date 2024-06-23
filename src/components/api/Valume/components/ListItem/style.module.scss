@@ -1,0 +1,47 @@
+@use 'sass:map';
+@import '../../../../../utils/utilsStyles/colors.scss';
+@import '../../../../../utils/utilsStyles/rem.scss';
+@import '../../../../../utils/utilsStyles/mainColor.scss';
+
+.itemVolume {
+    margin-right: rem(20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    width: 34px;
+    height: 34px;
+    border-radius: rem(4);
+    border: 1px solid map.get($colors, 'tan');
+
+    span {
+        display: block;
+        @extend %mainColor;
+    }
+
+    &:hover {
+        background: map.get($colors, 'gradientMain');
+
+        span {
+            background: map.get($colors, 'jet');
+            -webkit-background-clip: text;
+        }
+    }
+
+}
+
+.itemVolumeAction {
+    background: map.get($colors, 'gradientMain');
+
+    span {
+        background: map.get($colors, 'jet');
+        -webkit-background-clip: text;
+    }
+}
+
+@import './media.scss';

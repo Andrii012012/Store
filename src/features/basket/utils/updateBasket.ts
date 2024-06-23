@@ -1,10 +1,11 @@
-import { Dispatch } from "@reduxjs/toolkit";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { getBasketThunk } from "../basket";
 import { getBasketURL } from "../../../config/config";
 import { TStatusReducer } from "../../../interfaces/statusReducer";
+import { RootState } from "../../../store/store";
 
 interface IProps {
-  dispatch: Dispatch<any>;
+  dispatch: ThunkDispatch<RootState, unknown, AnyAction>;
   id: string;
   status: TStatusReducer;
 }

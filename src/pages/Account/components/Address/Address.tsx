@@ -15,8 +15,6 @@ export default function Address(): JSX.Element {
         seIsChange(!isChange);
     }
 
-    console.log(user);
-
     if (user && !user.address && isChange) {
         return <AddAddressPay onChange={hangleIsChange} />
     } else if (user && user.address && isChange) {

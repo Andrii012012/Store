@@ -41,6 +41,14 @@
     }
 }
 
+.input {
+    &::placeholder{
+      background-color: map.get($colors, "shadow");
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+}
+
 .header {
     background: map.get($colors, 'darkExtra');
     padding-top: rem(16);
@@ -85,7 +93,6 @@
     &:hover {
         p {
             @extend %mainColor;
-            font-weight: 700;
         }
     }
 }
@@ -101,7 +108,6 @@
             a {
                 @extend %mainColor;
                 display: block;
-                font-weight: 700;
             }
         }
     }
@@ -123,7 +129,6 @@
     &:hover {
         p {
             @extend %mainColor;
-            font-weight: 700;
         }
     }
 }

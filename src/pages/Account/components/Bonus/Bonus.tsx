@@ -5,7 +5,7 @@ import Pagination from "../../../../components/api/Pagination/Pagination";
 import { useRef, useState } from "react";
 import RatingStarUser from "./components/RatingStarUser/RatingStarUser";
 import LineBreakpoint from "./components/LineBreakpoint/LineBreakpoint";
-
+import { IHistoryBonus } from "../../../../interfaces/user";
 
 export default function Bonus(): JSX.Element {
     const user = useAppSelector((state) => state.user.user);
@@ -74,7 +74,7 @@ export default function Bonus(): JSX.Element {
                         {JSXElements}
                     </ul>
                     <div className={styles.pagination}>
-                       <Pagination countPage={2}
+                       <Pagination<IHistoryBonus> countPage={2}
                             array={user.historyBonus} onChange={hangleChangePage} />
                     </div>
                 </div>

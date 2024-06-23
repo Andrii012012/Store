@@ -1,4 +1,4 @@
-import ButtonGoods from '../../../../components/api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../../../../components/api/Button/Button';
 import Checkbox from '../../../../components/api/Checkbox/Checkbox';
 import ProtectRobot from '../../../../components/api/ProtectRobot/ProtectRobot';
 import RadioButton from '../../../../components/api/RadioButton/RadioButton';
@@ -64,9 +64,15 @@ export default function Register(props: IProps): JSX.Element {
             if (text === 'Ж') {
                 newState.men = false;
                 newState.women = value;
+                if (!newState.women && !newState.men) {
+                    newState.women = true;
+                }
             } else if (text === 'М') {
                 newState.women = false;
                 newState.men = value;
+                if (!newState.women && !newState.men) {
+                    newState.men = true;
+                }
             }
 
             return newState;
@@ -106,7 +112,7 @@ export default function Register(props: IProps): JSX.Element {
         }
     }
 
-    function signIn(){
+    function signIn() {
         const form = new FormData();
         form.append('login', date.login);
         form.append('password', date.password);

@@ -4,7 +4,7 @@ export async function clientAPI(
   method: string,
   url: string,
   form?: object,
-  functionReject?: (error: any) => void
+  functionReject?: (error: React.ErrorInfo | string) => void
 ) {
   try {
     if (method === "post") {

@@ -1,13 +1,27 @@
+@use 'sass:map';
 @import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
 
-.checkbox{
-    > div {
+.checkbox {
+    font-family: 'Open Sans';
+
+    >div {
         margin-right: rem(10);
     }
+
     margin-bottom: rem(10);
-     &:last-child{
+
+    &:last-child {
         margin-bottom: 0;
-     }
+    }
+
+    p {
+        background: initial !important;
+        color: map.get($colors, 'vanilla');
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+    }
+
 }
 
 @import './media.scss';

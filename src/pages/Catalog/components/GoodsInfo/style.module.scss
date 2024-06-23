@@ -15,6 +15,7 @@
 .kinds {
     display: flex;
     margin-bottom: rem(23);
+    font-family: 'Montserrat';
 
     p {
         color: map.get($colors, 'warmDark');
@@ -60,6 +61,7 @@
 .cost {
     color: map.get($colors, 'vanilla');
     margin-bottom: rem(10);
+    font-family: 'Open Sans';
 }
 
 .price {
@@ -67,10 +69,12 @@
     font-size: rem(20);
     line-height: em(28, 20);
     font-weight: 700;
+    font-family: 'Open Sans';
     @extend %mainColor;
 }
 
 .textCount{
+    font-family: 'Open Sans';
     margin-bottom: rem(10);
     color: map.get($colors, 'vanilla');
 }
@@ -80,7 +84,7 @@
 .accordion {
     margin-bottom: rem(20);
     max-width: rem(847);
-
+    font-family: 'Open Sans';
     >div {
         padding: rem(11) rem(10);
         background: map.get($colors, 'darkCoffe');

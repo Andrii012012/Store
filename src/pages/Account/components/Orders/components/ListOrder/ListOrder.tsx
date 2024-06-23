@@ -1,9 +1,10 @@
-import ButtonGoods from '../../../../../../components/api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../../../../../../components/api/Button/Button';
 import { cancelOrderURL } from '../../../../../../config/config';
 import Accordion from '../../../../../../containers/Accordion/Accordion';
 import { useAppDispatch } from '../../../../../../hooks/useAppDispatch';
 import { IHistoryOrder } from '../../../../../../interfaces/user';
 import styles from './style.module.scss';
+import './style.scss';
 import gStyles from '../../../../../../styles/style.module.scss';
 import { cancelOrderThunk } from '../../../../../../features/basket/basket';
 
@@ -31,7 +32,7 @@ export default function ListOrder(props: IProps): JSX.Element {
                         <p>Заказ от <span>{item.fromOrderDate}</span></p>
                         <div className={styles.bodyInfo}>
                             <span className={styles.price}>оплачено {item.price}$</span>
-                             {item.statusDelivery === 'Получен' ? <></> : item.statusDelivery !== 'Отменен' ?  <button className={`${styles.btnCancel} ${gStyles.textSmall}`} onClick={() => hangleCancel(item.id)}>Отменить</button> : <></>}
+                            {item.statusDelivery === 'Получен' ? <></> : item.statusDelivery !== 'Отменен' ? <button className={`${styles.btnCancel} ${gStyles.textSmall}`} onClick={() => hangleCancel(item.id)}>Отменить</button> : <></>}
                         </div>
                     </div>
                     {item.statusDelivery === 'Ожидает оплаты' && <ButtonGoods className={styles.btnPay} text='Оплатить' />}
@@ -48,7 +49,7 @@ export default function ListOrder(props: IProps): JSX.Element {
                         </li>
                         <li className={styles.infoItem}><p>Ожидаемая дата: <span>{item.waitDate}</span></p></li>
                     </ul>
-                    <Accordion selectClass={styles.select} selectItem={[...item.consistOrder.map((item, index) => (<div className={styles.bodyGoods} key={index}>
+                    <Accordion selectClass={`${styles.select} consistOrderCheck`} selectItem={[...item.consistOrder.map((item, index) => (<div className={styles.bodyGoods} key={index}>
                         <span className={styles.itemIndex}>{index + 1}. </span>
                         <span className={styles.itemName}>{item.name}</span>
                         <span className={styles.itemInfo}>{`(${item.volume}мл. X ${item.things})`}</span>

@@ -26,14 +26,14 @@ export const Category = memo((): JSX.Element => {
     }
 
     const itemFilter: JSX.Element[] = [
-        <Accordion handleChoose={handleChooseFilter} text='Бренд' selectClass={`${styles.selectItemFilter}`}
-            defaultMode={false} selectItem={[<SeachGoods text='Все бренды' selectItem={['1']} />]} ></Accordion>,
-        <Accordion handleChoose={handleChooseFilter} text='Стоимость' selectClass={styles.selectItemFilter}
+        <Accordion handleChoose={handleChooseFilter} text='Бренд' selectClass={`${styles.selectItemFilter} ${styles.selectItemFilterExtra} selectMenuControl`}
+            defaultMode={false} selectItem={[<SeachGoods selectClass={`selectAllThing`} text='Все бренды' selectItem={['1']} />]} ></Accordion>,
+        <Accordion handleChoose={handleChooseFilter} text='Стоимость' selectClass={`${styles.selectItemFilter}  ${styles.selectItemFilterExtra} selectMenuControl`}
             defaultMode={false} selectItem={[<Costs />]}></Accordion>,
-        <Accordion handleChoose={handleChooseFilter} text='Пол' selectClass={`${styles.selectItemFilter}`}
+        <Accordion handleChoose={handleChooseFilter} text='Пол' selectClass={`${styles.selectItemFilter} selectMenuControl`}
             defaultMode={false} selectItem={[<ChooseGender />]}></Accordion>,
-        <Accordion handleChoose={handleChooseFilter} text='Ноты' selectClass={`${styles.selectItemFilter}`}
-            defaultMode={false} selectItem={[<SeachGoods text='Все' selectItem={['1']} />]}></Accordion>,
+        <Accordion handleChoose={handleChooseFilter} text='Ноты' selectClass={`${styles.selectItemFilter} ${styles.selectItemFilterExtra} selectMenuControl`}
+            defaultMode={false} selectItem={[<SeachGoods selectClass={`selectAllThing`} text='Все' selectItem={['1']} />]}></Accordion>,
         <button onClick={() => dispatch(clearSettings())} className={styles.btnReset}><span>Сбросить</span></button>
     ];
 

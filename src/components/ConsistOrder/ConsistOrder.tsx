@@ -1,7 +1,7 @@
 import styles from './style.module.scss';
 import gStyles from '../../styles/style.module.scss';
 import { ReactNode } from 'react';
-import ButtonGoods from '../api/ButtonGoods/ButtonGoods';
+import ButtonGoods from '../api/Button/Button';
 
 interface IProps {
     children: ReactNode;

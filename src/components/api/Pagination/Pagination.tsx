@@ -1,17 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from './style.module.scss';
 import { useAppSelector } from '../../../hooks/useAppSelector';
-import ListPagination from './components/ListPagination/ListPagination';
-
-interface IProps {
-    array: any;
+import PaginationExtra from './components/PaginationExtra/PaginationExtra';
+import PaginationDefault from './components/PaginationExtra/PaginationExtra';
+interface IProps<T> {
+    array: T[];
     isArrows?: boolean;
     countPage: number;
     className?: string;
     onChange: (page: number) => void;
 }
 
-export default function Pagination(props: IProps): JSX.Element {
+export default function Pagination<T>(props: IProps<T>): JSX.Element {
     let { isArrows = true, array, countPage, className, onChange } = props;
 
     const goods = useAppSelector((state) => state.goods);
@@ -19,11 +18,7 @@ export default function Pagination(props: IProps): JSX.Element {
     const refSaveIsMobile = useRef<boolean>(window.matchMedia('(max-width: 480px)').matches ? true : false);
 
     const refSaveShowNumberPagination = useRef<number>(window.matchMedia('(max-width: 480px)').matches ? 1 : 4);
-
-    const refBtnNext = useRef<HTMLButtonElement | null>(null);
-
-    const refBtnPrev = useRef<HTMLButtonElement | null>(null);
-
+    
     const [savePrevPages, setSavePrevPages] = useState<number>(1);
 
     const [countPagination, setCountPagination] = useState<(number | string)[]>([]);
@@ -31,28 +26,6 @@ export default function Pagination(props: IProps): JSX.Element {
     const length: number = array.length;
 
     const resultPagination: number = Math.round(length / countPage);
-
-    function handleDesabled<T>(ref: React.MutableRefObject<T | null>, condition: string | number | boolean,
-        conditionSymbol: string) {
-        switch (conditionSymbol) {
-            case '>=': {
-                if (savePrevPages >= Number(condition) && ref.current instanceof HTMLElement) {
-                    ref.current.classList.add(styles.disabled);
-                } else {
-                    if (ref.current instanceof HTMLElement) ref.current.classList.remove(styles.disabled);
-                }
-                break;
-            }
-            case '<=': {
-                if (savePrevPages <= Number(condition) && ref.current instanceof HTMLElement) {
-                    ref.current.classList.add(styles.disabled);
-                } else {
-                    if (ref.current instanceof HTMLElement) ref.current.classList.remove(styles.disabled);
-                }
-                break;
-            }
-        }
-    }
 
     function handleFillingPagination(isMobile: boolean, count: number) {
         const arrayCountPagination: (number | string)[] = [];
@@ -85,23 +58,8 @@ export default function Pagination(props: IProps): JSX.Element {
         setCountPagination(arrayCountPagination);
     }
 
-    function hangleIncrement() {
-        setSavePrevPages((prevState): number => prevState < resultPagination ? ++prevState : prevState);
-        handleDesabled<HTMLButtonElement>(refBtnNext, resultPagination, '>=');
-        if (savePrevPages < resultPagination) onChange((savePrevPages + 1) * countPage);
-    }
-
-    function hangleDecrement() {
-        setSavePrevPages((prevState): number => prevState > 1 ? --prevState : prevState);
-        handleDesabled<HTMLButtonElement>(refBtnPrev, 1, '<=');
-        if (savePrevPages > 1) onChange((savePrevPages - 1) * countPage);
-    }
-
-
     useEffect(() => {
         handleFillingPagination(refSaveIsMobile.current, refSaveShowNumberPagination.current);
-        handleDesabled<HTMLButtonElement>(refBtnPrev, 1, '<=');
-        handleDesabled<HTMLButtonElement>(refBtnNext, resultPagination, '>=');
     }, [savePrevPages, goods]);
 
     useEffect(() => {
@@ -126,27 +84,30 @@ export default function Pagination(props: IProps): JSX.Element {
 
     }, []);
 
-
     if (isArrows) {
         return (
-            <section className={`${styles.pagination} ${className}`}>
-                <div className={styles.wrapper}>
-                    <button onClick={hangleDecrement} ref={refBtnPrev} className={`${styles.btn} ${styles.btnPrev}`}></button>
-                    <ul className={styles.list}>
-                        <ListPagination savePrevPages={savePrevPages} isArrow={true} list={countPagination} setSavePrevPages={setSavePrevPages} countPage={countPage} onChange={onChange} />
-                    </ul>
-                    <button onClick={hangleIncrement} ref={refBtnNext} className={`${styles.btn} ${styles.btnNext}`}></button>
-                </div>
-            </section>
+            <PaginationExtra
+                className={className}
+                setSavePrevPages={setSavePrevPages}
+                resultPagination={resultPagination}
+                savePrevPages={savePrevPages}
+                countPage={countPage}
+                countPagination={countPagination}
+                onChange={onChange}
+            />
         )
 
     } else {
         return (
-            <section className={`${styles.pagination} ${className}`}>
-                <div className={styles.wrapper}>
-                    <ListPagination savePrevPages={savePrevPages} isArrow={false} list={countPagination} setSavePrevPages={setSavePrevPages} countPage={countPage} onChange={onChange} />
-                </div>
-            </section>
+            <PaginationDefault
+                className={className}
+                setSavePrevPages={setSavePrevPages}
+                resultPagination={resultPagination}
+                savePrevPages={savePrevPages}
+                countPage={countPage}
+                countPagination={countPagination}
+                onChange={onChange}
+            />
         )
     }
 

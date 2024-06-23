@@ -16,6 +16,7 @@
     justify-content: center;
     color: map.get($colors, 'vanilla');
     line-height: em(16, 19.5);
+    font-family: 'Montserrat';
 }
 
 .wrapper {
@@ -43,6 +44,7 @@
 
     ul li {
         margin-bottom: rem(6);
+        line-height: em(19.5, 16);
     }
 
     margin-bottom: rem(20);
