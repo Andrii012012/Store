@@ -5,7 +5,7 @@
 
 .documention {
     width: 100%;
-    margin-top: rem(132);
+    padding: rem(132) 0 0 0;
     background-color: map.get($colors, 'darkExtra');
     color: map.get($colors, 'vanilla');
     min-height: 100%;

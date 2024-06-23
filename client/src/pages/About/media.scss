@@ -25,7 +25,7 @@
     }
 
     .about {
-        padding-bottom: rem(40);
+        padding: rem(132) 0 rem(40) 0;
     }
 
     .fragmentImageSmall {
@@ -47,7 +47,7 @@
 
 @media (max-width: rem(632)) {
     .about {
-        margin-top: rem(70);
+        padding: rem(70) 0 rem(40) 0;
     }
 
     .fragmentImageSmall {
@@ -67,7 +67,7 @@
     }
 
     .about {
-        margin-top: rem(66);
+        padding: rem(66) 0 rem(40) 0;
     }
 
     .container {

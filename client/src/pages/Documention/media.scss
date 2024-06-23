@@ -40,14 +40,11 @@
 
 @media (max-width: rem(632)) {
     .documention {
-        margin-top: rem(70);
+        padding: rem(70) 0 0 0;
     }
 }
 
 @media (max-width: map.get($breakpoints, 'teblet')) {
-    .documention {
-        margin-top: rem(65);
-    }
     .fragment {
         position: absolute;
         top: initial;
@@ -73,7 +70,7 @@
         font-size: rem(18);
     }
     .documention{
-        padding-bottom: rem(40);
+        padding: rem(65) 0 rem(40) 0;
     }
 }
 

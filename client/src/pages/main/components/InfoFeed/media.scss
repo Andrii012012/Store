@@ -6,21 +6,19 @@
 
 @media (max-width: map.get($breakpoints, 'teblet')) {
   .infoFeed {
-    padding-top: rem(0);
-    margin-top: rem(132);
+    padding-top: rem(132);
   }
 }
 
 @media (max-width: 39.5em) {
   .infoFeed {
-    padding-top: rem(0);
-    margin-top: rem(96);
+    padding-top: rem(96);
   }
 }
 
 @media (max-width: map.get($breakpoints, 'tebletExtra')) {
   .infoFeed {
-    margin-top: rem(66);
+    padding-top: rem(66);
     min-height: rem(500);
   }
 }

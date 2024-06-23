@@ -4,10 +4,9 @@
 @import '../../utils/utilsStyles/mainColor.scss';
 
 .checkout {
-    margin-top: rem(132);
+    padding: rem(132) 0 rem(50) 0;
     background-color: map.get($colors, 'darkExtra');
     color: map.get($colors, 'vanilla');
-    padding-bottom: rem(50);
 }
 
 .container {

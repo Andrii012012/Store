@@ -5,10 +5,9 @@
 
 .basket {
     width: 100%;
-    margin-top: rem(132);
+    padding: rem(132) 0 rem(50) 0;
     background-color: map.get($colors, 'darkExtra');
     color: map.get($colors, 'vanilla');
-    padding: rem(50) 0;
     font-family: "Open Sans";
 }
 
@@ -23,6 +22,10 @@
     }
 
     margin-bottom: rem(40);
+}
+
+.container{
+    margin-top: rem(50);
 }
 
 .bodyInfoBonus {

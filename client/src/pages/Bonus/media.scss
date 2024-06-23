@@ -4,7 +4,7 @@
 
 @media (max-width: map.get($breakpoints, 'teblet')) {
     .bonus {
-        padding-bottom: rem(40);
+        padding: rem(132) 0 rem(40) 0;
     }
 
     .container {
@@ -14,13 +14,13 @@
 
 @media (max-width: rem(632)) {
     .bonus {
-        margin-top: rem(70);
+        padding: rem(70) 0 rem(40) 0;
     }
 }
 
 @media (max-width: map.get($breakpoints, 'tebletExtra')) {
     .bonus {
-        margin-top: rem(60);
+        padding: rem(60) 0 rem(40) 0;
     }
 
     .listInfo {

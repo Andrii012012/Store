@@ -6,6 +6,9 @@
     .useBonus {
         margin-bottom: rem(30);
     }
+    .container{
+        margin-top: rem(30);
+    }
 }
 
 @media (max-width: map.get($breakpoints, 'teblet')) {
@@ -22,13 +25,16 @@
     }
 
     .basket {
-        padding-top: rem(40);
+        padding: rem(132) 0 rem(40) 0;
+    }
+    .container{
+        margin-top: rem(40);
     }
 }
 
 @media (max-width: rem(632)) {
     .basket {
-        margin-top: rem(70);
+        padding: rem(70) 0 rem(40) 0;
     }
 }
 
@@ -39,8 +45,7 @@
     }
 
     .basket {
-        margin-top: rem(66);
-        padding-top: rem(30);
+        padding: rem(66) 0 rem(40) 0;
     }
 
     .bodyInfoBonus img {
@@ -52,6 +57,7 @@
     }
 
     .wrapper {
+        margin-top: rem(20);
         padding: 0 rem(20);
     }
 }
@@ -59,6 +65,7 @@
 
 @media (max-width: map.get($breakpoints, 'phone')) {
     .wrapper{
+        margin-top: rem(30);
         padding: 0 rem(16);
     }
 }

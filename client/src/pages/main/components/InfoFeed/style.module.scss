@@ -1,8 +1,11 @@
+@use 'sass:map';
 @import '../../../../utils/utilsStyles/rem.scss';
+@import '../../../../utils/utilsStyles/colors.scss';
 
 .infoFeed{
     max-height: rem(500);
-    margin-top: rem(132);
+    padding-top: rem(132);
+    background-color: map.get($colors, 'darkExtra');
 }
 
 @import './media.scss';

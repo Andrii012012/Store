@@ -32,14 +32,13 @@
 
 @media (max-width: rem(632)) {
     .checkout {
-        margin-top: rem(96);
+        padding: rem(96) 0 rem(50) 0;
     }
 }
 
 @media (max-width: map.get($breakpoints, 'tebletExtra')) {
     .checkout {
-        padding-bottom: rem(40);
-        margin-top: rem(66);
+        padding: rem(66) 0 rem(40) 0;
     }
 
     .checkoutBody {

@@ -7,8 +7,7 @@
     width: 100%;
     background-color: map.get($colors, 'darkExtra');
     color: map.get($colors, 'vanilla');
-    margin-top: rem(132);
-    padding-bottom: rem(50);
+    padding: rem(132) 0 rem(50) 0;
     overflow: hidden;
     font-family: "Montserrat";
 }
