@@ -3,6 +3,7 @@ import { TypedUseSelectorHook } from "react-redux";
 import { IInitialState, goods } from "../features/goods/slice";
 import { user, IInitialStateUser } from "../features/user/slice";
 import { IInitialStateBasket, basket } from "../features/basket/basket";
+
 interface IReducer {
   goods: Reducer<IInitialState>;
   user: Reducer<IInitialStateUser>;

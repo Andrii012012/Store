@@ -29,7 +29,6 @@ export const filterSeach = createSelector(
 export const FilterProducts = createSelector(
   [(state) => state.goods, (state) => state.goods],
   (state) => {
-    // console.log(state.
     const { gender, brand, price, notes, filter } = state.filterGoods;
     let copyNewGoods;
     let newGoods = state.goods.map((item: IGoods) => {
