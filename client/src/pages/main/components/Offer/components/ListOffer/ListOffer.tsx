@@ -10,6 +10,7 @@ import { FilterProducts } from "../../../../../../features/goods/createSelect";
 import { addInBasketURL } from "../../../../../../config/config";
 import { addInBasketThunk } from "../../../../../../features/basket/basket";
 import renderState from "../../../../../../features/basket/utils/updateBasket";
+import { useEffect, useState } from "react";
 
 interface IProps {
     list: TOffer[],
@@ -17,8 +18,6 @@ interface IProps {
 
 export default function ListOffer(props: IProps): JSX.Element {
     let { list } = props;
-
-    const dataMedia = useWatchMedia({ widthTeblet: 768, widthPhone: 480, showSlide: [3, 2, 1] });
 
     const dispatch = useAppDispatch();
 
@@ -57,8 +56,12 @@ export default function ListOffer(props: IProps): JSX.Element {
             dispatch(addInBasketThunk({ url: addInBasketURL, form }));
             renderState({ dispatch, status: basketStatus, id: user.id });
         }
-
     }
+
+    const dataMedia = useWatchMedia({ widthTeblet: 768, widthTebletExtra: 480, widthPhone: 390, showSlide: [3, 2, 1] });
+
+
+    console.log(dataMedia);
 
     return (
         <>

@@ -1,0 +1,23 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/rem.scss';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/media.scss';
+@import '../../utils/utilsStyles/media.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')) {
+  .wrapper {
+    padding-top: rem(132);
+  }
+}
+
+@media (max-width: 39.5em) {
+  .wrapper {
+    padding-top: rem(90);
+  }
+}
+
+@media (max-width: map.get($breakpoints, 'tebletExtra')) {
+  .wrapper {
+    padding-top: rem(80);
+  }
+}

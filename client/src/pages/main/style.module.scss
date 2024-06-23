@@ -1,0 +1,10 @@
+@use 'sass:map';
+@import '../../utils/utilsStyles/colors.scss';
+@import '../../utils/utilsStyles/rem.scss';
+
+.wrapper{
+    padding-top: rem(132);
+    background-color: map.get($colors, 'darkExtra');
+}
+
+@import './media.scss';

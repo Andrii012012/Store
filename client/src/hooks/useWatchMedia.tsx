@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 interface IProps {
-    widthTeblet?: number,
-    widthTebletExtra?: number,
+    widthTeblet: number,
+    widthTebletExtra: number,
     widthPhone?: number,
     showSlide: number[],
 }
@@ -16,24 +16,23 @@ interface TMedia {
 export default function useWatchMedia(props: IProps) {
 
     let { showSlide, widthTeblet, widthTebletExtra, widthPhone } = props;
-
     function checkWidth() {
-        if (window.matchMedia(`max-width: ${widthTeblet}px`).matches) {
-            return window.matchMedia(`max-width: ${widthTeblet}px`).matches;
-        } else if (window.matchMedia(`max-width: ${widthTebletExtra}px`).matches) {
-            return window.matchMedia(`max-width: ${widthTebletExtra}px`).matches;
-        } else if (window.matchMedia(`max-width: ${widthPhone}px`).matches) {
-            return window.matchMedia(`max-width: ${widthPhone}px`).matches;
+        if (window.innerWidth <= widthTebletExtra && window.innerWidth > (widthPhone || 0)) {
+            return true;
+        } else if (widthPhone && window.innerWidth <= widthPhone) {
+            return true;
         }
         return false;
     }
 
     function getShowSlide() {
-        if (widthTeblet) {
+        if (window.innerWidth >= widthTeblet && window.innerWidth > widthTebletExtra) {
             return showSlide[0];
-        } else if (widthTebletExtra) {
+        }
+        if (window.innerWidth >= widthTebletExtra && window.innerWidth > (widthPhone || 0)) {
             return showSlide[1];
-        } else if (widthPhone) {
+        }
+        if (widthPhone && window.innerWidth <= widthPhone) {
             return showSlide[2];
         }
         return showSlide[0];
@@ -46,7 +45,8 @@ export default function useWatchMedia(props: IProps) {
     });
 
     useEffect(() => {
-        function hangleResize() {
+
+        function hangleChangeOptions() {
             setDataMedia((prevState: TMedia) => {
                 const newState = { ...prevState };
                 if (window.matchMedia(`(max-width: ${widthTeblet}px)`).matches && !newState.isRender) {
@@ -65,10 +65,12 @@ export default function useWatchMedia(props: IProps) {
                 return newState;
             })
         }
-        window.addEventListener('resize', hangleResize);
+
+
+        window.addEventListener('resize', hangleChangeOptions);
 
         return () => {
-            window.removeEventListener('resize', hangleResize);
+            window.removeEventListener('resize', hangleChangeOptions);
         }
 
     }, []);

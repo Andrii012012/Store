@@ -127,10 +127,5 @@
 
     .selectPopular>div {
         padding: rem(16.5) rem(6);
-
-        &::after {
-            content: "";
-            right: 6px;
-        }
     }
 }

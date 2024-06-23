@@ -4,21 +4,8 @@
 @import '../../../../utils/utilsStyles/media.scss';
 @import '../../../../utils/utilsStyles/media.scss';
 
-@media (max-width: map.get($breakpoints, 'teblet')) {
-  .infoFeed {
-    padding-top: rem(132);
-  }
-}
-
-@media (max-width: 39.5em) {
-  .infoFeed {
-    padding-top: rem(96);
-  }
-}
-
 @media (max-width: map.get($breakpoints, 'tebletExtra')) {
   .infoFeed {
-    padding-top: rem(66);
     min-height: rem(500);
   }
 }
