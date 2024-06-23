@@ -26,7 +26,7 @@ export default function useWatchElement() {
 
     function setWatch() {
         document.addEventListener('click', (e) => {
-            if (e.target instanceof HTMLElement && value.watchClassName && !e.target.closest(`.${value.watchClassName}`) && value.elementHangle && value.another === '') {
+            if (e.target instanceof HTMLElement && value.watchClassName && !e.target.closest(`.${value.watchClassName}`) && value.elementHangle) {
                 value.elementHangle.classList.remove(`${value.removeClassName}`);
             }
             if (e.target instanceof HTMLElement && value.watchClassName && !e.target.closest(`.${value.watchClassName}`)) {

@@ -77,6 +77,7 @@ export const changePasswordThunk = createAsyncThunk(
   "changePassword/user",
   async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
     const data = await clientAPI("post", url, form, rejectWithValue);
+     console.log(data);
      return data;
   }
 );
