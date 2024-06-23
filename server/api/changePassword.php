@@ -23,7 +23,7 @@ include './constants/status.php';
 
         $getAddress = mysqli_query($connect, "UPDATE `user` SET `email`='$email',`name`='$name',`surname`='$surname' WHERE `id` = '$id'");
 
-        if (md5($oldPassword) === $user['password'] && mysqli_fetch_assoc($getAddress)) {
+        if (md5($oldPassword) === $user['password'] && $getAddress) {
             $postUser = mysqli_query($connect, "UPDATE `user` SET `password`='$newPassword' WHERE `id` = '$id'");
             if (!$postUser) {
                 echo $NOT_SUCCESSFULLY_COMPLETING_TAKS_ERROR;
