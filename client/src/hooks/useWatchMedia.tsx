@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 interface IProps {
     widthTeblet: number,
     widthTebletExtra: number,
-    widthPhone?: number,
+    widthPhone?: number | null,
     showSlide: number[],
 }
 
@@ -17,23 +17,27 @@ export default function useWatchMedia(props: IProps) {
 
     let { showSlide, widthTeblet, widthTebletExtra, widthPhone } = props;
     function checkWidth() {
+        if (window.innerWidth <= widthTeblet && window.innerWidth > widthTebletExtra) {
+            return true;
+        }
         if (window.innerWidth <= widthTebletExtra && window.innerWidth > (widthPhone || 0)) {
             return true;
-        } else if (widthPhone && window.innerWidth <= widthPhone) {
+        }
+        if (widthPhone && window.innerWidth <= widthPhone) {
             return true;
         }
         return false;
     }
 
     function getShowSlide() {
-        if (window.innerWidth >= widthTeblet && window.innerWidth > widthTebletExtra) {
-            return showSlide[0];
-        }
-        if (window.innerWidth >= widthTebletExtra && window.innerWidth > (widthPhone || 0)) {
+        if (window.innerWidth <= widthTeblet && window.innerWidth > widthTebletExtra) {
             return showSlide[1];
         }
-        if (widthPhone && window.innerWidth <= widthPhone) {
+        if (window.innerWidth <= widthTebletExtra && window.innerWidth > (widthPhone || 0)) {
             return showSlide[2];
+        }
+        if (widthPhone && window.innerWidth <= widthPhone) {
+            return showSlide[3];
         }
         return showSlide[0];
     }
@@ -49,15 +53,15 @@ export default function useWatchMedia(props: IProps) {
         function hangleChangeOptions() {
             setDataMedia((prevState: TMedia) => {
                 const newState = { ...prevState };
-                if (window.matchMedia(`(max-width: ${widthTeblet}px)`).matches && !newState.isRender) {
+                if (window.innerWidth <= widthTeblet && window.innerWidth > widthTebletExtra && !newState.isRender) {
                     newState.media = true;
                     newState.showSlide = showSlide[1];
                     newState.isRender = true;
-                } else if (window.matchMedia(`(min-width: ${widthTeblet && widthTeblet + 1}px)`).matches && newState.isRender) {
+                } else if (window.innerWidth > widthTeblet && newState.isRender) {
                     newState.media = false;
                     newState.showSlide = showSlide[0];
                     newState.isRender = false;
-                } else if (window.matchMedia(`(max-width: ${widthPhone}px)`).matches && newState.isRender) {
+                } else if (window.innerWidth <= widthTebletExtra && window.innerWidth > (widthPhone || 0) && newState.isRender) {
                     newState.media = true;
                     newState.showSlide = showSlide[2];
                     newState.isRender = true;

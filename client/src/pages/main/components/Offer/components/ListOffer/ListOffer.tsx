@@ -58,10 +58,7 @@ export default function ListOffer(props: IProps): JSX.Element {
         }
     }
 
-    const dataMedia = useWatchMedia({ widthTeblet: 768, widthTebletExtra: 480, widthPhone: 390, showSlide: [3, 2, 1] });
-
-
-    console.log(dataMedia);
+    const dataMedia = useWatchMedia({ widthTeblet: 768, widthTebletExtra: 480, widthPhone: null, showSlide: [3, 2.05, 1.57] });
 
     return (
         <>

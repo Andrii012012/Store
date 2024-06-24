@@ -36,11 +36,13 @@
     align-items: center;
     width: 100%;
     min-height: 100%;
+    padding: 0 rem(21.87);
 }
 
 .btn {
-    @include mixinBtn(12, 72);
-
+    @include mixinBtn(12, 0);
+    max-width: rem(245);
+    width: 100%;
     span {
         @extend %mainColor;
     }

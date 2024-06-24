@@ -1,5 +1,5 @@
-import style from './style.module.scss';
-import gStyle from '../../../../styles/style.module.scss';
+import styles from './style.module.scss';
+import gStyles from '../../../../styles/style.module.scss';
 import backgroundImg1 from '../../../../assets/imgs/Offer/background-img-1.png';
 import backgroundImg2 from '../../../../assets/imgs/Offer/background-img-2.png';
 import backgroundImg3 from '../../../../assets/imgs/Offer/background-img-3.png';
@@ -27,13 +27,13 @@ const offer: TOffer[] = [
 
 export default function Offer(): JSX.Element {
     return (
-        <section className={style.offer}>
-            <div className={gStyle.container}>
-                <h2 className={`${gStyle.titleSmall} ${style.title}`}>Популярные ароматы</h2>
-                <ul className={style.list}>
+        <section className={styles.offer}>
+            <div className={`${gStyles.container} ${styles.container}`}>
+                <h2 className={`${gStyles.titleSmall} ${styles.title}`}>Популярные ароматы</h2>
+                <ul className={styles.list}>
                     <ListOffer list={offer}/>
                 </ul>
-                <p className={`${gStyle.titleSmall} ${style.bonus}`}>Бонусы от покупок</p>
+                <p className={`${gStyles.titleSmall} ${styles.bonus}`}>Бонусы от покупок</p>
             </div>
         </section>
     );

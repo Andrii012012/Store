@@ -1,0 +1,16 @@
+@use 'sass:map';
+@import '../../../../utils/utilsStyles/media.scss';
+@import '../../../../utils/utilsStyles/rem.scss';
+
+@media (max-width: map.get($breakpoints, 'teblet')){
+    .container{
+        padding: 0 0 0 rem(20);
+        max-width: initial ;
+    }
+}
+
+@media (max-width: map.get($breakpoints, 'phone')){
+    .container{
+        padding: 0 0 0 rem(16);
+    }
+}
