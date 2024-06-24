@@ -264,6 +264,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    box-shadow: 0px 2px 10px 0px rgba(184, 164, 142, 0.4);
 
     .burgerWrapper {
         position: relative;
@@ -281,7 +282,6 @@
     .sectionMenu {
         display: none;
     }
-
     background-color: transparent;
     backdrop-filter: blur(12px);
     min-height: 60px;
