@@ -19,8 +19,23 @@ import About from './pages/About/About';
 import Documention from './pages/Documention/Documention';
 import Basket from './pages/Basket/Basket';
 import Checkout from './pages/Checkout/Checkout';
+import { useAppDispatch } from './hooks/useAppDispatch';
+import { useEffect } from 'react';
+import { signThunk } from './features/user/slice';
+import { signURL } from './config/config';
 
 function App() {
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const form = new FormData();
+    form.append('token', String(localStorage.getItem('token')));
+    form.append('login', '');
+    form.append('password', '');
+    dispatch(signThunk({ url: signURL, form }));
+  }, []);
+
   return (
     <Layout>
       <Routes>

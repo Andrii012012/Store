@@ -46,6 +46,7 @@ export const signThunk = createAsyncThunk(
   ) => {
     const data = await clientAPI("post", url, form, rejectWithValue);
     if (data && data.data) {
+      console.log(data);
       const object: signObject = { dateServer: data.data, ref: ref || [] };
       return object;
     } else {
@@ -77,8 +78,7 @@ export const changePasswordThunk = createAsyncThunk(
   "changePassword/user",
   async ({ url, form }: { url: string; form: object }, { rejectWithValue }) => {
     const data = await clientAPI("post", url, form, rejectWithValue);
-     console.log(data);
-     return data;
+    return data;
   }
 );
 
@@ -87,9 +87,9 @@ export const slice = createSlice({
   initialState,
   reducers: {
     leaveAccount: (state: IInitialStateUser) => {
-       state.token = '';
-       state.user = null;
-    }
+      state.token = "";
+      state.user = null;
+    },
   },
   extraReducers: (build) => {
     build.addCase(registerThunk.pending, (state: IInitialStateUser) => {
@@ -117,8 +117,9 @@ export const slice = createSlice({
           let { dateServer, ref } = action.payload;
           if (typeof dateServer === "object") {
             state.status = "success";
+            localStorage.setItem("token", dateServer.token);
             state.user = dateServer;
-            state.token = String(dateServer.password);
+            state.token = dateServer.token;
           } else {
             state.status = "reject";
             state.error = dateServer;
@@ -160,5 +161,5 @@ export const slice = createSlice({
 });
 
 export const user = slice.reducer;
-export const {leaveAccount} = slice.actions;
+export const { leaveAccount } = slice.actions;
 export type { IInitialStateUser };
