@@ -44,6 +44,7 @@ export default function Sign(props: IProps): JSX.Element {
                 newState.robot = value;
             } else if (text === 'Запомнить меня') {
                 newState.remember = value;
+                localStorage.setItem('remember', String(value));
             }
 
             return newState;

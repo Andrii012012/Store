@@ -28,8 +28,6 @@ interface IProps {
     refWrapperInput: React.MutableRefObject<HTMLDivElement | null>;
 }
 
-
-
 export default function Register(props: IProps): JSX.Element {
 
     let { date, refWrapperInput } = props;
@@ -87,6 +85,7 @@ export default function Register(props: IProps): JSX.Element {
                 newState.robot = value;
             } else if (text === 'Запомнить меня') {
                 newState.remember = value;
+                localStorage.setItem('remember', String(value));
             }
 
             return newState;

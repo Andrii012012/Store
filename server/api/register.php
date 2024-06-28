@@ -17,7 +17,7 @@ include './constants/status.php';
 
           if(!$user){
             $password = md5($password);
-            $postUser = mysqli_query($connect, "INSERT INTO `user`(`id`, `login`, `password`, `email`, `gender`, `coins`, `marks`, `cashback`, `avatar`, `status`, `historyBonus`) VALUES (NULL,'$login','$password','$email','$gender','0','100','2','$avatar','1','0')");
+            $postUser = mysqli_query($connect, "INSERT INTO `user`(`id`, `login`, `password`, `email`, `gender`, `coins`, `marks`, `cashback`, `avatar`, `status`, `name`, `surname`, `token`) VALUES (NULL,'$login','$password','$email','$gender','0','100','2','$avatar','1',NULL,NULL,NULL)");
             exit();
           } else {
             echo $USER_EXIST_ERROR;

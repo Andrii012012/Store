@@ -50,13 +50,13 @@ export default function Bonus(): JSX.Element {
                 <h1 className={`${gStyles.titleSmall} ${styles.title}`}>Бонусы</h1>
                 <div className={styles.wrapperInfo}>
                     <div className={styles.bodyInfo}>
-                        <p>Ваш статус: {user?.status === '1' ? 'Новый покупать' : user?.status === '2' ?  'Часный покупатель' : 'Постоянный покупатель'}</p>
+                        <p>Ваш статус: {user?.status === '1' ? 'Новый покупать' : user?.status === '2' ? 'Часный покупатель' : 'Постоянный покупатель'}</p>
                         <p>Ваш кэшбек: {user?.cashback}%</p>
                         <p>Баллов сейчас: {user?.marks} баллов</p>
                     </div>
                     <div className={styles.user}>
                         <img src={require(`../../../../assets/imgs/avatar/${user?.avatar}`)} alt="" />
-                        <RatingStarUser status={Number(user.status)}/>
+                        <RatingStarUser status={Number(user.status)} />
                     </div>
                     <div className={`${styles.bodyInfoBonus} ${gStyles.textSmall}`}>
                         <div className={styles.countBought}>
@@ -67,15 +67,15 @@ export default function Bonus(): JSX.Element {
                     </div>
                 </div>
                 <LineBreakpoint status={Number(user.status)}
-                 lengthHistoryOrder={user.historyOrder.length}/>
+                    lengthHistoryOrder={user.historyOrder.length} />
                 <h2 className={`${gStyles.titleSmall} ${styles.titleBonus}`}>История бонусов</h2>
                 <div className={styles.wrapperListBonus}>
                     <ul className={styles.listBonus}>
                         {JSXElements}
                     </ul>
                     <div className={styles.pagination}>
-                       <Pagination<IHistoryBonus> countPage={2}
-                            array={user.historyBonus} onChange={hangleChangePage} />
+                        {user.historyBonus.length > 2 && <Pagination<IHistoryBonus> countPage={2}
+                            array={user.historyBonus} onChange={hangleChangePage} />}
                     </div>
                 </div>
             </section >
