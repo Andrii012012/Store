@@ -90,7 +90,10 @@ export const slice = createSlice({
     leaveAccount: (state: IInitialStateUser) => {
       state.token = "";
       state.user = null;
+<<<<<<< HEAD
       localStorage.setItem("remember", String(false));
+=======
+>>>>>>> 9f4da5d13e597c1c0e9f8a1334374f22cfb8b025
     },
   },
   extraReducers: (build) => {

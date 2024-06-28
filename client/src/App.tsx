@@ -29,6 +29,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+<<<<<<< HEAD
     if (localStorage.getItem('remember') === 'true') {
       const form = new FormData();
       form.append('token', String(localStorage.getItem('token')));
@@ -36,6 +37,13 @@ function App() {
       form.append('password', '');
       dispatch(signThunk({ url: signURL, form }));
     }
+=======
+    const form = new FormData();
+    form.append('token', String(localStorage.getItem('token')));
+    form.append('login', '');
+    form.append('password', '');
+    dispatch(signThunk({ url: signURL, form }));
+>>>>>>> 9f4da5d13e597c1c0e9f8a1334374f22cfb8b025
   }, []);
 
   return (
